@@ -72,3 +72,22 @@
   justify-content: space-between;
   width: 82.34vw;
 }
+
+/* ------------- INPUTS ------------- */
+.system-content .input {
+  /* background: #EBEBEB; */
+  outline: none;
+  /* border-radius: 0px; */
+  transition: border-bottom-color 0.2s ease; /* Agregar una transición suave */
+}
+
+.system-content .input:focus,
+.system-content .input:active {
+  background: #EBEBEB;
+  box-shadow: none;
+  outline: none;
+  border-bottom: 2px solid #247061;
+  border-width: 0 0 2px 0;
+}
+
+
