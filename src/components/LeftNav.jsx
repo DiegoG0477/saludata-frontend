@@ -1,5 +1,3 @@
-import logo from "../assets/mini-logo4.png";
-import SearchIcon from '@mui/icons-material/Search';
 import "../App.css";
 import { Search } from "@mui/icons-material";
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';

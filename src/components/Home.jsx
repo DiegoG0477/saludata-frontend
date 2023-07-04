@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-function Body() {
+function Home() {
   return (
     <>
       <div className="system-content">
@@ -30,4 +30,4 @@ function Body() {
   );
 }
 
-export default Body;
+export default Home;

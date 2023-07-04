@@ -1,12 +1,10 @@
 import React from "react";
 import "../App.css";
-import { Icon } from "@mui/material";
 
 function Card(props) {
   return (
     <>
       <div class="card" style={{ width: "19vw", paddingTop:"17px",paddingBottom:"17px", borderWidth:"0px", background:"white"}}>
-        {/* , height:"39.5vh" */}
         <div class="card-body" style={{ textAlign: "center" }}>
           <div>
             <img src={props.img} alt="" style={{ width: "65px" }} />

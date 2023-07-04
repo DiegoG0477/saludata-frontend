@@ -1,9 +1,8 @@
 import "./App.css";
-import logo from "./assets/mini-logo4.png";
 import "primeicons/primeicons.css";
 import Head from "./components/Head";
 import LeftNav from "./components/LeftNav";
-import Body from "./components/Body";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
         <Head></Head>
         <div className="frame">
           <LeftNav></LeftNav>
-          <Body></Body>
+          <Home></Home>
         </div>
       </div>
     </>
