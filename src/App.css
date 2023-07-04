@@ -29,17 +29,22 @@
   /* LEFT NAV COMPONENT */
 
 .left-nav{
+  height: auto;
   padding-top: 2.2vh;
   background-color: #EDEDED;
   width: 9.297vw;
   margin-left: 0px;
   box-shadow: -7px 0px 8px -3px rgba(0,0,0,0.52) inset;
+  display: flex;
+  flex-direction: column;
+  /* align-items: stretch; */
+  overflow-y: auto;
 }
 
 .nav-box{
-  padding-top: 0.3vh;
+  /* padding-top: 0.3vh; */
   text-align: center;
-  padding-bottom: 0.3vh;
+  /* padding-bottom: 0.3vh; */
 }
 
 .nav-box p{
