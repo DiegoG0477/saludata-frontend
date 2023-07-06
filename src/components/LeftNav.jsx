@@ -1,14 +1,14 @@
-import logo from "../assets/mini-logo4.png";
-import SearchIcon from '@mui/icons-material/Search';
 import "../App.css";
 import { Search } from "@mui/icons-material";
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import HistoryIcon from '@mui/icons-material/History';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import cell from "../assets/cells.svg";
-
+import { useNavigate } from "react-router-dom";
 
 function LeftNav() {
+    const navigate = useNavigate();
+
   return (
     <>
     <div className="left-nav">
@@ -18,7 +18,7 @@ function LeftNav() {
             <p>Búsqueda</p>
         </div>
 
-        <div className="nav-box">
+        <div className="nav-box" onClick={() => navigate('pacient-search')}>
             <img src={cell} alt="" style={{width:"3.5vw"}}/> 
             <p>Registro de Pacientes</p>
         </div>

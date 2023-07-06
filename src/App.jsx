@@ -1,21 +1,19 @@
-import "./App.css";
-import logo from "./assets/mini-logo4.png";
-import "primeicons/primeicons.css";
-import Head from "./components/Head";
-import LeftNav from "./components/LeftNav";
-import Body from "./components/Body";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Render from "./Render";
+import Home from "./components/Home";
+import PacientSearch from "./components/PacientSearch";
 
 function App() {
   return (
-    <>
-      <div className="app">
-        <Head></Head>
-        <div className="frame">
-          <LeftNav></LeftNav>
-          <Body></Body>
-        </div>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Render component={<Home />} />} />
+        <Route
+          path="pacient-search"
+          element={<Render component={<PacientSearch />} />}
+        />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,6 +1,5 @@
 import logo from "../assets/mini-logo4.png";
 import doctor from "../assets/doctor.png";
-import { Icon } from "@mui/material";
 import { Settings } from "@mui/icons-material";
 import React from "react";
 import "../App.css";
