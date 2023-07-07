@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import { DatePicker } from "@mui/x-date-pickers";
+import ColumnButton from "./atoms/ColumnButton";
 
 function PacientSearch() {
   return (
@@ -115,7 +116,9 @@ function PacientSearch() {
                 <th scope="row">Ejemplo Persona</th>
                 <td>9611111111</td>
                 <td>24 Años</td>
-                <td>@mdo</td>
+                <td>
+                  <ColumnButton text="Ver Más" color="#248087"/>
+                </td>
               </tr>
               <tr>
                 <th scope="row">2</th>
