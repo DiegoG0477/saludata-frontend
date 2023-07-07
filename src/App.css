@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap");
 
 #root {
   width: 100%;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
-.app{
-  background-color: #F3F3F3;
+.app {
+  background-color: #f3f3f3;
 }
 
 .system-content .globalButton {
   font-size: 1.25rem;
   border-radius: 10px;
-  background: #268D78;
+  background: #268d78;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   width: 12vw;
   height: 40px;
@@ -26,7 +26,7 @@
 }
 
 .system-content .globalButton:active {
-  background: #268D78 !important;
+  background: #268d78 !important;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   outline: none;
 }
@@ -37,43 +37,43 @@
   border-radius: 40px;
 }
 
-.userPhoto img{
+.userPhoto img {
   border-radius: 40px;
 }
 
-.right-nav{
+.right-nav {
   display: flex;
   justify-content: space-between;
   width: 30vw;
   margin-right: 3vw;
 }
 
-  /* LEFT NAV COMPONENT */
+/* LEFT NAV COMPONENT */
 
-.left-nav{
+.left-nav {
   height: auto;
   padding-top: 2.2vh;
-  background-color: #EDEDED;
+  background-color: #ededed;
   width: 9.297vw;
   margin-left: 0px;
-  box-shadow: -7px 0px 8px -3px rgba(0,0,0,0.52) inset;
+  box-shadow: -7px 0px 8px -3px rgba(0, 0, 0, 0.52) inset;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   overflow-y: auto;
 }
 
-.nav-box{
+.nav-box {
   /* padding-top: 0.3vh; */
   text-align: center;
   /* padding-bottom: 0.3vh; */
 }
 
-.nav-box p{
+.nav-box p {
   margin-top: 5px;
   font-size: 1.125rem;
   font-weight: 800;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .frame {
@@ -82,14 +82,14 @@
   float: left;
 }
 
-.system-content{
+.system-content {
   padding-left: 4.173vw;
   padding-right: 4.173vw;
   padding-top: 4.036vh;
   padding-bottom: 4.036vh;
 }
 
-.home-top{
+.home-top {
   display: flex;
   justify-content: space-between;
   width: 82.34vw;
@@ -105,14 +105,14 @@
 
 .system-content .input:focus,
 .system-content .input:active {
-  background: #EBEBEB;
+  background: #ebebeb;
   box-shadow: none;
   outline: none;
   border-bottom: 2px solid #247061;
   border-width: 0 0 2px 0;
 }
 
-.system-content .input-search-container{
+.system-content .input-search-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -120,14 +120,17 @@
   margin-bottom: 2.5vh; */
 }
 
+.system-content .input-box{
+  margin-bottom: -4vh;
+  /* background-color: #247061; */
+}
 
 /* ----------------- TABLE -----------------  */
 .system-content .tablaS {
   text-align: center;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
   /* border-collapse: separate; */
-  
 
   border-radius: 8px;
   width: 78vw;
@@ -151,4 +154,19 @@
   border-radius: 0px 8px 0px 0px;
 }
 
+/* -------------------- MODAL WINDOW -------------------- */
+.system-content .modal-window-content {
+  padding: 4vh 3vw 0vh 3vw;
+  border-radius: 10px;
+  background: #f6f6f6;
+  box-shadow: 0px 4px 250px 500px rgba(0, 0, 0, 0.5);
+  /* width: 82vw; */
+}
 
+.modal-window-content .modal-buttons-section{
+  margin-top: 1vh;
+}
+
+.modal-window-content .modal-win-title{
+  font-weight: bolder;
+}
