@@ -9,6 +9,26 @@
   background-color: #F3F3F3;
 }
 
+.system-content .globalButton{
+  font-size: 1.25rem;
+  border-radius: 10px;
+  background: #268D78; 
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width:12vw;
+  height:40px; 
+  border-width:0px;
+  font-weight: bolder;
+}
+
+.system-content .globalButton:hover{
+  background: #247061;
+  cursor: pointer;
+}
+
+.system-content .globalButton:active{
+  background: #1F5A4E;
+}
+
 /* HEAD COMPONENT */
 .userPhoto {
   background-color: aliceblue;
@@ -88,6 +108,45 @@
   outline: none;
   border-bottom: 2px solid #247061;
   border-width: 0 0 2px 0;
+}
+
+.system-content .input-search-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 82.34vw;
+  margin-bottom: 2.5vh; */
+}
+
+
+/* ----------------- TABLE -----------------  */
+.system-content .tablaS {
+  text-align: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  background-color: #EBEBEB;
+  /* border-collapse: separate; */
+  
+
+  border-radius: 8px;
+  width: 78vw;
+}
+
+.system-content .tablaS thead {
+  background-color: #268d78; /* Cambia el color según tu preferencia */
+  height: 5vh;
+  color: #f3f3f3;
+}
+
+.tablaS tr {
+  height: 5vh;
+}
+
+.tablaS .left-th {
+  border-radius: 8px 0px 0px 0px;
+}
+
+.tablaS .right-th {
+  border-radius: 0px 8px 0px 0px;
 }
 
 

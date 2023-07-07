@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
+import { DatePicker } from "@mui/x-date-pickers";
 
 function PacientSearch() {
   return (
@@ -18,6 +19,7 @@ function PacientSearch() {
             display: "flex",
             justifyContent: "space-between",
             width: "78vw",
+            marginBottom: "-3vh",
           }}
         >
           <div>
@@ -57,7 +59,6 @@ function PacientSearch() {
 
         <div
           style={{
-            marginTop: "3vh",
             display: "flex",
             justifyContent: "space-between",
             width: "78vw",
@@ -79,6 +80,51 @@ function PacientSearch() {
               style={{ width: "36vw", height: "8vh" }}
             />
           </div>
+
+          <div>
+            <p
+              // htmlFor="birthdate"
+              className="form-label"
+              style={{ fontWeight: "bold" }}
+            >
+              Fecha de Nacimiento del Paciente
+            </p>
+
+            {/* <DatePicker style={{ width: "36vw", height: "8vh" }}/> */}
+
+            {/* defaultValue={("2022-04-17")} */}
+            <div className="input-search-container" style={{ width: "36vw", height: "8vh"}}>
+              <DatePicker />
+              <button className="btn btn-primary globalButton">Buscar</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <table class="tablaS">
+            <thead>
+              <tr>
+                <th scope="col" className="left-th">Nombre Completo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Edad</th>
+                <th scope="col" className="right-th">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Ejemplo Persona</th>
+                <td>9611111111</td>
+                <td>24 Años</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>dssdak</td>
+                <td>Ojfjfo</td>
+                <td>@mui</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </>
