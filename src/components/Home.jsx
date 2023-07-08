@@ -60,28 +60,9 @@ function Home() {
           ></Card>
         </div>
 
-        <div
-          class="modal fade"
-          id="staticBackdrop"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content modal-window-content">
-              {/* <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">
-                  Agregar Paciente
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div> */}
               <div class="modal-body">
                 <h4 className="modal-win-title">Ficha de identificacion</h4>
                 <h6 className="modal-win-title">
@@ -93,7 +74,7 @@ function Home() {
                     display: "flex",
                     justifyContent: "space-between",
                     width: "65vw",
-                    marginLeft: "3vw",
+                    marginLeft: "1vw",
                   }}
                 >
                   <div className="input-box">
@@ -152,7 +133,7 @@ function Home() {
                     display: "flex",
                     justifyContent: "space-between",
                     width: "65vw",
-                    marginLeft: "3vw",
+                    marginLeft: "1vw",
                   }}
                 >
                   <div className="input-box">
@@ -226,7 +207,7 @@ function Home() {
                     display: "flex",
                     justifyContent: "space-between",
                     width: "65vw",
-                    marginLeft: "3vw",
+                    marginLeft: "1vw",
                   }}
                 >
                   <div className="input-box">
@@ -334,20 +315,829 @@ function Home() {
                 </div>
               </div>
               <div class="modal-footer modal-buttons-section">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cerrar
-                </button>
-                <button type="button" class="btn btn-success">
-                  Siguiente
-                </button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" data-bs-target="#staticBackdrop2" data-bs-toggle="modal" data-bs-dismiss="modal">Siguiente</button>
               </div>
             </div>
           </div>
         </div>
+
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content modal-window-content">
+          <div class="modal-body">
+          <h4 className="modal-win-title">Ficha de identificacion</h4>
+                <h6 className="modal-win-title">
+                  Por favor, ingrese los datos pertinentes del nuevo paciente
+                </h6>
+                <div
+                  style={{
+                    marginTop: "2vh",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "65vw",
+                    marginLeft: "1vw",
+                  }}
+                >
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Heredos Familiares
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese los Heredos Familiares del Paciente"
+                      style={{ width: "70vw", height: "8vh" }}
+                    />
+                  </div>
+                </div>
+                <div
+                style={{
+                  marginTop: "0vh",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "70vw",
+                  marginLeft: "1vw",
+                }}>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Originario
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese Donde Nacio el Paciente"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Residente
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese en Donde Vive Actualmente el Paciente"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Lengua Indigena
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese la Lengua Indigena"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Habita en casa
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese el Habita de casa"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                </div>
+                <div
+                style={{
+                  marginTop: "1vh",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "70vw",
+                  marginLeft: "1vw"
+                }}>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      No.Habitantes
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      No.Cuartos
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Construida
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese el Tipo de Material"
+                      style={{ width: "13vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div>
+                  <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Agua Potable
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Luz 
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Drenaje
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Cocina con Leña 
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Zoonosis 
+                        </label>
+                      </div>
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Escolaridad
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese la Escolaridad"
+                      style={{ width: "14vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Religion
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese la Religion"
+                      style={{ width: "10vw", height: "8vh" }}
+                    />
+                  </div>
+                </div>
+                <div
+                  style={{
+                    marginTop: "1vh",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "65vw",
+                    marginLeft: "1vw",
+                  }}>
+                    <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Ocupacion
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese la Ocupación"
+                      style={{ width: "12vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Comidas Diarias
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Ingesta de Agua
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0 L"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Acepta Transfusion
+                    </label>
+                  </div>
+                  <div class="form-check" style={{marginTop:"2vw"}}>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          SI
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          NO
+                        </label>
+                      </div>
+                  </div>
+                  <div class="dropdown" style={{marginTop:"2vw"}}>
+                        <button
+                          class="btn btn-success btn-lg dropdown-toggle"
+                          type="button"
+                          id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          Estado Civil
+                        </button>
+                        <ul
+                          class="dropdown-menu"
+                          aria-labelledby="dropdownMenuButton1"
+                        >
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              Casado/a
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              Soltero/a
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              Viudo/a
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              Divorciado
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              Separado
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              Concubinato
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                  </div>
+          </div>
+          <div class="modal-footer modal-buttons-section">
+            <button class="btn btn-danger" data-bs-target="#staticBackdrop" data-bs-toggle="modal" data-bs-dismiss="modal">Regresar</button>
+            <button type="button" class="btn btn-success" data-bs-target="#staticBackdrop3" data-bs-toggle="modal" data-bs-dismiss="modal">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content modal-window-content">
+          <div class="modal-body">
+          <h4 className="modal-win-title">Ficha de identificacion</h4>
+                <h6 className="modal-win-title">
+                  Por favor, ingrese los datos pertinentes del nuevo paciente
+                </h6>
+            <div
+             style={{
+              marginTop: "3vh",
+              display: "flex",
+              justifyContent: "space-between",
+              width: "65vw",
+              marginLeft: "1vw",
+            }}>
+              <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Alergias
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese las Alergias"
+                      style={{ width: "65vw", height: "8vh" }}
+                    />
+                  </div>
+            </div>
+            <div
+             style={{
+              marginTop: "3vh",
+              display: "flex",
+              justifyContent: "space-between",
+              width: "65vw",
+              marginLeft: "1vw",
+            }}>
+              <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Enfermedades Cronicas
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese las Enfermedades Cronicas"
+                      style={{ width: "20vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Traumatismo
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese los Traumatismos"
+                      style={{ width: "20vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Cirujias
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Hospitalizaciones
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  
+            </div>
+            <div style={{
+              marginTop: "3vh",
+              display: "flex",
+              justifyContent: "space-between",
+              width: "25vw",
+              marginLeft: "1vw",
+            }}>
+              <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Covid-19
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div>
+                      <div class="dropdown" style={{marginTop:"2.5vw"}}>
+                        <button
+                          class="btn btn-success btn-lg dropdown-toggle"
+                          type="button"
+                          id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          Tipo de sangre
+                        </button>
+                        <ul
+                          class="dropdown-menu"
+                          aria-labelledby="dropdownMenuButton1"
+                        >
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              O+
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              O-
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              A+
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              A-
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              B+
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              B-
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              AB+
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                              AB-
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+          <div class="modal-footer modal-buttons-section">
+            <button class="btn btn-danger" data-bs-target="#staticBackdrop2" data-bs-toggle="modal" data-bs-dismiss="modal">Regresar</button>
+            <button type="button" class="btn btn-success" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" data-bs-dismiss="modal">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content modal-window-content">
+        <div class="modal-body">
+        <h4 className="modal-win-title">Ficha de identificacion</h4>
+                <h6 className="modal-win-title">
+                  Por favor, ingrese los datos pertinentes del nuevo paciente
+                </h6>
+        <div
+        style={{
+          marginTop: "3vh",
+          display: "flex",
+          justifyContent: "space-between",
+          width: "65vw",
+          marginLeft: "1vw",
+        }}>
+          <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    G
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    P
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    A
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    C
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Menarca
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0 Años"
+                      style={{ width: "10vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Ciclos Mestruales
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0 Dias"
+                      style={{ width: "10vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    IVSA
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0 Años"
+                      style={{ width: "8vw", height: "8vh" }}
+                    />
+                  </div>
+                  
+              </div>
+                  <div 
+                  style={{
+                    marginTop: "3vh",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "65vw",
+                    marginLeft: "1vw",
+                  }}>
+                    <div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      MPF
+                    </label>
+                  </div>
+                  <div>
+                  <div class="form-check" style={{marginTop:"2vw"}}>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          SI
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          NO
+                        </label>
+                      </div>
+                  </div>
+                  </div>
+
+                  <div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                      Deteccion Oportuna de CA mama
+                    </label>
+                  </div>
+                  <div class="form-check" style={{marginTop:"2vw"}}>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault12"/>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          SI
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1"/>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          NO
+                        </label>
+                      </div>
+                  </div>
+                  <div className="input-box">
+                    <p
+                      // htmlFor="birthdate"
+                      className="form-label"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      FUM
+                    </p>
+                    <div
+                      className="input-search-container"
+                      style={{ height: "8vh" }}
+                    >
+                      <DatePicker />
+                    </div>
+                  </div>
+                  <div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Papaniculau
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0"
+                      style={{ width: "5vw", height: "8vh" }}
+                    />
+                  </div>
+                  </div>
+                  </div>
+                  <div
+                  style={{
+                    marginTop: "3vh",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "65vw",
+                    marginLeft: "1vw",
+                  }}>
+                    <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Antecedentes Perinatales
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese los Antecedentes Perinatales del Paciente"
+                      style={{ width: "65vw", height: "8vh" }}
+                    />
+                  </div>
+                  </div>
+        </div>
+        <div class="modal-footer modal-buttons-section">
+          <button class="btn btn-danger" data-bs-target="#staticBackdrop3" data-bs-toggle="modal" data-bs-dismiss="modal">Regresar</button>
+          <button type="button" class="btn btn-success" data-bs-target="" data-bs-toggle="modal" data-bs-dismiss="modal">Agregar Paciente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
       </div>
     </>
   );

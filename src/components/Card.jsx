@@ -12,7 +12,7 @@ function Card(props) {
           <h5 class="card-title" style={{marginTop:"18px",marginBottom:"18px", fontWeight:"700", fontSize:"1.5rem"}}>{props.title}</h5>
 
           <a href="#" class="btn btn-primary" style={{borderRadius: "10px",background: "#268D78", boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",width:"12vw", height:"40px", borderWidth:"0px"}}>
-            <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{fontSize:"18px", fontWeight:"700", paddingTop:"0.25vh"}}> {props.icon} {props.buttonText}</div>
+            <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#exampleModalToggle" role="button" style={{fontSize:"18px", fontWeight:"700", paddingTop:"0.25vh"}}> {props.icon} {props.buttonText}</div>
           </a>
         </div>
 
