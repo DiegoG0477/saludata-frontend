@@ -25,6 +25,7 @@ function Home() {
                 style={{ fontSize: "1.4rem", marginTop: "-5px" }}
               ></SaveIcon>
             }
+            num={1}
           ></Card>
           <Card
             title="Registrar Consulta"
@@ -35,6 +36,7 @@ function Home() {
                 style={{ fontSize: "1.4rem", marginTop: "-5px" }}
               ></BookmarkAddIcon>
             }
+            num={2}
           ></Card>
           <Card
             title="Eliminar Paciente"
@@ -73,8 +75,7 @@ function Home() {
                     marginTop: "3vh",
                     display: "flex",
                     justifyContent: "space-between",
-                    width: "65vw",
-                    marginLeft: "1vw",
+                    width: "65vw"
                   }}
                 >
                   <div className="input-box">
@@ -90,7 +91,7 @@ function Home() {
                       className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
                       id="pacients-names"
                       placeholder="Ingrese el nombre(s) del paciente"
-                      style={{ width: "20vw", height: "8vh" }}
+                      style={{ width: "15vw", height: "8vh" }}
                     />
                   </div>
                   <div className="input-box">
@@ -106,7 +107,7 @@ function Home() {
                       className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
                       id="pacients-lastnames"
                       placeholder="Ingrese los apellidos del paciente"
-                      style={{ width: "20vw", height: "8vh" }}
+                      style={{ width: "15vw", height: "8vh" }}
                     />
                   </div>
                   <div className="input-box">
@@ -122,7 +123,7 @@ function Home() {
                       className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
                       id="pacients-lastnames"
                       placeholder="Ingrese los apellidos del paciente"
-                      style={{ width: "20vw", height: "8vh" }}
+                      style={{ width: "15vw", height: "8vh" }}
                     />
                   </div>
                 </div>
@@ -133,7 +134,7 @@ function Home() {
                     display: "flex",
                     justifyContent: "space-between",
                     width: "65vw",
-                    marginLeft: "1vw",
+                
                   }}
                 >
                   <div className="input-box">
@@ -207,7 +208,7 @@ function Home() {
                     display: "flex",
                     justifyContent: "space-between",
                     width: "65vw",
-                    marginLeft: "1vw",
+                 
                   }}
                 >
                   <div className="input-box">
@@ -1137,7 +1138,375 @@ function Home() {
       </div>
     </div>
   </div>
+          <div class="modal fade" id="modalPaciente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+              <div class="modal-content modal-window-content">
+                <div class="modal-body">
+                <h4 className="modal-win-title">Registrar Consulta</h4>
+                <h6 className="modal-win-title">
+                  Por favor, rellene los campos de informacion
+                </h6>
 
+                <div 
+                style={{
+                  marginTop: "3vh",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "65vw"
+                }}>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Altura
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese la Altura en CM"
+                      style={{ width: "11vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Peso
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese el Peso en KG"
+                      style={{ width: "10vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Peso Prenatal
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese el Peso en KG"
+                      style={{ width: "10vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Talla
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese la Talla"
+                      style={{ width: "10vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Temperatura
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Celsius"
+                      style={{ width: "10vw", height: "8vh" }}
+                    />
+                  </div>
+                  
+                </div>
+                
+                  <div
+                  style={{
+                    marginTop: "3vh",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "65vw",
+                  }}>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    FC(Frecuencia Cardiaca)
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0/0"
+                      style={{ width: "7vw", height: "8vh" }}
+                    />
+                    
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    FR(Frecuencia Respiratoria)
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0/0"
+                      style={{ width: "7vw", height: "8vh" }}
+                    />
+                    
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    PA(Presion Arterial)
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="0/0"
+                      style={{ width: "7vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Otro(Opcional)
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Opcional"
+                      style={{ width: "16vw", height: "8vh" }}
+                    />
+                  </div>
+                  </div>
+                  <div style={{backgroundColor:"#D9D9D9",width:"65vw",height:"10vw",marginTop:"2vw",borderRadius:"0.5vw"}}>
+                  <div style={{marginTop:"0.5vw",marginLeft:"0.5vw",position:"absolute"}}>
+                  <h4 className="modal-win-title">Observacion del Sistema</h4>
+                      <h6 className="modal-win-title" style={{marginTop:"1vw"}}>
+                        !- El Paciente es alergico a: bla bla vbla vla
+                      </h6>
+                      <h6 className="modal-win-title">
+                        !- Este paciente frecuentemente es diagnosticado con: 
+                      </h6>
+                      <h6 className="modal-win-title">
+                        !- Los signos de este paciente suelen ser: FR - Estatus, FC - Estatus, Presión A. - Estatus 
+                      </h6>
+                      <h6 className="modal-win-title">
+                        !-  Los medicamentos recetados a este paciente la última vez fueron: bla, bla, bla, paracetamol, ibuprofeno, vitamina b,  salbutamol, etcetera
+                      </h6>
+                      
+                  </div>
+                  <button type="button"  class="btn btn-primary" style={{position:"absolute",marginTop:"7vw",marginLeft:"58vw",backgroundColor:"#64AFBF",border:"0",color:"white",padding:"0.5vw 1.3vw", borderRadius:"0.3vw",boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)"}}>Ver Mas</button>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                  <button class="btn btn-success" data-bs-target="#modalPaciente2" data-bs-toggle="modal" data-bs-dismiss="modal">Siguiente</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="modalPaciente2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content modal-window-content">
+                  <div class="modal-body">
+                      <h4 className="modal-win-title">Registrar Consulta</h4>
+                    <h6 className="modal-win-title">
+                      Por favor, rellene los campos de informacion
+                    </h6>
+                    <div
+                     style={{
+                      marginTop: "3vh",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "65vw",
+                    }}>
+                      <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Motivo de la consulta
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese el Motivo de la Consulta"
+                      style={{ width: "30vw", height: "8vh" }}
+                    />
+                  </div>
+                      <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Sintomas de Iniciacion
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese Sintomas de Iniciacion del Paciente"
+                      style={{ width: "30vw", height: "8vh" }}
+                    />
+                  </div>
+                    </div>
+                    <div style={{
+                      marginTop: "3vh",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "65vw",
+                    }}>
+                      <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Laboratorios
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese Laboratorios Previos"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Estudios Previos
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese los Estudios Previos"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Laboratorios
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese Laboratorios Previos"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    Terapeutica Empleada Anteriormente
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese Terapias Empleadas Anteriormente"
+                      style={{ width: "15vw", height: "8vh" }}
+                    />
+                  </div>
+                    </div>
+                    <div
+                    style={{
+                      marginTop: "3vh",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "65vw",
+                    }}>
+                      <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    A. Digestivos
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese Laboratorios Previos"
+                      style={{ width: "30vw", height: "8vh" }}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label
+                      for="pacient-names"
+                      className="form-label"
+                      style={{ fontWeight: "bold"}}
+                    >
+                    A. Respiratorio
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+                      id="pacients-names"
+                      placeholder="Ingrese los Estudios Previos"
+                      style={{ width: "30vw", height: "8vh" }}
+                    />
+                  </div>
+                  
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-danger" data-bs-target="#modalPaciente" data-bs-toggle="modal" data-bs-dismiss="modal">Regresar</button>
+                    <button type="button" class="btn btn-success">Siguiente</button>
+                  </div>
+                </div>
+              </div>
+            </div>
       </div>
     </>
   );
