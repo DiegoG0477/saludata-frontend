@@ -95,33 +95,19 @@
 }
 
 /* ------------- INPUTS ------------- */
-.system-content .input {
-  /* background: #EBEBEB; */
-  outline: none;
-  /* border-radius: 0px; */
-  transition: border-bottom-color 0.2s ease; /* Agregar una transición suave */
-}
-
-.system-content .input:focus,
-.system-content .input:active {
-  background: #ebebeb;
-  box-shadow: none;
-  outline: none;
-  border-bottom: 2px solid #247061;
-  border-width: 0 0 2px 0;
+.pacient-search-in-container input{
+  width: 36vw;
+  height: 8vh;
 }
 
 .system-content .input-search-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* width: 82.34vw;
-  margin-bottom: 2.5vh; */
 }
 
 .system-content .input-box{
   margin-bottom: -4vh;
-  /* background-color: #247061; */
 }
 
 /* ----------------- TABLE -----------------  */
@@ -155,11 +141,16 @@
 
 /* -------------------- MODAL WINDOW -------------------- */
 .system-content .modal-window-content {
+  /* margin-left: -8.5vw; FOR 1080P*/
   padding: 4vh 3vw 0vh 3vw;
   border-radius: 10px;
   background: #f6f6f6;
   box-shadow: 0px 4px 250px 500px rgba(0, 0, 0, 0.5);
+<<<<<<< Updated upstream
   width: 82vw; 
+=======
+  width: 82vw;
+>>>>>>> Stashed changes
 }
 
 .modal-window-content .modal-buttons-section{
@@ -169,3 +160,20 @@
 .modal-window-content .modal-win-title{
   font-weight: bolder;
 }
+
+.date{
+  background: #ebebeb !important;
+  width: 21vw !important;
+  height: 8vh !important;
+  border: none !important;
+  outline: none !important;
+  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+}
+
+.date input {
+  border-bottom: 0 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+

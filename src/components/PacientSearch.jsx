@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import { DatePicker } from "@mui/x-date-pickers";
 import ColumnButton from "./atoms/ColumnButton";
+import Input from "./atoms/Input";
 
 function PacientSearch() {
   return (
@@ -23,7 +24,7 @@ function PacientSearch() {
             marginBottom: "-3vh",
           }}
         >
-          <div>
+          <div className="pacient-search-in-container">
             <label
               for="pacient-names"
               className="form-label"
@@ -31,30 +32,32 @@ function PacientSearch() {
             >
               Nombre(s) del Paciente
             </label>
-            <input
+            {/* <input
               type="text"
               className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
               id="pacients-names"
               placeholder="Ingrese el nombre(s) del paciente"
               style={{ width: "36vw", height: "8vh" }}
-            />
+            /> */}
+            <Input placeholder="Ingrese el nombre(s) del paciente" />
           </div>
 
-          <div>
+          <div className="pacient-search-in-container">
             <label
               for="pacient-lastnames"
               className="form-label"
               style={{ fontWeight: "bold" }}
             >
-              Apellidos del Paciente
+              Apellidos Paterno Paciente
             </label>
-            <input
+            {/* <input
               type="text"
               className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
               id="pacients-lastnames"
               placeholder="Ingrese los apellidos del paciente"
               style={{ width: "36vw", height: "8vh" }}
-            />
+            /> */}
+            <Input placeholder="Ingrese apellido paterno del paciente" />
           </div>
         </div>
 
@@ -65,21 +68,22 @@ function PacientSearch() {
             width: "78vw",
           }}
         >
-          <div>
+          <div className="pacient-search-in-container">
             <label
               for="pacient-lastnames"
               className="form-label"
               style={{ fontWeight: "bold" }}
             >
-              Apellidos del Paciente
+              Apellido Materno del Paciente
             </label>
-            <input
+            {/* <input
               type="text"
               className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
               id="pacients-lastnames"
               placeholder="Ingrese los apellidos del paciente"
               style={{ width: "36vw", height: "8vh" }}
-            />
+            /> */}
+            <Input placeholder="Ingrese apellido materno del paciente" />
           </div>
 
           <div>
@@ -91,11 +95,8 @@ function PacientSearch() {
               Fecha de Nacimiento del Paciente
             </p>
 
-            {/* <DatePicker style={{ width: "36vw", height: "8vh" }}/> */}
-
-            {/* defaultValue={("2022-04-17")} */}
             <div className="input-search-container" style={{ width: "36vw", height: "8vh"}}>
-              <DatePicker />
+              <DatePicker className="date" format="dd/MM/yyyy" />
               <button className="btn btn-primary globalButton">Buscar</button>
             </div>
           </div>
