@@ -3,15 +3,14 @@ import "../App.css";
 import { DatePicker } from "@mui/x-date-pickers";
 import ColumnButton from "./atoms/ColumnButton";
 import Input from "./atoms/Input";
-
-function PacientSearch() {
+import InputLabel from "./atoms/InputLabel";
+function PacientSearch(props) {
   return (
     <>
       <div className="system-content">
-        <h4 style={{ fontWeight: "bold" }}>Registro de Pacientes</h4>
+        <h4 style={{ fontWeight: "bold" }}>{props.title}</h4>
         <h6 style={{ fontWeight: "bold" }}>
-          Ingrese los datos de un paciente para su búsqueda o revise el registro
-          general de pacientes
+          {props.text}
         </h6>
 
         {/* width:"82vw" */}
@@ -20,73 +19,25 @@ function PacientSearch() {
             marginTop: "3vh",
             display: "flex",
             justifyContent: "space-between",
-            width: "78vw",
+            width: props.ancho+"vw",
             marginBottom: "-3vh",
           }}
         >
-          <div className="pacient-search-in-container">
-            <label
-              for="pacient-names"
-              className="form-label"
-              style={{ fontWeight: "bold" }}
-            >
-              Nombre(s) del Paciente
-            </label>
-            {/* <input
-              type="text"
-              className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
-              id="pacients-names"
-              placeholder="Ingrese el nombre(s) del paciente"
-              style={{ width: "36vw", height: "8vh" }}
-            /> */}
-            <Input placeholder="Ingrese el nombre(s) del paciente" />
-          </div>
-
-          <div className="pacient-search-in-container">
-            <label
-              for="pacient-lastnames"
-              className="form-label"
-              style={{ fontWeight: "bold" }}
-            >
-              Apellidos Paterno Paciente
-            </label>
-            {/* <input
-              type="text"
-              className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
-              id="pacients-lastnames"
-              placeholder="Ingrese los apellidos del paciente"
-              style={{ width: "36vw", height: "8vh" }}
-            /> */}
-            <Input placeholder="Ingrese apellido paterno del paciente" />
-          </div>
+          
+          <InputLabel text="Nombres del Paciente" holder="Ingrese el nombre(s) del paciente" ancho={props.labelAncho}/>
+          <InputLabel text="Apellidos Paterno Paciente" holder="Ingrese apellido paterno del paciente" ancho={props.labelAncho}/>
         </div>
 
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            width: "78vw",
+            width: props.ancho+"vw",
+            marginTop:"2vw"
           }}
         >
-          <div className="pacient-search-in-container">
-            <label
-              for="pacient-lastnames"
-              className="form-label"
-              style={{ fontWeight: "bold" }}
-            >
-              Apellido Materno del Paciente
-            </label>
-            {/* <input
-              type="text"
-              className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
-              id="pacients-lastnames"
-              placeholder="Ingrese los apellidos del paciente"
-              style={{ width: "36vw", height: "8vh" }}
-            /> */}
-            <Input placeholder="Ingrese apellido materno del paciente" />
-          </div>
-
-          <div>
+          <InputLabel text="Apellido Materno del Paciente" holder="Ingrese apellido materno del paciente" ancho={props.labelAncho}/>
+          <div style={{marginRight:props.mover+"vw"}}>
             <p
               // htmlFor="birthdate"
               className="form-label"
@@ -95,15 +46,15 @@ function PacientSearch() {
               Fecha de Nacimiento del Paciente
             </p>
 
-            <div className="input-search-container" style={{ width: "36vw", height: "8vh"}}>
+            <div className="input-search-container" style={{ width: props.anchoPicker+"vw", height: "8vh"}}>
               <DatePicker className="date" format="dd/MM/yyyy" />
               <button className="btn btn-primary globalButton">Buscar</button>
             </div>
           </div>
+          
         </div>
-
         <div>
-          <table class="tablaS">
+          <table class="tablaS" style={{width:props.ancho+"vw"}}>
             <thead>
               <tr>
                 <th scope="col" className="left-th">Nombre Completo</th>
@@ -118,7 +69,7 @@ function PacientSearch() {
                 <td>9611111111</td>
                 <td>24 Años</td>
                 <td>
-                  <ColumnButton text="Ver Más" color="#248087"/>
+                  <ColumnButton text={props.botonText} color={props.color}/>
                 </td>
               </tr>
               <tr>

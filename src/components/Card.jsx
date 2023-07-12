@@ -7,6 +7,8 @@ function Card(props) {
     modal="#staticBackdrop";
   }else if(props.num==2){
     modal="#modalPaciente"
+  }else if(props.num==3){
+    modal="#modalEliminar"
   }
   return (
     <>
