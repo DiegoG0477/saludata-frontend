@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import "../App.css";
-import { DatePicker } from "@mui/x-date-pickers";
+import DatePick from "./atoms/DatePick"
 import ColumnButton from "./atoms/ColumnButton";
 import Input from "./atoms/Input";
 import InputLabel from "./atoms/InputLabel";

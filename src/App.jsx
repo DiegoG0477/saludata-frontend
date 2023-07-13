@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PacientSearch from "./components/PacientSearch";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import PacientSummary from "./components/pages/PacientSummary";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             mover={0}
             />} />}
           />
+          <Route path="pacient-summary" element={<Render component={<PacientSummary />} />} />
         </Routes>
       </Router>
       </LocalizationProvider>

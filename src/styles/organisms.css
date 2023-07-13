@@ -1,0 +1,11 @@
+.summary-idPa-page{
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-idPa-page .summary-idPa-page-left{
+    /* display: flex;
+    justify-content: space-between; */
+    /* margin-right: 10%; */
+    width: 53vw;
+}
