@@ -11,6 +11,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { DatePicker } from "@mui/x-date-pickers";
 import InputLabel from "./atoms/InputLabel";
+import PacientSearch from "./PacientSearch";
 function Home() {
   return (
     <>
@@ -47,6 +48,7 @@ function Home() {
                 style={{ fontSize: "1.4rem", marginTop: "-5px" }}
               ></DeleteIcon>
             }
+            num={3}
           ></Card>
         </div>
         <div className="home-top" style={{ paddingTop: "12px" }}>
@@ -775,6 +777,29 @@ function Home() {
                     </div>
                   </div>
         </div>
+
+        <div class="modal fade" id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content modal-window-content">
+                  <div class="modal-body">
+                    <PacientSearch
+                    title="Ficha de Eliminar Paciente"
+                    text="Ingrese los datos para hacer una busqueda y seleccione la acción."
+                    ancho={65}
+                    labelAncho={30}
+                    color="#BE2C35"
+                    botonText="Eliminar"
+                    anchoPicker="27"
+                    mover={3}
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
       </div>
     </>
   );

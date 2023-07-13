@@ -16,7 +16,16 @@ function App() {
           <Route path="/" element={<Render component={<Home />} />} />
           <Route
             path="pacient-search"
-            element={<Render component={<PacientSearch />} />}
+            element={<Render component={<PacientSearch title="Registro de Pacientes"
+            text=" Ingrese los datos de un paciente para su búsqueda o revise el registro
+            general de pacientes"
+            ancho={78}
+            labelAncho={36}
+            color="#248087"
+            botonText="Ver más"
+            anchoPicker="36"
+            mover={0}
+            />} />}
           />
         </Routes>
       </Router>
