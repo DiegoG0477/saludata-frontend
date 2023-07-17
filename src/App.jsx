@@ -11,6 +11,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import PacientSummary from "./components/pages/PacientSummary";
 import UploadFile from "./components/UploadFile.jsx";
 import FileSummary from "./components/pages/FileSummary.jsx";
+import MedDateSearch from "./components/pages/MedDateSearch";
 
 function App() {
   return (
@@ -19,24 +20,23 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Render component={<Home />} />} />
-              <Route path={"login"} element={<Login/>}>
-              </Route>
-              <Route
-                  path="medical-search"
-                  element={<Render component={<MedicalFileSearch />} />}
-              />
-              <Route
-                  path="upload-file"
-                  element={<Render component={<UploadFile />} />}
-              />
-              <Route
-                  path="pacient-summary"
-                  element= {<Render component={<PacientSummary />} />}
-              />
-              <Route
-                  path="file-summary"
-                  element= {<Render component={<FileSummary />} />}
-              />
+            <Route path={"login"} element={<Login />}></Route>
+            <Route
+              path="medical-search"
+              element={<Render component={<MedicalFileSearch />} />}
+            />
+            <Route
+              path="upload-file"
+              element={<Render component={<UploadFile />} />}
+            />
+            <Route
+              path="pacient-summary"
+              element={<Render component={<PacientSummary />} />}
+            />
+            <Route
+              path="file-summary"
+              element={<Render component={<FileSummary />} />}
+            />
             <Route
               path="pacient-search"
               element={
@@ -58,6 +58,15 @@ function App() {
               }
             />
 
+            <Route
+              path="pacient-summary"
+              element={<Render component={<PacientSummary />} />}
+            />
+
+            <Route
+              path="history-dates"
+              element={<Render component={<MedDateSearch />} />}
+            />
           </Routes>
         </Router>
       </LocalizationProvider>

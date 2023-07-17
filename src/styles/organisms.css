@@ -17,6 +17,11 @@
 
 }
 
+.two-inputs-div-column{
+    column-count: 2;
+    margin-top: 5vh;
+}
+
 .two-inputs-div input{
     width: 35vw;
 }

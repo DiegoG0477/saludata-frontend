@@ -29,7 +29,7 @@ function LeftNav() {
             <p>Archivos</p>
         </div>
 
-        <div className="nav-box">
+        <div className="nav-box" onClick={() => navigate('history-dates')}>
             <HistoryIcon style={{fontSize:"2.5rem"}}></HistoryIcon>
             <p>Consultas</p>
         </div>
