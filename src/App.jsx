@@ -10,6 +10,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import PacientSummary from "./components/pages/PacientSummary";
 import UploadFile from "./components/UploadFile.jsx";
+import FileSummary from "./components/pages/FileSummary.jsx";
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function App() {
               <Route
                   path="pacient-summary"
                   element= {<Render component={<PacientSummary />} />}
+              />
+              <Route
+                  path="file-summary"
+                  element= {<Render component={<FileSummary />} />}
               />
             <Route
               path="pacient-search"
