@@ -6,6 +6,7 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import cell from "../assets/cells.svg";
 import { useNavigate } from "react-router-dom";
 
+
 function LeftNav() {
     const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ function LeftNav() {
     <>
     <div className="left-nav sticky-top">
 
-        <div className="nav-box">
+        <div className="nav-box" onClick={()=> navigate('medical-search')}>
             <Search style={{fontSize:"2.5rem"}}></Search>
             <p>Búsqueda</p>
         </div>
@@ -23,7 +24,7 @@ function LeftNav() {
             <p>Registro de Pacientes</p>
         </div>
 
-        <div className="nav-box">
+        <div className="nav-box" onClick={()=> navigate('#')}>
             <FolderOpenOutlinedIcon style={{fontSize:"2.5rem"}}></FolderOpenOutlinedIcon>
             <p>Archivos</p>
         </div>
@@ -34,7 +35,7 @@ function LeftNav() {
         </div>
 
 
-        <div className="nav-box">
+        <div className="nav-box" on onClick={()=> navigate('upload-file')}>
             <AddCircleOutlineOutlinedIcon style={{fontSize:"2.5rem"}}></AddCircleOutlineOutlinedIcon>
             <p>Agregar Documento</p>
         </div>

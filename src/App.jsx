@@ -4,9 +4,12 @@ import Home from "./components/Home";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PacientSearch from "./components/PacientSearch";
+import Login from "./components/Login";
+import MedicalFileSearch from "./components/MedicalFileSearch.jsx";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import PacientSummary from "./components/pages/PacientSummary";
+import UploadFile from "./components/UploadFile.jsx";
 
 function App() {
   return (
@@ -15,6 +18,20 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Render component={<Home />} />} />
+              <Route path={"login"} element={<Login/>}>
+              </Route>
+              <Route
+                  path="medical-search"
+                  element={<Render component={<MedicalFileSearch />} />}
+              />
+              <Route
+                  path="upload-file"
+                  element={<Render component={<UploadFile />} />}
+              />
+              <Route
+                  path="pacient-summary"
+                  element= {<Render component={<PacientSummary />} />}
+              />
             <Route
               path="pacient-search"
               element={
@@ -35,10 +52,7 @@ function App() {
                 />
               }
             />
-            <Route
-              path="pacient-summary"
-              element= {<Render component={<PacientSummary />} />}
-            />
+
           </Routes>
         </Router>
       </LocalizationProvider>
