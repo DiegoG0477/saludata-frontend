@@ -30,10 +30,6 @@ function App() {
               element={<Render component={<UploadFile />} />}
             />
             <Route
-              path="pacient-summary"
-              element={<Render component={<PacientSummary />} />}
-            />
-            <Route
               path="file-summary"
               element={<Render component={<FileSummary />} />}
             />
