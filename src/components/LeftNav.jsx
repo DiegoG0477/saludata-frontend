@@ -11,7 +11,7 @@ function LeftNav() {
 
   return (
     <>
-    <div className="left-nav">
+    <div className="left-nav sticky-top">
 
         <div className="nav-box">
             <Search style={{fontSize:"2.5rem"}}></Search>

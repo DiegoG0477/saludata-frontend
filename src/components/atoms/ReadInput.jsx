@@ -1,25 +1,31 @@
 // import "../../App.css"
 import "../../styles/atoms.css";
-function InputLabel(props) {
+function ReadInput(props) {
   return (
     <>
       <div className="input-box">
         <label
-          for="pacient-names"
+          htmlFor="pacient-names"
           className="form-label"
           style={{ fontWeight: "bold" }}
         >
-          {props.text}
+          {props.label}
         </label>
         <input
           type="text"
-          className="shadow-sm p-3 mb-5 bg-body-tertiary rounded form-control input"
+          className="shadow-sm p-3 mb-5 bg-body-tertiary form-control read-input"
+          value={props.readInfo}
           id="pacients-names"
           placeholder={props.holder}
-          style={{ width: props.ancho + "vw", height: "8vh" }}
+          style={{
+            height: "7vh",
+            fontWeight: "bold",
+          }}
+          disabled
+          readOnly
         />
       </div>
     </>
   );
 }
-export default InputLabel;
+export default ReadInput;

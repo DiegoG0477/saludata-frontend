@@ -1,15 +1,22 @@
 import SummaryIdPacient from "../organisms/SummaryIdPacient"
-import SummaryTable from "../molecules/SummaryTable"
+import LifeSummaryPacient from "../organisms/LifeSummaryPacient"
+import PathologicSummary from "../organisms/PathologicSummary"
+import FemaleSummary from "../organisms/FemaleSummary"
 
 export default function PacientSummary(){
 
     return(
-        <div className="system-content ">
+        <>
+        <div className="system-content"  >
+
         {/* <div className="identification-data"> */}
             <SummaryIdPacient></SummaryIdPacient>
-            {/* <SummaryTable></SummaryTable> */}
+            <LifeSummaryPacient></LifeSummaryPacient>
+            <PathologicSummary></PathologicSummary>
+            <FemaleSummary></FemaleSummary>
         {/* </div> */}
-    </div>
+    </div></>
+
     )
 
 }

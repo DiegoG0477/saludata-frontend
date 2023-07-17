@@ -7,12 +7,11 @@ import "../App.css";
 function Head() {
   return (
     <>
-      <div className="header-page">
+      {/* <div className="header sticky-top"> */}
         <nav
-          class="navbar navbar-light"
-          style={{ background: "#2F9380", height: "14.5vh" }}
+          className="navbar sticky-top"
         >
-          <div class="container-fluid">
+          <div class="container-fluid  sticky-top">
             <a class="navbar-brand" href="#">
               <img
                 src={logo}
@@ -49,7 +48,7 @@ function Head() {
             </div>
           </div>
         </nav>
-      </div>
+      {/* </div> */}
     </>
   );
 }

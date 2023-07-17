@@ -46,7 +46,7 @@ function PacientSearch(props) {
             </p>
 
             <div className="input-search-container" style={{ width: props.anchoPicker+"vw", height: "8vh"}}>
-              <DatePicker className="date" format="dd/MM/yyyy" />
+              <DatePick className="date" format="dd/MM/yyyy" />
               <button className="btn btn-primary globalButton">Buscar</button>
             </div>
           </div>

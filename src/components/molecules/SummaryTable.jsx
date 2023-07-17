@@ -1,8 +1,8 @@
 import ColumnButton from "../atoms/ColumnButton";
 
-export default function SummaryTable() {
+export default function ServicesTable() {
   return (
-      <table class="tablaS" style={{  width: "29vw"}}>
+      <table class="tablaS" style={{  width: "29vw", marginTop:"5vh"}}>
         <thead>
           <tr>
             <th scope="col" className="left-th">

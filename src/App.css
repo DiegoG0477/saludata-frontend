@@ -31,6 +31,12 @@
 }
 
 /* HEAD COMPONENT */
+
+.navbar {
+  background: #2f9380;
+  height: 14.5vh;
+}
+
 .userPhoto {
   background-color: aliceblue;
   border-radius: 40px;
@@ -50,15 +56,15 @@
 /* LEFT NAV COMPONENT */
 
 .left-nav {
-  height: auto;
+  height: 85.5vh;
   padding-top: 2.2vh;
   background-color: #ededed;
   width: 9.297vw;
   margin-left: 0px;
   box-shadow: -7px 0px 8px -3px rgba(0, 0, 0, 0.52) inset;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  /* display: flex; */
+  /* flex-direction: column;
+  align-items: stretch; */
   overflow-y: auto;
 }
 
@@ -95,7 +101,7 @@
 }
 
 /* ------------- INPUTS ------------- */
-.pacient-search-in-container input{
+.pacient-search-in-container input {
   width: 36vw;
   height: 8vh;
 }
@@ -106,7 +112,7 @@
   align-items: center;
 }
 
-.system-content .input-box{
+.system-content .input-box {
   margin-bottom: -4vh;
 }
 
@@ -145,18 +151,18 @@
   border-radius: 10px;
   background: #f6f6f6;
   box-shadow: 0px 4px 250px 500px rgba(0, 0, 0, 0.5);
-  width: 82vw; 
+  width: 82vw;
 }
 
-.modal-window-content .modal-buttons-section{
+.modal-window-content .modal-buttons-section {
   margin-top: 1vh;
 }
 
-.modal-window-content .modal-win-title{
+.modal-window-content .modal-win-title {
   font-weight: bolder;
 }
 
-.date{
+.date {
   background: #ebebeb !important;
   width: 21vw !important;
   height: 8vh !important;
@@ -170,5 +176,3 @@
   border: none !important;
   outline: none !important;
 }
-
-
