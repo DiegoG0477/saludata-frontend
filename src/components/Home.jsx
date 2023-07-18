@@ -77,7 +77,7 @@ function Home() {
                     marginTop: "3vh",
                     display: "flex",
                     justifyContent: "space-between",
-                    width: "65vw"
+                    width: "65vw",
                   }}
                 >
                   <InputLabel text="Nombre(s) del Paciente" holder="Ingrese el nombre(s) del paciente" ancho={20}/>
@@ -105,6 +105,7 @@ function Home() {
                     display: "flex",
                     justifyContent: "space-between",
                     width: "65vw",
+                    
                   }}
                 >
                   <InputLabel text="Numero de Telefono" holder="Ingrese el Numero de Telefono" ancho={18}/>
@@ -129,7 +130,8 @@ function Home() {
                       marginTop: "35px",
                       display: "flex",
                       justifyContent: "space-between",
-                      width: "5.5vw",
+                      width: "5.9vw",
+                      
                     }}
                   >
                     <div>
