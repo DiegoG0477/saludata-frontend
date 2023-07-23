@@ -12,12 +12,13 @@ const habitantes = "5";
 export default function LifeSummaryPacient() {
   return (
     <>
-      <div className="summary-Pacient-page">
+      <div className="summary-Pacient-page" style={{ width: "81vw" }}>
         <div style={{ marginTop: "3vh" }}>
           <Title text="Antecedentes" />
         </div>
 
         <ReadInput label="Heredo Familiares"></ReadInput>
+
         <div className="four-inputs-div">
           <ReadInput label="Orginario de"></ReadInput>
           <ReadInput label="Residencia Actual"></ReadInput>

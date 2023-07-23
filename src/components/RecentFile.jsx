@@ -68,7 +68,7 @@ function RecentFile(props) {
                 </div>
 
                 <div>
-                    <table className="tablaS" style={{ width: "80vw" }}>
+                    <table className="tablaS" style={{ width: "78vw" }}>
                         <thead>
                         <tr>
                             <th scope="col" className="left-th">

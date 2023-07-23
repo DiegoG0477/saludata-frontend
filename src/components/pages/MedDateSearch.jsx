@@ -55,7 +55,7 @@ export default function MedDateSearch(props) {
           
         </div>
 
-        <table class="tablaS" style={{width:"80vw"}}>
+        <table class="tablaS" style={{width:"78vw"}}>
             <thead>
               <tr>
                 <th scope="col" className="left-th">Nombre Completo</th>

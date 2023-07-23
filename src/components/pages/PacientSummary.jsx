@@ -7,7 +7,7 @@ export default function PacientSummary(){
 
     return(
         <>
-        <div className="system-content"  >
+        <div className="system-content">
 
         {/* <div className="identification-data"> */}
             <SummaryIdPacient></SummaryIdPacient>
@@ -15,7 +15,8 @@ export default function PacientSummary(){
             <PathologicSummary></PathologicSummary>
             <FemaleSummary></FemaleSummary>
         {/* </div> */}
-    </div></>
+    </div>
+    </>
 
     )
 

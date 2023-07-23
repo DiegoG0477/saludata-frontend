@@ -1,6 +1,7 @@
 .summary-idPa-page{
     display: flex;
     justify-content: space-between;
+    width: 30vw;
 }
 
 .summary-idPa-page .summary-idPa-page-left{

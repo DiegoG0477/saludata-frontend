@@ -68,7 +68,7 @@ function UploadFile(props) {
         </div>
 
         <div>
-          <table className="tablaS" style={{ width: "80vw" }}>
+          <table className="tablaS" style={{ width: "78vw" }}>
             <thead>
               <tr>
                 <th scope="col" className="left-th">
@@ -87,7 +87,7 @@ function UploadFile(props) {
                 <td>9611111111</td>
                 <td>24 Años</td>
                 <td>
-                  <div
+                  {/* <div
                     type="button"
                     data-bs-toggle="modal"
                     data-bs-target="#modal-subir"
@@ -96,7 +96,9 @@ function UploadFile(props) {
                       color={"#248087"}
                       text={"Subir archivo"}
                     ></ColumnButton>
-                  </div>
+                  </div> */}
+                  <input type="file" id="upload" hidden />
+                  <label for="upload" className="btn btn-secondary btn-sm column-btn" style={{background:"#248087"}}>Subir Archivo</label>
                 </td>
               </tr>
               <tr>
@@ -110,7 +112,12 @@ function UploadFile(props) {
         </div>
       </div>
 
-      <div className="modal fade" id="modal-subir" data-bs-backdrop="static">
+      <div
+        className="modal fade"
+        id="modal-subir"
+        data-bs-backdrop="static"
+        style={{ height: "auto" }}
+      >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content ">
             <div className="modal-header">

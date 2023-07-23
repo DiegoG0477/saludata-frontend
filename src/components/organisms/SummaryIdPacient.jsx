@@ -9,7 +9,7 @@ const nombre = "Juan Perez";
 export default function SummaryIdPacient() {
   return (
     <>
-      <div className="summary-idPa-page" >
+      <div className="summary-idPa-page" style={{ width: "81vw" }}>
         <div className="summary-idPa-page-left">
           <Title text="Datos de Identificación"></Title>
 
@@ -26,7 +26,7 @@ export default function SummaryIdPacient() {
           </div>
 
           <div className="tree-inputs-div">
-          <ReadInput label="Fecha de Nacimiento" readInfo={nombre} />
+            <ReadInput label="Fecha de Nacimiento" readInfo={nombre} />
             <ReadInput label="Religión" readInfo={nombre} />
             <ReadInput label="Sexo" readInfo={nombre} />
           </div>

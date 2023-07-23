@@ -101,7 +101,7 @@ function MedicalFileSearch() {
                 </div>
 
                 <div>
-                    <table class="tablaS">
+                    <table class="tablaS" >
                         <thead>
                         <tr>
                             <th scope="col" className="left-th">Nombre Completo</th>
