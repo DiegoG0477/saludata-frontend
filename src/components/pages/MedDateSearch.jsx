@@ -4,6 +4,7 @@ import "../../styles/atoms.css";
 import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import ColumnButton from "../atoms/ColumnButton";
+import React from "react";
 
 export default function MedDateSearch(props) {
   return (
@@ -69,8 +70,15 @@ export default function MedDateSearch(props) {
                 <td>9611111111</td>
                 <td>24 Años</td>
                 <td>
-                <ColumnButton text="Ver Más" color="#248087"/>
-                </td>
+                    <div
+                        type="button"
+                    >
+                        <ColumnButton
+                            color={"#248087"}
+                            text={"Ver mas"}
+                            to="/file-summary"
+                        ></ColumnButton>
+                    </div>                </td>
               </tr>
               <tr>
                 <th scope="row">2</th>

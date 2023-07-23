@@ -2,6 +2,13 @@ import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import "../../styles/organisms.css";
 import PacientSearch from "../PacientSearch";
+import React from "react";
+import ReadInput from "../atoms/ReadInput.jsx";
+import addPacient from "../../assets/pacient.png";
+import SaveIcon from "@mui/icons-material/Save.js";
+import Card from "../Card.jsx";
+import consulta from "../../assets/consulta.png";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd.js";
 
 export default function ModalsWindows() {
   return(
@@ -511,6 +518,60 @@ export default function ModalsWindows() {
       </div>
     </div>
         </div>
+
+        <div className="modal fade" id="modalConsulta" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal-dialog modal-xl modal-dialog-centered">
+                <div className="modal-content modal-window-content">
+                    <div className="modal-body">
+                        <h4 className="modal-win-title">Registrar Consulta</h4>
+                        <h6 className="modal-win-title">
+                            Por favor, rellene los campos de informacion
+                        </h6>
+
+                        <div className="two-inputs-div">
+                            <Card
+                                title="Registrar nuevo Paciente"
+                                img={addPacient}
+                                buttonText={"Añadir"}
+                                icon={
+                                    <SaveIcon
+                                        style={{ fontSize: "1.4rem", marginTop: "-5px" }}
+                                    ></SaveIcon>
+                                }
+                                num={1}
+                                buttonAttributes={{
+                                    "data-bs-dismiss": "modal",
+                                }}
+                            ></Card>
+                            <Card
+                                title="Expediente del Paciente"
+                                img={consulta}
+                                buttonText="Registrar"
+                                data-bs-dismiss="modal"
+                                icon={
+                                    <BookmarkAddIcon
+                                        style={{ fontSize: "1.4rem", marginTop: "-5px" }}
+                                    ></BookmarkAddIcon>
+                                }
+                                num={4}
+                            ></Card>
+                        </div>
+
+                    </div>
+
+                    <div className="modal-footer">
+                        <button
+                            type="button"
+                            className="btn btn-danger"
+                            data-bs-dismiss="modal"
+                        >
+                            Cancelar
+                        </button>
+                        <button className="btn btn-primary">Subir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
           
         <div class="modal fade" id="modalPaciente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -744,6 +805,30 @@ export default function ModalsWindows() {
                 </div>
               </div>
           </div>
+
+        <div className="modal fade" id="modalModificar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal-dialog modal-xl modal-dialog-centered">
+                <div className="modal-content modal-window-content">
+                    <div className="modal-body">
+                        <PacientSearch
+                            title="Modificar Paciente"
+                            text="Ingrese los datos para hacer una busqueda y seleccione la acción."
+                            ancho={65}
+                            labelAncho={30}
+                            color="#248087"
+                            botonText="Modificar"
+                            anchoPicker="27"
+                            mover={3}
+                        />
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" className="btn btn-primary">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </>
   );
 }

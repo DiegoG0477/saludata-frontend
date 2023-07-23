@@ -3,7 +3,12 @@ import DatePick from "./atoms/DatePick"
 import ColumnButton from "./atoms/ColumnButton";
 import Input from "./atoms/Input";
 import InputLabel from "./atoms/InputLabel";
+import React from "react";
+
+
+
 function PacientSearch(props) {
+
   return (
     <>
       <div className="system-content">
@@ -69,7 +74,15 @@ function PacientSearch(props) {
                 <td>9611111111</td>
                 <td>24 Años</td>
                 <td>
-                  <ColumnButton text={props.botonText} color={props.color}/>
+                  <div
+                      type="button"
+                  >
+                    <ColumnButton
+                        color={"#248087"}
+                        text={"Ver mas"}
+                        to="/pacient-summary"
+                    ></ColumnButton>
+                  </div>
                 </td>
               </tr>
               <tr>

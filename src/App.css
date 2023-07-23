@@ -67,6 +67,20 @@
   align-items: stretch; */
   overflow-y: auto;
 }
+.nav-box.active {
+  background-color: transparent;
+  position: relative;
+}
+
+.nav-box.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5px;
+  background-color: #248087;
+}
 
 .nav-box {
   /* padding-top: 0.3vh; */

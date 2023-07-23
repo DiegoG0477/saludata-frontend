@@ -63,6 +63,7 @@ function Home() {
                 style={{ fontSize: "1.4rem", marginTop: "-5px" }}
               ></EditIcon>
             }
+            num={5}
           ></Card>
         </div>
         

@@ -12,6 +12,8 @@ import PacientSummary from "./components/pages/PacientSummary";
 import UploadFile from "./components/UploadFile.jsx";
 import FileSummary from "./components/pages/FileSummary.jsx";
 import MedDateSearch from "./components/pages/MedDateSearch";
+import RecentFile from "./components/RecentFile.jsx";
+
 
 function App() {
   return (
@@ -25,6 +27,25 @@ function App() {
               path="medical-search"
               element={<Render component={<MedicalFileSearch />} />}
             />
+              <Route
+                  path="recent-file"
+                  element={
+                      <Render
+                          component={
+                              <RecentFile
+                                  title="Registro de Consultas"
+                                  text=" Ingrese los datos de un paciente para la busqueda de su historial de archivos"
+                                  ancho={78}
+                                  labelAncho={36}
+                                  color="#248087"
+                                  botonText="Ver más"
+                                  anchoPicker="36"
+                                  mover={0}
+                              />
+                          }
+                      />
+                  }
+              />
             <Route
               path="upload-file"
               element={
@@ -71,7 +92,7 @@ function App() {
             />
 
             <Route
-              path="pacient-summary"
+              path="/pacient-summary"
               element={<Render component={<PacientSummary />} />}
             />
 
