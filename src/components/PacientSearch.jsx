@@ -24,7 +24,7 @@ function PacientSearch(props) {
         >
           
           <InputLabel text="Nombres del Paciente" holder="Ingrese el nombre(s) del paciente" ancho={props.labelAncho}/>
-          <InputLabel text="Apellidos Paterno Paciente" holder="Ingrese apellido paterno del paciente" ancho={props.labelAncho}/>
+          <InputLabel text="Apellido Paterno Paciente" holder="Ingrese apellido paterno del paciente" ancho={props.labelAncho}/>
         </div>
 
         <div
@@ -52,6 +52,7 @@ function PacientSearch(props) {
           </div>
           
         </div>
+        
         <div>
           <table class="tablaS" style={{width:props.ancho+"vw"}}>
             <thead>

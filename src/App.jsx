@@ -27,7 +27,23 @@ function App() {
             />
             <Route
               path="upload-file"
-              element={<Render component={<UploadFile />} />}
+              element={
+                <Render
+                  component={
+                    <UploadFile
+                      title="Registro de Pacientes"
+                      text=" Ingrese los datos de un paciente para su búsqueda o revise el registro
+                      general de pacientes"
+                      ancho={78}
+                      labelAncho={36}
+                      color="#248087"
+                      botonText="Ver más"
+                      anchoPicker="36"
+                      mover={0}
+                    />
+                  }
+                />
+              }
             />
             <Route
               path="file-summary"
@@ -61,7 +77,20 @@ function App() {
 
             <Route
               path="history-dates"
-              element={<Render component={<MedDateSearch />} />}
+              element={
+                <Render
+                  component={
+                    <MedDateSearch
+                      ancho={78}
+                      labelAncho={36}
+                      color="#248087"
+                      botonText="Ver más"
+                      anchoPicker="36"
+                      mover={0}
+                    />
+                  }
+                />
+              }
             />
           </Routes>
         </Router>

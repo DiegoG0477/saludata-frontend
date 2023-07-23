@@ -5,42 +5,56 @@ import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import ColumnButton from "../atoms/ColumnButton";
 
-export default function MedDateSearch() {
+export default function MedDateSearch(props) {
   return (
     <>
       <div className="system-content">
         <Title text="Historial de Consultas"></Title>
+        <h6 style={{ fontWeight: "bold" }}>
+          Ingrese los datos de la consulta a buscar
+        </h6>
 
-        <div className="tree-inputs-div">
-          <InputLabel text="Diagnóstico"></InputLabel>
-          <div>
-            <label
-              htmlFor="medicalDate"
+        <div
+          style={{
+            marginTop: "3vh",
+            display: "flex",
+            justifyContent: "space-between",
+            width: props.ancho+"vw",
+            marginBottom: "-3vh",
+          }}
+        >
+          
+          <InputLabel text="Nombres del Paciente" holder="Ingrese el nombre(s) del paciente" ancho={props.labelAncho}/>
+          <InputLabel text="Apellido Paterno Paciente" holder="Ingrese apellido paterno del paciente" ancho={props.labelAncho}/>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: props.ancho+"vw",
+            marginTop:"2vw"
+          }}
+        >
+          <InputLabel text="Apellido Materno del Paciente" holder="Ingrese apellido materno del paciente" ancho={props.labelAncho}/>
+          <div style={{marginRight:props.mover+"vw"}}>
+            <p
+              // htmlFor="birthdate"
               className="form-label"
               style={{ fontWeight: "bold" }}
             >
               Fecha de Consulta
-            </label>
-            <DatePick id="medicalDate"></DatePick>
-          </div>
+            </p>
 
-          <div
-            style={{
-              height: "11vh",
-              paddingTop: "6vh",
-              marginLeft: "-7vw",
-            }}
-          >
-            <button
-              className="btn btn-primary globalButton"
-              style={{ width: "20vw" }}
-            >
-              Buscar
-            </button>
+            <div className="input-search-container" style={{ width: props.anchoPicker+"vw", height: "8vh"}}>
+              <DatePick className="date" format="dd/MM/yyyy" />
+              <button className="btn btn-primary globalButton">Buscar</button>
+            </div>
           </div>
+          
         </div>
 
-        <table class="tablaS" style={{width:"80vw", marginTop:"6vh"}}>
+        <table class="tablaS" style={{width:"80vw"}}>
             <thead>
               <tr>
                 <th scope="col" className="left-th">Nombre Completo</th>
