@@ -66,8 +66,8 @@ function Home() {
             num={5}
           ></Card>
         </div>
-        
-            <ModalsWindows></ModalsWindows>
+
+        <ModalsWindows></ModalsWindows>
       </div>
     </>
   );

@@ -8,25 +8,8 @@ export default function CollapseButton(props) {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Centered dropdown
+          {props.text}
         </button>
-        <ul className="dropdown-menu">
-          <li>
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Action two
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Action three
-            </a>
-          </li>
-        </ul>
       </div>
     </>
   );
