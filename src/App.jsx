@@ -92,7 +92,7 @@ function App() {
             />
 
             <Route
-              path="/pacient-summary"
+              path="/pacient-summary/:id"
               element={<Render component={<PacientSummary />} />}
             />
 

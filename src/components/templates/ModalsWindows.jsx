@@ -45,7 +45,7 @@ export default function ModalsWindows() {
               <PacientSearch
                 title="Ficha de Eliminar Paciente"
                 text="Ingrese los datos para hacer una busqueda y seleccione la acción."
-                ancho={65}
+                ancho={63}
                 labelAncho={30}
                 color="#BE2C35"
                 botonText="Eliminar"
@@ -85,7 +85,7 @@ export default function ModalsWindows() {
               <PacientSearch
                 title="Modificar Paciente"
                 text="Ingrese los datos para hacer una busqueda y seleccione la acción."
-                ancho={65}
+                ancho={63}
                 labelAncho={30}
                 color="#248087"
                 botonText="Modificar"

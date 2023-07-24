@@ -135,6 +135,7 @@
   text-align: center;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
   background-color: #ebebeb;
+  overflow:scroll;
   /* border-collapse: separate; */
 
   border-radius: 8px;
@@ -156,6 +157,11 @@
 
 .tablaS .right-th {
   border-radius: 0px 8px 0px 0px;
+}
+
+.tabla-container .tablaS thead {
+  position: sticky;
+  top: 0;
 }
 
 /* -------------------- MODAL WINDOW -------------------- */

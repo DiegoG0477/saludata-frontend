@@ -3,6 +3,7 @@ import DatePick from "./atoms/DatePick";
 import ColumnButton from "./atoms/ColumnButton";
 import InputLabel from "./atoms/InputLabel";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function PacientSearch(props) {
@@ -25,26 +26,27 @@ function PacientSearch(props) {
 
   function simplificarFecha(fechaCompleta) {
     const fecha = new Date(fechaCompleta);
-  
+
     const dia = fecha.getDate();
     const mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
     const año = fecha.getFullYear();
-  
+
     // Formatear la fecha como 'dd/mm/yyyy' o 'mm/dd/yyyy' (dependiendo de tu preferencia)
-    const fechaSimplificada = `${dia < 10 ? '0' : ''}${dia}/${mes < 10 ? '0' : ''}${mes}/${año}`;
-  
+    const fechaSimplificada = `${dia < 10 ? "0" : ""}${dia}/${
+      mes < 10 ? "0" : ""
+    }${mes}/${año}`;
+
     return fechaSimplificada;
   }
-  
+
   function calcularEdad(fechaNacimiento) {
     const fechaActual = new Date();
     const diferencia = fechaActual - fechaNacimiento;
-  
+
     // Convertir la diferencia a años
     const edad = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365.25));
     return edad;
   }
-  
 
   return (
     <>
@@ -132,8 +134,8 @@ function PacientSearch(props) {
           </div>
         </div>
 
-        <div>
-          <table class="tablaS" style={{ width: props.ancho + "vw" }}>
+        <div className="tabla-container"  style={{maxHeight:"30vh", overflow:"auto"}}>
+          <table class="tablaS" style={{ width: props.ancho + "vw",}}>
             <thead>
               <tr>
                 <th scope="col" className="left-th">
@@ -150,19 +152,20 @@ function PacientSearch(props) {
               {pacientes.map((val) => (
                 <tr>
                   <th scope="row">
-                    {val.nombre + " " +  val.apellidoMat + " " + val.apellidoPat}
+                    {val.nombre + " " + val.apellidoPat + " " + val.apellidoMat}
                   </th>
                   <td>{val.telefono}</td>
-                  <td>{calcularEdad(new Date(val.fechaNacimiento)) + " años"}</td>
+                  <td>
+                    {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
+                  </td>
                   <td>
                     <div type="button">
-                      <ColumnButton
-                        // color={"#248087"}
-                        // text={"Ver mas"}
-                        color={props.color}
-                        text={props.botonText}
-                        to="/pacient-summary"
-                      ></ColumnButton>
+                      <Link to={`/pacient-summary/${val.idPaciente}`}>
+                        <ColumnButton
+                          color={props.color}
+                          text={props.botonText}
+                        ></ColumnButton>
+                      </Link>
                     </div>
                   </td>
                 </tr>

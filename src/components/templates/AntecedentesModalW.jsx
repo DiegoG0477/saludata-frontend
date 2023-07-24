@@ -266,7 +266,7 @@ export default function AntecedentesModalW() {
                     <li>
                     <button
                         class="dropdown-item"
-                        onClick={() => handleOptionClick("Casado/a")}
+                        onClick={() => handleOptionClick("Concubinato")}
                       >
                         Concubinato
                       </button>

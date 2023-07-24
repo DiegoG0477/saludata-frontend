@@ -2,11 +2,11 @@ import Title from "../atoms/Title";
 import "../../styles/organisms.css";
 import SummaryTable from "../molecules/SummaryTable";
 import ReadInput from "../atoms/ReadInput";
-
 const nombrePaciente = "Nombre del Paciente";
 const nombre = "Juan Perez";
 
-export default function SummaryIdPacient() {
+
+export default function SummaryIdPacient(props) {
   return (
     <>
       <div className="summary-idPa-page" style={{ width: "81vw" }}>
@@ -34,7 +34,7 @@ export default function SummaryIdPacient() {
 
         <div>
           <Title text="Registro de Consultas"></Title>
-          <SummaryTable></SummaryTable>
+          <SummaryTable id={props.id}></SummaryTable>
         </div>
       </div>
     </>

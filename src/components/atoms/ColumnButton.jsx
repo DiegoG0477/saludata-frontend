@@ -11,7 +11,7 @@ export default function ColumnButton(props) {
     <>
       <button
         type="button"
-        class="btn btn-secondary btn-sm column-btn"
+        class="btn btn-secondary btn-sm "
         style={{ background: props.color }}
         onClick={handleClick}
       >
