@@ -18,7 +18,7 @@ export default function RegistrarConsulta() {
       >
         <div className="modal-dialog modal-xl modal-dialog-centered">
           <div className="modal-content modal-window-content">
-            <div className="modal-body" style={{paddingBottom:"8vh"}}>
+            <div className="modal-body" style={{ paddingBottom: "8vh" }}>
               <h4 className="modal-win-title">Registrar Consulta</h4>
               <h6 className="modal-win-title">
                 Por favor, elija el origen del paciente al que está
@@ -53,6 +53,16 @@ export default function RegistrarConsulta() {
                   num={4}
                 ></Card>
               </div>
+            </div>
+
+            <div class="modal-footer modal-buttons-section">
+              <button
+                type="button"
+                class="btn globalButton-red"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
             </div>
           </div>
         </div>
