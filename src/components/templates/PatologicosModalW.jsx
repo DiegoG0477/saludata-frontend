@@ -25,7 +25,7 @@ export default function PatologicosModalW() {
         <div class="modal-dialog modal-xl modal-dialog-centered">
           <div class="modal-content modal-window-content">
             <div class="modal-body">
-              <h4 className="modal-win-title">Ficha de identificacion</h4>
+              <h4 className="modal-win-title">Antecedentes Patológicos</h4>
               <h6 className="modal-win-title">
                 Por favor, ingrese los datos pertinentes del nuevo paciente
               </h6>

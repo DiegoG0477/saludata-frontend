@@ -160,7 +160,8 @@ export default function GinecologicosModalW() {
 
               <button
                 type="button"
-                class="btn btn-success"
+                class="btn"
+                style={{fontSize: "1.1rem", fontWeight: "bolder", color:"aliceblue", background:"#268D56", borderWidth:"0px", borderRadius:"10px", height:"40px", boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)"}}
                 data-bs-target=""
                 data-bs-toggle="modal"
                 data-bs-dismiss="modal"

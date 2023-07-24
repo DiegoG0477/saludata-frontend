@@ -21,6 +21,9 @@ export default function ModalsWindows() {
       <PatologicosModalW></PatologicosModalW>
       <GinecologicosModalW></GinecologicosModalW>
 
+      {/* ----------- Modal de Consulta ------------ */}
+
+
       <div
         className="modal fade"
         id="modalConsulta"
