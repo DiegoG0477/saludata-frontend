@@ -6,11 +6,18 @@ export default function DatePick() {
   `;
 
   return (
+    <div>
+
+    {/* <label style={{fontWeight:"bolder"}}>
+      Fecha de nacimiento del paciente
+    </label> */}
     <DatePick
       format="dd/MM/yyyy"
       label="Ingrese Fecha"
       formatDensity="spacious"
       slotProps={{ textField: { variant: "filled" } }}
     />
+
+    </div>
   );
 }
