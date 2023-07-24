@@ -1,6 +1,16 @@
 import InputLabel from "../atoms/InputLabel";
+import { useState } from "react";
+import "../../styles/atoms.css";
+import NextButton from "../atoms/NextButton";
+import ReturnButton from "../atoms/ReturnButton";
 
 export default function AntecedentesModalW() {
+  const [selectedOption, setSelectedOption] = useState("Estado Civil");
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+  };
+
   return (
     <>
       <div
@@ -201,70 +211,73 @@ export default function AntecedentesModalW() {
                 </div>
                 <div class="dropdown" style={{ marginTop: "2vw" }}>
                   <button
-                    class="btn btn-success btn-lg dropdown-toggle"
+                    class="btn collapse-button dropdown-toggle"
                     type="button"
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Estado Civil
+                    {selectedOption}
                   </button>
                   <ul
                     class="dropdown-menu"
                     aria-labelledby="dropdownMenuButton1"
                   >
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <button
+                        class="dropdown-item"
+                        onClick={() => handleOptionClick("Casado/a")}
+                      >
                         Casado/a
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
-                        Soltero/a
-                      </a>
+                    <button
+                        class="dropdown-item"
+                        onClick={() => handleOptionClick("Soltero/a")}
+                      >
+                        Casado/a
+                      </button>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                    <button
+                        class="dropdown-item"
+                        onClick={() => handleOptionClick("Viudo/a")}
+                      >
                         Viudo/a
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
-                        Divorciado
-                      </a>
+                    <button
+                        class="dropdown-item"
+                        onClick={() => handleOptionClick("Divorciado/a")}
+                      >
+                        Divorciado/a
+                      </button>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
-                        Separado
-                      </a>
+                    <button
+                        class="dropdown-item"
+                        onClick={() => handleOptionClick("Separado/a")}
+                      >
+                        Separado/a
+                      </button>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                    <button
+                        class="dropdown-item"
+                        onClick={() => handleOptionClick("Casado/a")}
+                      >
                         Concubinato
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="modal-footer modal-buttons-section">
-              <button
-                class="btn btn-danger"
-                data-bs-target="#staticBackdrop"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Regresar
-              </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                data-bs-target="#staticBackdrop3"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Siguiente
-              </button>
+              <ReturnButton page="#staticBackdrop" />
+              <NextButton page="#staticBackdrop3" />
             </div>
           </div>
         </div>

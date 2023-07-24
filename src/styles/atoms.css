@@ -36,13 +36,12 @@
   border-width: 0 0 2px 0;
 }
 
-.input-box .read-input{
+.input-box .read-input {
   outline: none;
   background: #ebebeb !important;
   border-bottom: 2px solid #247061 !important;
   border-width: 0 0 2px 0;
   border-radius: 0px;
-
 }
 
 /* --------------------BUTTONS-------------------- */
@@ -55,6 +54,7 @@
   height: 40px;
   border-width: 0px;
   font-weight: bolder;
+  color: aliceblue !important;
 }
 
 .globalButton:hover {
@@ -67,7 +67,29 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.dropdown .collapse-button.btn{
+.globalButton-red {
+  font-size: 1.25rem !important;
+  border-radius: 10px;
+  background: #aa0e1a !important;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 12vw;
+  height: 40px;
+  border-width: 0px;
+  font-weight: bolder;
+  color: aliceblue !important;
+}
+
+.globalButton-red:hover {
+  background: #870913;
+  cursor: pointer;
+}
+
+.globalButton-red:active {
+  background: #aa0e1a !important;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown .collapse-button.btn {
   /* font-size: 1.25rem;
   border-radius: 10px; */
   background: #268d78 !important;

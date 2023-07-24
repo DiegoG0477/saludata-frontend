@@ -1,5 +1,4 @@
 import InputLabel from "../atoms/InputLabel";
-import DatePick from "../atoms/DatePick";
 import "../../styles/organisms.css";
 import "../../styles/atoms.css";
 import PacientSearch from "../PacientSearch";

@@ -1,9 +1,18 @@
 import InputLabel from "../atoms/InputLabel";
+import { useState } from "react";
+import "../../styles/atoms.css";
+import NextButton from "../atoms/NextButton";
+import ReturnButton from "../atoms/ReturnButton";
 
-export default function PatologicosModalW(){
-    return(
-        <>
-        
+export default function PatologicosModalW() {
+  const [selectedOption, setSelectedOption] = useState("Tipo de Sangre");
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+  };
+
+  return (
+    <>
       <div
         class="modal fade"
         id="staticBackdrop3"
@@ -70,57 +79,81 @@ export default function PatologicosModalW(){
                 <div>
                   <div class="dropdown" style={{ marginTop: "2.5vw" }}>
                     <button
-                      class="btn btn-success btn-lg dropdown-toggle"
+                      class="btn collapse-button dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton1"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Tipo de sangre
+                      {selectedOption}
                     </button>
                     <ul
                       class="dropdown-menu"
                       aria-labelledby="dropdownMenuButton1"
                     >
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("O+")}
+                        >
                           O+
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("O-")}
+                        >
                           O-
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("A+")}
+                        >
                           A+
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("A-")}
+                        >
                           A-
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("B+")}
+                        >
                           B+
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("B-")}
+                        >
                           B-
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("AB+")}
+                        >
                           AB+
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <button
+                          class="dropdown-item"
+                          onClick={() => handleOptionClick("AB-")}
+                        >
                           AB-
-                        </a>
+                        </button>
                       </li>
                     </ul>
                   </div>
@@ -128,27 +161,12 @@ export default function PatologicosModalW(){
               </div>
             </div>
             <div class="modal-footer modal-buttons-section">
-              <button
-                class="btn btn-danger"
-                data-bs-target="#staticBackdrop2"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Regresar
-              </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                data-bs-target="#staticBackdrop4"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Siguiente
-              </button>
+              <ReturnButton page="#staticBackdrop2" />
+              <NextButton page="#staticBackdrop4" />
             </div>
           </div>
         </div>
       </div>
-        </>
-    );
+    </>
+  );
 }

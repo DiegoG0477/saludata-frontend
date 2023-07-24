@@ -2,8 +2,17 @@ import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import "../../styles/atoms.css";
 import "../../styles/organisms.css";
+import { useState } from "react";
+import NextButton from "../atoms/NextButton";
+
 
 export default function FichaIdPacienteR() {
+    const [selectedOption, setSelectedOption] = useState('Sexo');
+
+    const handleOptionClick = (option) => {
+      setSelectedOption(option);
+    };
+
   return (
     <>
       <div
@@ -122,21 +131,21 @@ export default function FichaIdPacienteR() {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Sexo
+                        {selectedOption}
                       </button>
                       <ul
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuButton1"
                       >
                         <li>
-                          <a class="dropdown-item" href="#">
-                            Masculio
-                          </a>
+                          <button class="dropdown-item" onClick={() => handleOptionClick('Masculino')}>
+                            Masculino
+                          </button>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="#">
+                        <button class="dropdown-item" onClick={() => handleOptionClick('Femenino')}>
                             Femenino
-                          </a>
+                          </button>
                         </li>
                       </ul>
                     </div>
@@ -147,20 +156,14 @@ export default function FichaIdPacienteR() {
             <div class="modal-footer modal-buttons-section">
               <button
                 type="button"
-                class="btn btn-danger"
+                class="btn globalButton-red"
                 data-bs-dismiss="modal"
+                onClick={() => handleOptionClick('Sexo')}
               >
                 Cerrar
               </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                data-bs-target="#staticBackdrop2"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Siguiente
-              </button>
+              <NextButton page="#staticBackdrop2" />
+
             </div>
           </div>
         </div>

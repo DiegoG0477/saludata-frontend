@@ -1,5 +1,6 @@
 import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
+import ReturnButton from "../atoms/ReturnButton";
 
 export default function GinecologicosModalW() {
   return (
@@ -155,14 +156,8 @@ export default function GinecologicosModalW() {
               </div>
             </div>
             <div class="modal-footer modal-buttons-section">
-              <button
-                class="btn btn-danger"
-                data-bs-target="#staticBackdrop3"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Regresar
-              </button>
+              <ReturnButton page="#staticBackdrop3" />
+
               <button
                 type="button"
                 class="btn btn-success"
