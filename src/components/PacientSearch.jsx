@@ -1,11 +1,51 @@
 import "../App.css";
 import DatePick from "./atoms/DatePick";
 import ColumnButton from "./atoms/ColumnButton";
-import Input from "./atoms/Input";
 import InputLabel from "./atoms/InputLabel";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function PacientSearch(props) {
+  const [pacientes, setPacientes] = useState([]);
+
+  const getPacientes = () => {
+    axios
+      .get("http://localhost:8080/api/v1/pacientes")
+      .then((response) => {
+        setPacientes(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getPacientes();
+  }, []);
+
+  function simplificarFecha(fechaCompleta) {
+    const fecha = new Date(fechaCompleta);
+  
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
+    const año = fecha.getFullYear();
+  
+    // Formatear la fecha como 'dd/mm/yyyy' o 'mm/dd/yyyy' (dependiendo de tu preferencia)
+    const fechaSimplificada = `${dia < 10 ? '0' : ''}${dia}/${mes < 10 ? '0' : ''}${mes}/${año}`;
+  
+    return fechaSimplificada;
+  }
+  
+  function calcularEdad(fechaNacimiento) {
+    const fechaActual = new Date();
+    const diferencia = fechaActual - fechaNacimiento;
+  
+    // Convertir la diferencia a años
+    const edad = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365.25));
+    return edad;
+  }
+  
+
   return (
     <>
       <div className="system-content">
@@ -48,45 +88,39 @@ function PacientSearch(props) {
             ancho={props.labelAncho}
           />
           <div style={{ marginRight: props.mover + "vw" }}>
-
             {props.modal ? (
-                          <p
-                          // htmlFor="birthdate"
-                          className="form-label"
-                          style={{ fontWeight: "bold", marginLeft:"5vw" }}
-                        >
-                          Fecha de Nacimiento del Paciente
-                        </p>
-            ): (
               <p
-              // htmlFor="birthdate"
-              className="form-label"
-              style={{ fontWeight: "bold" }}
-            >
-              Fecha de Nacimiento del Paciente
-            </p>
+                // htmlFor="birthdate"
+                className="form-label"
+                style={{ fontWeight: "bold", marginLeft: "5vw" }}
+              >
+                Fecha de Nacimiento del Paciente
+              </p>
+            ) : (
+              <p
+                // htmlFor="birthdate"
+                className="form-label"
+                style={{ fontWeight: "bold" }}
+              >
+                Fecha de Nacimiento del Paciente
+              </p>
             )}
-
 
             <div
               className="input-search-container"
               style={{
                 width: props.anchoPicker + "vw",
-                
+
                 height: "8vh",
               }}
             >
               {props.modal ? (
                 <>
-                <div style={{marginLeft:"5vw", marginRight:"3vw"}}>
-                <DatePick className="date" format="dd/MM/yyyy"/>
-                </div>
-                  
-                  <button
-                    className="btn globalButton"
-                  >
-                    Buscar
-                  </button>
+                  <div style={{ marginLeft: "5vw", marginRight: "3vw" }}>
+                    <DatePick className="date" format="dd/MM/yyyy" />
+                  </div>
+
+                  <button className="btn globalButton">Buscar</button>
                 </>
               ) : (
                 <>
@@ -113,28 +147,26 @@ function PacientSearch(props) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">Ejemplo Persona</th>
-                <td>9611111111</td>
-                <td>24 Años</td>
-                <td>
-                  <div type="button">
-                    <ColumnButton
-                      // color={"#248087"}
-                      // text={"Ver mas"}
-                      color={props.color}
-                      text={props.botonText}
-                      to="/pacient-summary"
-                    ></ColumnButton>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>dssdak</td>
-                <td>Ojfjfo</td>
-                <td>@mui</td>
-              </tr>
+              {pacientes.map((val) => (
+                <tr>
+                  <th scope="row">
+                    {val.nombre + " " +  val.apellidoMat + " " + val.apellidoPat}
+                  </th>
+                  <td>{val.telefono}</td>
+                  <td>{calcularEdad(new Date(val.fechaNacimiento)) + " años"}</td>
+                  <td>
+                    <div type="button">
+                      <ColumnButton
+                        // color={"#248087"}
+                        // text={"Ver mas"}
+                        color={props.color}
+                        text={props.botonText}
+                        to="/pacient-summary"
+                      ></ColumnButton>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
