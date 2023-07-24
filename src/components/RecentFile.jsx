@@ -5,8 +5,10 @@ import ColumnButton from "./atoms/ColumnButton";
 import "../styles/uploadFile.css";
 import "../assets/uploadfile.png";
 import InputLabel from "./atoms/InputLabel";
+import PacientSearch from "./PacientSearch.jsx";
 
 function RecentFile(props) {
+
     return (
         <>
             <div className="system-content">
@@ -90,8 +92,7 @@ function RecentFile(props) {
                                 <div
                                     type="button"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#modal-subir"
-                                >
+                                    data-bs-target="#modalVer"                                >
                                     <ColumnButton
                                         color={"#248087"}
                                         text={"ver mas"}
@@ -101,7 +102,7 @@ function RecentFile(props) {
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td>dssdak</td>
+                            <td>aaaa</td>
                             <td>Ojfjfo</td>
                             <td>@mui</td>
                         </tr>
@@ -110,7 +111,27 @@ function RecentFile(props) {
                 </div>
             </div>
 
+            <div className="modal fade" id="modalVer" data-bs-backdrop="static" data-bs-keyboard="false"
+                 tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog modal-xl modal-dialog-centered modal-xl">
+                    <div className="modal-content modal-window-content">
+                        <div className="modal-body">
+                            <div className="modal-body">
+                                <img
+                                    src="https://saludatafile.s3.amazonaws.com/1690172199447_tarjeta-identificacion.jpg"
+                                    alt="Imagen del archivo"
+                                    style={{ maxWidth: "100%" }}
+                                />
+                            </div>
 
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" className="btn btn-primary">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
