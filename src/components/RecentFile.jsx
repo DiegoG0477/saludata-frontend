@@ -1,12 +1,61 @@
-import React, { useRef, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "../App.css";
 import DatePick from "./atoms/DatePick";
 import ColumnButton from "./atoms/ColumnButton";
 import "../styles/uploadFile.css";
 import "../assets/uploadfile.png";
 import InputLabel from "./atoms/InputLabel";
+import axios from "axios";
+import {Link} from "react-router-dom";
+
 
 function RecentFile(props) {
+    const [pacientes, setPacientes] = useState([]);
+
+    const getPacientes = () => {
+        axios
+            .get("http://localhost:8080/api/v1/pacientes")
+            .then((response) => {
+                setPacientes(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const [archivos, setArchivos]=useState([]);
+    const getArchivos=()=>{
+        axios
+            .get("http://localhost:8080/api/v1/archivos")
+        .then((response)=>{
+            setArchivos(response.data);
+        })
+            .catch((error)=>{
+                console.log(error);
+            });
+    };
+
+    useEffect(()=>{
+        getArchivos();
+    },[]);
+
+    useEffect(() => {
+        getPacientes();
+    }, []);
+
+    useEffect(() => {
+        getPacientes();
+        getArchivos();
+    }, []);
+    function filterPacientesConArchivo(pacientes, archivos) {
+        return pacientes.filter((paciente) => archivos.some((archivo) => archivo.idPaciente === paciente.id));
+    }
+
+    const pacientesConArchivo = filterPacientesConArchivo(pacientes, archivos);
+
+
+    const [selectedModal, setSelectedModal] = useState(null);
+
     return (
         <>
             <div className="system-content">
@@ -74,39 +123,52 @@ function RecentFile(props) {
                             <th scope="col" className="left-th">
                                 Nombre Completo
                             </th>
-                            <th scope="col">Teléfono</th>
-                            <th scope="col">Edad</th>
+                            <th scope="col">Nombre Archivo</th>
                             <th scope="col" className="right-th">
                                 Acción
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">Ejemplo Persona</th>
-                            <td>9611111111</td>
-                            <td>24 Años</td>
-                            <td>
-                                <div
-                                    type="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#modal-subir"
-                                >
-                                    <ColumnButton
-                                        color={"#248087"}
-                                        text={"ver mas"}
-                                    ></ColumnButton>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>dssdak</td>
-                            <td>Ojfjfo</td>
-                            <td>@mui</td>
-                        </tr>
+                        {pacientesConArchivo.map((paciente) => {
+                            // Encontrar el archivo correspondiente al paciente
+                            const archivo = archivos.find((a) => a.idPaciente === paciente.id);
+                            return (
+                                <tr key={paciente.id}>
+                                    <th scope="row">
+                                        {paciente.nombre + " " + paciente.apellidoPat + " " + paciente.apellidoMat}
+                                    </th>
+                                    <td>{archivo.nombreArchivo}</td>
+                                    <td>
+                                        <div type="button" onClick={() => openModal(archivo.url)}>
+                                            <ColumnButton color={props.color} text={props.botonText}></ColumnButton>
+                                        </div>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div className="modal fade" id="modalVer" data-bs-backdrop="static" data-bs-keyboard="false"
+                 tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog modal-xl modal-dialog-centered">
+                    <div className="modal-content modal-window-content">
+                        <div className="modal-body">
+                            <div className="modal-body">
+                                <img
+                                    src="https://saludatafile.s3.amazonaws.com/1690172199447_tarjeta-identificacion.jpg"
+                                    alt="Imagen del archivo"
+                                    style={{ maxWidth: "100%" }}
+                                />
+                            </div>
+
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
