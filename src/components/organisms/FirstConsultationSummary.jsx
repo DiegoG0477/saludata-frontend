@@ -21,7 +21,7 @@ export default function FirstConsultationSummary({consulta2}) {
         <>
             <div className="summary-Pacient-page">
                 <div style={{ marginTop: "3vh" }}>
-                    <Title text="PARTE UNO" />
+                    <Title text="CONSULTA" />
                 </div>
                 <div className="tree-inputs-div">
                     <ReadInput label="Nombre" readInfo={consulta2[0]?.[10]+" "+consulta2[0]?.[11]+" "+consulta2[0]?.[12]}></ReadInput>

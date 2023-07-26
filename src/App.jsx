@@ -68,7 +68,7 @@ function App() {
               }
             />
             <Route
-              path="/file-summary/:id"
+              path="/file-summary/:id/:fecha"
               element={<Render component={<FileSummary />} />}
             />
             <Route

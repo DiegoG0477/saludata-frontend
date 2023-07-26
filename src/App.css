@@ -129,6 +129,9 @@
 .system-content .input-box {
   margin-bottom: -4vh;
 }
+.system-content .avanzadas{
+  overflow:scroll;
+}
 
 /* ----------------- TABLE -----------------  */
 .system-content .tablaS {

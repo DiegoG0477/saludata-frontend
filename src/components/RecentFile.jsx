@@ -129,7 +129,7 @@ function RecentFile(props) {
                         <div className="modal-body">
                             <div className="modal-body">
                                 <img
-                                    src={archivos[2]?.[5]}
+                                    src={archivos[0]?.[5]}
                                     alt="Imagen del archivo"
                                     style={{ maxWidth: "100%" }}
                                 />

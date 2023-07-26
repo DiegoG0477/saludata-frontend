@@ -4,7 +4,7 @@ import "../../styles/atoms.css";
 import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import ColumnButton from "../atoms/ColumnButton";
-
+import "../../App.css";
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -33,13 +33,22 @@ export default function MedDateSearch(props) {
   }, []);
 
   function simplificarFecha(fechaCompleta) {
-    // Función simplificarFecha omitida por brevedad
+    const fecha = new Date(fechaCompleta);
+
+    const dia = fecha.getDate() +1;
+    const mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
+    const año = fecha.getFullYear();
+
+    // Formatear la fecha como 'dd/mm/yyyy' o 'mm/dd/yyyy' (dependiendo de tu preferencia)
+    const fechaSimplificada = `${dia < 10 ? "0" : ""}${dia}/${
+      mes < 10 ? "0" : ""
+    }${mes}/${año}`;
+
+    return fechaSimplificada;
   }
 
     return (
       <>
-  
-  return (
     <div className="system-content">
       <Title text="Historial de Consultas" />
       <h6 style={{ fontWeight: "bold" }}>
@@ -75,6 +84,11 @@ export default function MedDateSearch(props) {
           marginTop: "2vw",
         }}
       >
+        <InputLabel
+            text="Apellido Materno del Paciente"
+            holder="Ingrese apellido materno del paciente"
+            ancho={props.labelAncho}
+          />
         {/* Contenido para el formulario de búsqueda de fecha */}
         <div style={{ marginRight: props.mover + "vw" }}>
           <p className="form-label" style={{ fontWeight: "bold" }}>
@@ -109,7 +123,14 @@ export default function MedDateSearch(props) {
                   <td>{simplificarFecha(consulta[4])}</td>
                   <td>{consulta[5]}</td>
                   <td>
-                    {/* Contenido para la columna de Acción */}
+                  <div type="button">
+                      <Link to={`/file-summary/${consulta[3]}/${consulta[4]}`}>
+                        <ColumnButton
+                          color={props.color}
+                          text={props.botonText}
+                        ></ColumnButton>
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               ))
@@ -118,7 +139,6 @@ export default function MedDateSearch(props) {
         </table>
       </div>
     </div>
-  );
 
 
       </> 

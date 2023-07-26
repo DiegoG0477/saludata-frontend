@@ -12,17 +12,17 @@ export default function SecondSummaryQuery({consultaInte,consulta}) {
         <>
             <div className="summary-Pacient-page">
                 <div style={{ marginTop: "3vh" }}>
-                    <Title text="PARTE DOS" />
+                    <Title text="CONSULTA INTERROGATORIA" />
                 </div>
 
                 <div className="two-inputs-div">
                     <ReadInput label="Motivo de la consulta" readInfo={consulta.motivoConsulta}></ReadInput>
-                    <ReadInput label="Sintomas de iniciasion"  readInfo={consulta.motivoConsulta}></ReadInput>
+                    <ReadInput label="Sintomas de iniciasion"  readInfo={consulta.sintomasIniciacion}></ReadInput>
                 </div>
                 <div className="tree-inputs-div">
-                    <ReadInput label="Lavoratorios" ></ReadInput>
-                    <ReadInput label="Estudios previos"></ReadInput>
-                    <ReadInput label="Terapeutica anteriormente"></ReadInput>
+                    <ReadInput label="Lavoratorios" readInfo={consulta.laboratoriosPrevios} ></ReadInput>
+                    <ReadInput label="Estudios previos" readInfo={consulta.estudiosPrevios} ></ReadInput>
+                    <ReadInput label="Terapeutica anteriormente" readInfo={consulta.terapiaEmpleada} ></ReadInput>
                 </div>
 
                 <div className="tree-inputs-div">
