@@ -160,7 +160,6 @@ function PacientSearch(props) {
                     {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
                   </td>
                   <td>
-    
                       <div type="button">
                       <Link to={`/pacient-summary/${val.idPaciente}`}>
                         <ColumnButton

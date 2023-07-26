@@ -10,6 +10,8 @@ function Card(props) {
   }else if(props.num==3){
     modal="#modalEliminar"
   }else if(props.num==4){
+    modal="#modalPaciente"
+  }else if(props.num==5){
     modal="#modalModificar"
   }
   return (

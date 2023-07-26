@@ -17,6 +17,9 @@ function InputLabel(props) {
           id="pacients-names"
           placeholder={props.holder}
           style={{ width: props.ancho + "vw", height: "8vh" }}
+          onChange={(event) => {
+            props.metodo(event.target.value);
+          }}
         />
       </div>
     </>
