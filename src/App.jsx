@@ -33,7 +33,7 @@ function App() {
                       <Render
                           component={
                               <RecentFile
-                                  title="Registro de Archivos"
+                                  title="Registro de Archivoss"
                                   text=" Ingrese los datos de un paciente para la busqueda de su historial de archivos"
                                   ancho={78}
                                   labelAncho={36}
@@ -67,7 +67,7 @@ function App() {
               }
             />
             <Route
-              path="file-summary"
+              path="/file-summary/:id"
               element={<Render component={<FileSummary />} />}
             />
             <Route

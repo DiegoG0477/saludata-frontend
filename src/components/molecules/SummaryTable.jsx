@@ -15,7 +15,6 @@ export default function ServicesTable({id}) {
       });
   };
   useEffect(() => {
-    console.log(id)
     getConsultas();
   }, []);
 

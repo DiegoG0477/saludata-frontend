@@ -169,6 +169,7 @@ function PacientSearch(props) {
                         ></ColumnButton>
                       </Link>
                     </div>
+
                   </td>
                 </tr>
               ))}

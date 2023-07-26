@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import DatePick from "./atoms/DatePick";
 import ColumnButton from "./atoms/ColumnButton";
@@ -6,18 +6,18 @@ import "../styles/uploadFile.css";
 import "../assets/uploadfile.png";
 import InputLabel from "./atoms/InputLabel";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function RecentFile(props) {
-    const [archivos, setArchivos]=useState([]);
-    const getArchivos=()=>{
+    const [archivos, setArchivos] = useState([]);
+    const getArchivos = () => {
         axios
             .get("http://localhost:8080/api/v1/archivos/ver")
-        .then((response)=>{
-            setArchivos(response.data);
-        })
-            .catch((error)=>{
+            .then((response) => {
+                setArchivos(response.data);
+            })
+            .catch((error) => {
                 console.log(error);
             });
     };
@@ -26,7 +26,7 @@ function RecentFile(props) {
         getArchivos();
     }, []);
     console.log(archivos);
-   
+
     return (
         <>
             <div className="system-content">
@@ -90,44 +90,46 @@ function RecentFile(props) {
                 <div>
                     <table className="tablaS" style={{ width: "78vw" }}>
                         <thead>
-                        <tr>
-                            <th scope="col" className="left-th">
-                                Nombre Completo
-                            </th>
-                            <th scope="col">Nombre Archivo</th>
-                            <th scope="col" className="right-th">
-                                Acción
-                            </th>
-                        </tr>
+                            <tr>
+                                <th scope="col" className="left-th">
+                                    Nombre Completo
+                                </th>
+                                <th scope="col">
+                                    Nombre Archivo
+                                </th>
+                                <th scope="col" className="right-th">
+                                    Acción
+                                </th>
+                            </tr>
                         </thead>
                         <tbody>
-              {archivos.map((val)=>(
-                <tr key={val[0]}>
-                <th scope="row">
-                   {val[1]+" "+val[3]+" "+val[2]}
-                </th>
-                <td>
-                    {val[4]}
-                </td>
-                <td>
-                    <div type="button" >
-                        <ColumnButton abrir="#modalVer" color={props.color} text={props.botonText}></ColumnButton>
-                    </div>
-                </td>
-            </tr>
-              ))}
+                            {archivos.map((val) => (
+                                <tr key={val[0]}>
+                                    <th scope="row">
+                                        {val[1] + " " + val[3] + " " + val[2]}
+                                    </th>
+                                    <td>
+                                        {val[4]}
+                                    </td>
+                                    <td>
+                                        <div type="button" >
+                                            <ColumnButton abrir="#modalVer" color={props.color} text={props.botonText}></ColumnButton>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             </div>
             <div className="modal fade" id="modalVer" data-bs-backdrop="static" data-bs-keyboard="false"
-                 tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl modal-dialog-centered">
                     <div className="modal-content modal-window-content">
                         <div className="modal-body">
                             <div className="modal-body">
                                 <img
-                                    src={archivos[1]?.[5]}
+                                    src={archivos[2]?.[5]}
                                     alt="Imagen del archivo"
                                     style={{ maxWidth: "100%" }}
                                 />
