@@ -8,9 +8,6 @@ import { superPaciente } from "../../data";
 
 export default function PatologicosModalW() {
   const [selectedOption, setSelectedOption] = useState("Tipo de Sangre");
-
-  const[sexo, setSexo] = useState("");
-
   const [alergias, setAlergias] = useState("");
   const [enfermedadCronica, setEnfermedadCronica] = useState("");
   const [traumatismo, setTraumatismo] = useState("");
@@ -19,18 +16,12 @@ export default function PatologicosModalW() {
   const [covid19, setCovid19] = useState("");
   const [tipoSangre, setTipoSangre] = useState("");
 
+  const sexo = superPaciente.sexo;
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
-
-  useEffect(() => {
-    console.log("Ejecutando useEffect");
-    console.log(superPaciente);
-    setSexo(getSexo());
-  }, [superPaciente.sexo]);
   
-  
-
   function guardarDatos() {
     superPaciente.alergias = alergias;
     superPaciente.enfermedadesCronicas = enfermedadCronica;
@@ -40,13 +31,6 @@ export default function PatologicosModalW() {
     superPaciente.covid19 = covid19;
     superPaciente.tipoSangre = tipoSangre;
   }
-
-  function getSexo(){
-    console.log(superPaciente.sexo);
-    return superPaciente.sexo;
-  }
-
-
 
   function renderizar(){
     console.log(superPaciente.sexo);
