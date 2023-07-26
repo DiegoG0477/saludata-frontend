@@ -4,8 +4,9 @@ import "../../styles/atoms.css";
 import NextButton from "../atoms/NextButton";
 import ReturnButton from "../atoms/ReturnButton";
 import { superPaciente } from "../../data";
+import PatologicosModalW from "./PatologicosModalW";
 
-export default function AntecedentesModalW() {
+export default function AntecedentesModalW(props) {
   const [selectedOption, setSelectedOption] = useState("Estado Civil");
 
   const [heredosFam, setHeredosFam] = useState("");
@@ -328,6 +329,8 @@ export default function AntecedentesModalW() {
           </div>
         </div>
       </div>
+
+      <PatologicosModalW sexo={props.sexo}/>
     </>
   );
 }

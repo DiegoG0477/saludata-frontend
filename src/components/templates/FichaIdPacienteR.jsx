@@ -5,6 +5,7 @@ import "../../styles/organisms.css";
 import { useState } from "react";
 import NextButton from "../atoms/NextButton";
 import { superPaciente } from "../../data";
+import AntecedentesModalW from "./AntecedentesModalW";
 
 export default function FichaIdPacienteR() {
   const [selectedOption, setSelectedOption] = useState("Sexo");
@@ -221,6 +222,8 @@ export default function FichaIdPacienteR() {
           </div>
         </div>
       </div>
+
+      <AntecedentesModalW sexo={sexo}/>
     </>
   );
 }

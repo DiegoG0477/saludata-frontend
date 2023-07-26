@@ -24,8 +24,6 @@ export default function ModalsWindows() {
       {/* ----------- Modal de Paciente ------------ */}
       
       <FichaIdPacienteR/>
-      <AntecedentesModalW/>
-      <PatologicosModalW></PatologicosModalW>
       <GinecologicosModalW></GinecologicosModalW>
 
       {/* ----------- Modal de Consulta ------------ */}
@@ -34,7 +32,6 @@ export default function ModalsWindows() {
       <RegistrarConsultaThree></RegistrarConsultaThree>
       <RegistrarConsultaFour></RegistrarConsultaFour>
       <RegistrarConsultaFive></RegistrarConsultaFive>
-
       {/* ----------- Modal de Eliminar Paciente ------------ */}
 
       <div

@@ -6,7 +6,7 @@ import ReturnButton from "../atoms/ReturnButton";
 import { superPaciente } from "../../data";
 
 
-export default function PatologicosModalW() {
+export default function PatologicosModalW(props) {
   const [selectedOption, setSelectedOption] = useState("Tipo de Sangre");
   const [alergias, setAlergias] = useState("");
   const [enfermedadCronica, setEnfermedadCronica] = useState("");
@@ -16,7 +16,7 @@ export default function PatologicosModalW() {
   const [covid19, setCovid19] = useState("");
   const [tipoSangre, setTipoSangre] = useState("");
 
-  const sexo = superPaciente.sexo;
+  const sexo = props.sexo;
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
@@ -39,12 +39,22 @@ export default function PatologicosModalW() {
         <NextButton page="#staticBackdrop4" accion={guardarDatos} />
       )
     } else if(sexo === "M"){
-      console.log("ola mundo MASCULINO");
+      return(
+        <button
+        type="button"
+        class="btn"
+        style={{fontSize: "1.1rem", fontWeight: "bolder", color:"aliceblue", background:"#268D56", borderWidth:"0px", borderRadius:"10px", height:"40px", boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)"}}
+        data-bs-target=""
+        data-bs-toggle="modal"
+        data-bs-dismiss="modal"
+      >
+        Agregar Paciente
+      </button>
+      )
     }
   }
 
-
-
+  
   return (
     <>
       <div
@@ -200,7 +210,7 @@ export default function PatologicosModalW() {
             <div class="modal-footer modal-buttons-section">
               <ReturnButton page="#staticBackdrop2" />
                        {/* Condición para mostrar el botón de "Siguiente" si el sexo es "Femenino" */}
-          {/* {superPaciente.sexo === "F" && (
+          {/* {props.sexo === "F" && (
             <NextButton page="#staticBackdrop4" accion={guardarDatos} />
           )} */}
           {renderizar()}

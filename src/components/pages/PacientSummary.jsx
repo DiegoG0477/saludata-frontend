@@ -5,6 +5,7 @@ import FemaleSummary from "../organisms/FemaleSummary"
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
 export default function PacientSummary(){
     const { id } = useParams();
     const [pacientePatologico, setPacientePatologico] = useState([]);
