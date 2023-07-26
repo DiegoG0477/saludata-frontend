@@ -10,7 +10,7 @@ function PacientSearch(props) {
   const [pacientes, setPacientes] = useState([]);
 
   const getPacientes = () => {
-    axios
+      axios
       .get("http://localhost:8080/api/v1/pacientes")
       .then((response) => {
         setPacientes(response.data);
@@ -23,6 +23,7 @@ function PacientSearch(props) {
   useEffect(() => {
     getPacientes();
   }, []);
+
 
   function simplificarFecha(fechaCompleta) {
     const fecha = new Date(fechaCompleta);
@@ -159,7 +160,8 @@ function PacientSearch(props) {
                     {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
                   </td>
                   <td>
-                    <div type="button">
+    
+                      <div type="button">
                       <Link to={`/pacient-summary/${val.idPaciente}`}>
                         <ColumnButton
                           color={props.color}

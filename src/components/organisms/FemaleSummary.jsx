@@ -4,23 +4,8 @@ import ReadInput from "../atoms/ReadInput";
 import SmallReadInput from "../atoms/SmallReadInput";
 import GynecologicalTable from "../molecules/GynecologicalTable";
 import FemaleTable from "../molecules/FemaleTable";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-export default function FemaleSummary(props) {
-  const [pacienteGineco,setPacienteGineco]= useState([]);
-  const getPacienteGineco = () => {
-    axios
-      .get("http://localhost:8080/api/v1/gineco/buscar/"+ props.id)
-      .then((response) => {
-        setPacienteGineco(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  useEffect(() => {
-    getPacienteGineco();
-  }, []);
+
+export default function FemaleSummary({pacienteGineco,id}) {
   return (
     <>
       <div className="summary-Pacient-page">
@@ -32,14 +17,14 @@ export default function FemaleSummary(props) {
           className="four-inputs-div"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <GynecologicalTable id={props.id}/>
+          <GynecologicalTable id={id}/>
           <SmallReadInput label="Menarca" readInfo={pacienteGineco[0]?.[0]}/>
           <SmallReadInput label="Ciclos Menstruales" readInfo={pacienteGineco[0]?.[1]} />
           <SmallReadInput label="IVSA" readInfo={pacienteGineco[0]?.[4]}/>
         </div>
 
         <div style={{ marginTop: "5vh", display:"flex", justifyContent:"center" }}>
-            <FemaleTable id={props.id}/>
+            <FemaleTable id={id}/>
         </div>
 
         <div style={{ marginTop: "5vh" }}>

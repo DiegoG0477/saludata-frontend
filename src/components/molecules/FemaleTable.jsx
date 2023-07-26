@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-export default function FemaleTable(props) {
+export default function FemaleTable({id}) {
   const [pacienteGineco,setPacienteGineco]= useState([]);
   const getPacienteGineco = () => {
     axios
-      .get("http://localhost:8080/api/v1/gineco/buscar/"+ props.id)
+      .get("http://localhost:8080/api/v1/gineco/buscar/"+ id)
       .then((response) => {
         setPacienteGineco(response.data);
       })

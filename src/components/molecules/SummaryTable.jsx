@@ -2,12 +2,11 @@ import ColumnButton from "../atoms/ColumnButton";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ServicesTable(props) {
+export default function ServicesTable({id}) {
   const [consultas, setConsultas] = useState([]);
-
   const getConsultas = () => {
     axios
-      .get("http://localhost:8080/api/v1/consultas/paciente/" + props.id)
+      .get("http://localhost:8080/api/v1/consultas/paciente/" + id)
       .then((response) => {
         setConsultas(response.data);
       })
@@ -15,8 +14,8 @@ export default function ServicesTable(props) {
         console.log(error);
       });
   };
-
   useEffect(() => {
+    console.log(id)
     getConsultas();
   }, []);
 
@@ -51,7 +50,7 @@ export default function ServicesTable(props) {
       </thead>
       <tbody>
         {consultas.map((val) => (
-          <tr>
+          <tr key={val.id}>
             <td>
               {simplificarFecha(val.id.fecha)}
             </td>

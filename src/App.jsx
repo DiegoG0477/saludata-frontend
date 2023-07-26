@@ -33,7 +33,7 @@ function App() {
                       <Render
                           component={
                               <RecentFile
-                                  title="Registro de Consultas"
+                                  title="Registro de Archivos"
                                   text=" Ingrese los datos de un paciente para la busqueda de su historial de archivos"
                                   ancho={78}
                                   labelAncho={36}

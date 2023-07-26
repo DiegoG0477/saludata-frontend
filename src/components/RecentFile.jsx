@@ -10,23 +10,10 @@ import {Link} from "react-router-dom";
 
 
 function RecentFile(props) {
-    const [pacientes, setPacientes] = useState([]);
-
-    const getPacientes = () => {
-        axios
-            .get("http://localhost:8080/api/v1/pacientes")
-            .then((response) => {
-                setPacientes(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
     const [archivos, setArchivos]=useState([]);
     const getArchivos=()=>{
         axios
-            .get("http://localhost:8080/api/v1/archivos")
+            .get("http://localhost:8080/api/v1/archivos/ver")
         .then((response)=>{
             setArchivos(response.data);
         })
@@ -35,27 +22,11 @@ function RecentFile(props) {
             });
     };
 
-    useEffect(()=>{
-        getArchivos();
-    },[]);
-
     useEffect(() => {
-        getPacientes();
-    }, []);
-
-    useEffect(() => {
-        getPacientes();
         getArchivos();
     }, []);
-    function filterPacientesConArchivo(pacientes, archivos) {
-        return pacientes.filter((paciente) => archivos.some((archivo) => archivo.idPaciente === paciente.id));
-    }
-
-    const pacientesConArchivo = filterPacientesConArchivo(pacientes, archivos);
-
-
-    const [selectedModal, setSelectedModal] = useState(null);
-
+    console.log(archivos);
+   
     return (
         <>
             <div className="system-content">
@@ -130,23 +101,21 @@ function RecentFile(props) {
                         </tr>
                         </thead>
                         <tbody>
-                        {pacientesConArchivo.map((paciente) => {
-                            // Encontrar el archivo correspondiente al paciente
-                            const archivo = archivos.find((a) => a.idPaciente === paciente.id);
-                            return (
-                                <tr key={paciente.id}>
-                                    <th scope="row">
-                                        {paciente.nombre + " " + paciente.apellidoPat + " " + paciente.apellidoMat}
-                                    </th>
-                                    <td>{archivo.nombreArchivo}</td>
-                                    <td>
-                                        <div type="button" onClick={() => openModal(archivo.url)}>
-                                            <ColumnButton color={props.color} text={props.botonText}></ColumnButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                            );
-                        })}
+              {archivos.map((val)=>(
+                <tr key={val[0]}>
+                <th scope="row">
+                   {val[1]+" "+val[3]+" "+val[2]}
+                </th>
+                <td>
+                    {val[4]}
+                </td>
+                <td>
+                    <div type="button" >
+                        <ColumnButton abrir="#modalVer" color={props.color} text={props.botonText}></ColumnButton>
+                    </div>
+                </td>
+            </tr>
+              ))}
                         </tbody>
                     </table>
                 </div>
@@ -158,12 +127,11 @@ function RecentFile(props) {
                         <div className="modal-body">
                             <div className="modal-body">
                                 <img
-                                    src="https://saludatafile.s3.amazonaws.com/1690172199447_tarjeta-identificacion.jpg"
+                                    src={archivos[1]?.[5]}
                                     alt="Imagen del archivo"
                                     style={{ maxWidth: "100%" }}
                                 />
                             </div>
-
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
