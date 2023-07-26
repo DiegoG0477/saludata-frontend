@@ -1,7 +1,10 @@
 import "../../styles/organisms.css";
 import "../../styles/atoms.css";
 import PacientSearch from "../PacientSearch";
-import React from "react";
+import { useState, useEffect } from "react";
+import "../../styles/atoms.css";
+import NextButton from "../atoms/NextButton";
+import ReturnButton from "../atoms/ReturnButton";
 import FichaIdPacienteR from "./FichaIdPacienteR";
 import AntecedentesModalW from "./AntecedentesModalW";
 import PatologicosModalW from "./PatologicosModalW";
@@ -11,13 +14,17 @@ import RegistrarConsultaTwo from "./RegistrarConsultaTwo";
 import RegistrarConsultaThree from "./RegistrarConsultaThree";
 import RegistrarConsultaFour from "./RegistrarConsultaFour";
 import RegistrarConsultaFive from "./RegistrarConsultaFive";
+import { superPaciente } from "../../data";
+import InputLabel from "../atoms/InputLabel";
 
 export default function ModalsWindows() {
+
   return (
     <>
       {/* ----------- Modal de Paciente ------------ */}
-      <FichaIdPacienteR></FichaIdPacienteR>
-      <AntecedentesModalW></AntecedentesModalW>
+      
+      <FichaIdPacienteR/>
+      <AntecedentesModalW/>
       <PatologicosModalW></PatologicosModalW>
       <GinecologicosModalW></GinecologicosModalW>
 

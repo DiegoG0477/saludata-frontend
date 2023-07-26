@@ -3,13 +3,50 @@ import { useState } from "react";
 import "../../styles/atoms.css";
 import NextButton from "../atoms/NextButton";
 import ReturnButton from "../atoms/ReturnButton";
+import { superPaciente } from "../../data";
 
 export default function AntecedentesModalW() {
   const [selectedOption, setSelectedOption] = useState("Estado Civil");
 
+  const [heredosFam, setHeredosFam] = useState("");
+  const [originario, setOriginario] = useState("");
+  const [residente, setResidente] = useState("");
+  const [lenguaIndig, setLenguaIndig] = useState("");
+  const [habitaCasa, setHabitaCasa] = useState("");
+  const [numHabitantes, setNumHabitantes] = useState("");
+  const [numCuartos, setNumCuartos] = useState("");
+  const [materialConstr, setMaterialConstr] = useState("");
+  const [servicios, setServicios] = useState([]);
+  const [escolaridad, setEscolaridad] = useState("");
+  const [ocupacion, setOcupacion] = useState("");
+  const [comidaDia, setComidaDia] = useState("");
+  const [ingestaAgua, setIngestaAgua] = useState("");
+  const [acepTransfusion, setAcepTransfusion] = useState("");
+  const [estadoCivil, setEstadoCivil] = useState("");
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
+
+  function guardarDatos(){
+    superPaciente.heredosFamiliares = heredosFam;
+    superPaciente.originario = originario;
+    superPaciente.residente = residente;
+    superPaciente.lenguaIndigena = lenguaIndig;
+    superPaciente.habitaCasa = habitaCasa;
+    superPaciente.habitantes = numHabitantes;
+    superPaciente.habitaciones = numCuartos;
+    superPaciente.construccionMaterial = materialConstr;
+    superPaciente.servicios = servicios;
+    superPaciente.escolaridad = escolaridad;
+    superPaciente.ocupacion = ocupacion;
+    superPaciente.comidasDiarias = comidaDia;
+    superPaciente.ingestaAgua = ingestaAgua;
+    superPaciente.transfusionSangre = acepTransfusion
+    superPaciente.estadoCivil = estadoCivil;
+
+    console.log(superPaciente)
+  }
 
   return (
     <>
@@ -42,6 +79,7 @@ export default function AntecedentesModalW() {
                   text="Heredos Familiares"
                   holder="Ingrese los Heredos Familiares del Paciente"
                   ancho={70}
+                  metodo={setHeredosFam}
                 />
               </div>
               <div
@@ -57,21 +95,25 @@ export default function AntecedentesModalW() {
                   text="Originario"
                   holder="Ingrese Donde Nacio el Paciente"
                   ancho={15}
+                  metodo={setOriginario}
                 />
                 <InputLabel
                   text="Residente"
                   holder="Ingrese Donde vive Actualmente"
                   ancho={15}
+                  metodo = {setResidente}
                 />
                 <InputLabel
-                  text="Lengua Indegena"
+                  text="Lengua Indígena"
                   holder="Ingrese la Legua Indigena"
                   ancho={15}
+                  metodo={setLenguaIndig}
                 />
                 <InputLabel
                   text="Habita en Casa"
                   holder="Ingrese el Habita de Casa"
                   ancho={15}
+                  metodo = {setHabitaCasa}
                 />
               </div>
               <div
@@ -83,12 +125,13 @@ export default function AntecedentesModalW() {
                   marginLeft: "1vw",
                 }}
               >
-                <InputLabel text="No. Habitants" holder="0" ancho={5} />
-                <InputLabel text="No. Cuartos" holder="0" ancho={5} />
+                <InputLabel text="No. Habitants" holder="0" ancho={5} meodo={setNumHabitantes} />
+                <InputLabel text="No. Cuartos" holder="0" ancho={5} metodo={setNumCuartos} />
                 <InputLabel
                   text="Construida"
                   holder="Ingrese el Tipo de Material"
                   ancho={13}
+                  metodo={setMaterialConstr}
                 />
 
                 <div>
@@ -152,11 +195,13 @@ export default function AntecedentesModalW() {
                   text="Escolaridad"
                   holder="Ingrese la Escolaridad"
                   ancho={14}
+                  metodo={setEscolaridad}
                 />
                 <InputLabel
                   text="Religion"
                   holder="Ingrese la Religion"
                   ancho={10}
+
                 />
               </div>
               <div
@@ -172,9 +217,10 @@ export default function AntecedentesModalW() {
                   text="Ocupacion"
                   holder="Ingrese la Ocupacion"
                   ancho={12}
+                  metodo={setOcupacion}
                 />
-                <InputLabel text="Comidas Diarias" holder="0" ancho={5} />
-                <InputLabel text="Ingesta de agua" holder="0 L" ancho={5} />
+                <InputLabel text="Comidas Diarias" holder="0" ancho={5} metodo={setComidaDia} />
+                <InputLabel text="Ingesta de agua" holder="0 L" ancho={5} metodo={setIngestaAgua} />
 
                 <div>
                   <div className="input-box">
@@ -226,7 +272,7 @@ export default function AntecedentesModalW() {
                     <li>
                       <button
                         class="dropdown-item"
-                        onClick={() => handleOptionClick("Casado/a")}
+                        onClick={() => {handleOptionClick("Casado/a"); setEstadoCivil("Casado/a")}}
                       >
                         Casado/a
                       </button>
@@ -234,15 +280,15 @@ export default function AntecedentesModalW() {
                     <li>
                     <button
                         class="dropdown-item"
-                        onClick={() => handleOptionClick("Soltero/a")}
+                        onClick={() => {handleOptionClick("Soltero/a"); setEstadoCivil("Soltero/a")}}
                       >
-                        Casado/a
+                        Soltero/a
                       </button>
                     </li>
                     <li>
                     <button
                         class="dropdown-item"
-                        onClick={() => handleOptionClick("Viudo/a")}
+                        onClick={() => {handleOptionClick("Viudo/a"); setEstadoCivil("Viudo/a")}}
                       >
                         Viudo/a
                       </button>
@@ -250,7 +296,7 @@ export default function AntecedentesModalW() {
                     <li>
                     <button
                         class="dropdown-item"
-                        onClick={() => handleOptionClick("Divorciado/a")}
+                        onClick={() => {handleOptionClick("Divorciado/a"); setEstadoCivil("Divorciado/a")}}
                       >
                         Divorciado/a
                       </button>
@@ -258,7 +304,7 @@ export default function AntecedentesModalW() {
                     <li>
                     <button
                         class="dropdown-item"
-                        onClick={() => handleOptionClick("Separado/a")}
+                        onClick={() => {handleOptionClick("Separado/a"); setEstadoCivil("Separado/a")}}
                       >
                         Separado/a
                       </button>
@@ -266,7 +312,7 @@ export default function AntecedentesModalW() {
                     <li>
                     <button
                         class="dropdown-item"
-                        onClick={() => handleOptionClick("Concubinato")}
+                        onClick={() => {handleOptionClick("Concubinato"); setEstadoCivil("Concubinato")}}
                       >
                         Concubinato
                       </button>
@@ -277,7 +323,7 @@ export default function AntecedentesModalW() {
             </div>
             <div class="modal-footer modal-buttons-section">
               <ReturnButton page="#staticBackdrop" />
-              <NextButton page="#staticBackdrop3" />
+              <NextButton page="#staticBackdrop3" accion = {guardarDatos} />
             </div>
           </div>
         </div>

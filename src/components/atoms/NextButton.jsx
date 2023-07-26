@@ -10,6 +10,7 @@ export default function NextButton(props) {
         data-bs-target={props.page}
         data-bs-toggle="modal"
         data-bs-dismiss="modal"
+        onClick={props.accion}
       >
         Siguiente
       </button>

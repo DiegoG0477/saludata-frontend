@@ -55,7 +55,7 @@ export default function RegistrarConsultaFive() {
                 data-bs-toggle="modal"
                 data-bs-dismiss="modal"
               >
-                Registrar Paciente
+                Registrar Consulta
               </button>
           </div>
         </div>

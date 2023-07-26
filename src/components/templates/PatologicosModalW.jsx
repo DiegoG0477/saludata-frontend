@@ -1,15 +1,65 @@
 import InputLabel from "../atoms/InputLabel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../styles/atoms.css";
 import NextButton from "../atoms/NextButton";
 import ReturnButton from "../atoms/ReturnButton";
+import { superPaciente } from "../../data";
+
 
 export default function PatologicosModalW() {
   const [selectedOption, setSelectedOption] = useState("Tipo de Sangre");
 
+  const[sexo, setSexo] = useState("");
+
+  const [alergias, setAlergias] = useState("");
+  const [enfermedadCronica, setEnfermedadCronica] = useState("");
+  const [traumatismo, setTraumatismo] = useState("");
+  const [cirujias, setCirujias] = useState("");
+  const [hospitalizaciones, setHospitalizaciones] = useState("");
+  const [covid19, setCovid19] = useState("");
+  const [tipoSangre, setTipoSangre] = useState("");
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
+
+  useEffect(() => {
+    console.log("Ejecutando useEffect");
+    console.log(superPaciente);
+    setSexo(getSexo());
+  }, [superPaciente.sexo]);
+  
+  
+
+  function guardarDatos() {
+    superPaciente.alergias = alergias;
+    superPaciente.enfermedadesCronicas = enfermedadCronica;
+    superPaciente.traumatismo = traumatismo;
+    superPaciente.cirujias = cirujias;
+    superPaciente.hospitalizaciones = hospitalizaciones;
+    superPaciente.covid19 = covid19;
+    superPaciente.tipoSangre = tipoSangre;
+  }
+
+  function getSexo(){
+    console.log(superPaciente.sexo);
+    return superPaciente.sexo;
+  }
+
+
+
+  function renderizar(){
+    console.log(superPaciente.sexo);
+    if(sexo === "F"){
+      return(
+        <NextButton page="#staticBackdrop4" accion={guardarDatos} />
+      )
+    } else if(sexo === "M"){
+      console.log("ola mundo MASCULINO");
+    }
+  }
+
+
 
   return (
     <>
@@ -42,6 +92,7 @@ export default function PatologicosModalW() {
                   text="Alergias"
                   holder="Ingrese las Alergias"
                   ancho={65}
+                  metodo = {setAlergias}
                 />
               </div>
               <div
@@ -57,14 +108,16 @@ export default function PatologicosModalW() {
                   text="Enfermedades Cronicas"
                   holder="Ingrese las Enfermedades Cronicas"
                   ancho={20}
+                  metodo = {setEnfermedadCronica}
                 />
                 <InputLabel
                   text="Traumatismo"
                   holder="Ingrese los Traumatismos"
                   ancho={20}
+                  metodo={setTraumatismo}
                 />
-                <InputLabel text="Cirujias" holder="0" ancho={5} />
-                <InputLabel text="Hospitalizaciones" holder="0" ancho={5} />
+                <InputLabel text="Cirujias" holder="0" ancho={5} metodo={setCirujias} />
+                <InputLabel text="Hospitalizaciones" holder="0" ancho={5} metodo={setHospitalizaciones} />
               </div>
               <div
                 style={{
@@ -75,7 +128,7 @@ export default function PatologicosModalW() {
                   marginLeft: "1vw",
                 }}
               >
-                <InputLabel text="Covid-19" holder="0" ancho={5} />
+                <InputLabel text="Covid-19" holder="0" ancho={5} metodo={setCovid19} />
                 <div>
                   <div class="dropdown" style={{ marginTop: "2.5vw" }}>
                     <button
@@ -94,7 +147,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("O+")}
+                          onClick={() => {handleOptionClick("O+"); setTipoSangre("O+")}}
                         >
                           O+
                         </button>
@@ -102,7 +155,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("O-")}
+                          onClick={() => {handleOptionClick("O-"); setTipoSangre("O-")}}
                         >
                           O-
                         </button>
@@ -110,7 +163,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("A+")}
+                          onClick={() => {handleOptionClick("A+"); setTipoSangre("A+")}}
                         >
                           A+
                         </button>
@@ -118,7 +171,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("A-")}
+                          onClick={() => {handleOptionClick("A-"); setTipoSangre("A-")}}
                         >
                           A-
                         </button>
@@ -126,7 +179,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("B+")}
+                          onClick={() => {handleOptionClick("B+"); setTipoSangre("B+")}}
                         >
                           B+
                         </button>
@@ -134,7 +187,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("B-")}
+                          onClick={() => {handleOptionClick("B-"); setTipoSangre("B-")}}
                         >
                           B-
                         </button>
@@ -142,7 +195,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("AB+")}
+                          onClick={() => {handleOptionClick("AB+"); setTipoSangre("AB+")}}
                         >
                           AB+
                         </button>
@@ -150,7 +203,7 @@ export default function PatologicosModalW() {
                       <li>
                         <button
                           class="dropdown-item"
-                          onClick={() => handleOptionClick("AB-")}
+                          onClick={() => {handleOptionClick("AB-"); setTipoSangre("AB-")}}
                         >
                           AB-
                         </button>
@@ -162,7 +215,11 @@ export default function PatologicosModalW() {
             </div>
             <div class="modal-footer modal-buttons-section">
               <ReturnButton page="#staticBackdrop2" />
-              <NextButton page="#staticBackdrop4" />
+                       {/* Condición para mostrar el botón de "Siguiente" si el sexo es "Femenino" */}
+          {/* {superPaciente.sexo === "F" && (
+            <NextButton page="#staticBackdrop4" accion={guardarDatos} />
+          )} */}
+          {renderizar()}
             </div>
           </div>
         </div>
