@@ -1,8 +1,23 @@
 import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import ReturnButton from "../atoms/ReturnButton";
+import { useEffect, useState } from "react";
+import superPaciente from "../../data";
 
 export default function GinecologicosModalW() {
+  const [g, setG] = useState("");
+  const [p, setP] = useState("");
+  const [a, setA] = useState("");
+  const [c, setC] = useState("");
+  const [menarca, setMenarca] = useState("");
+  const [ciclos, setCiclos] = useState("");
+  const [ivsa, setIvsa] = useState("");
+  const [mpf, setMpf] = useState("");
+  const [deteccion, setDeteccion] = useState("");
+  const [fum, setFum] = useState("");
+  const [papanicolau, setPapanicolau] = useState("");
+  const [antecedentes, setAntecedentes] = useState("");
+
   return (
     <>
       <div
@@ -17,7 +32,7 @@ export default function GinecologicosModalW() {
         <div class="modal-dialog modal-xl modal-dialog-centered">
           <div class="modal-content modal-window-content">
             <div class="modal-body">
-              <h4 className="modal-win-title">Ficha de identificacion</h4>
+              <h4 className="modal-win-title">Datos Gineco Obstréticos</h4>
               <h6 className="modal-win-title">
                 Por favor, ingrese los datos pertinentes del nuevo paciente
               </h6>
@@ -136,7 +151,7 @@ export default function GinecologicosModalW() {
                   </div>
                 </div>
                 <div>
-                  <InputLabel text="Papaniculau" holder="0" ancho={5} />
+                  <InputLabel text="Papanicolau" holder="0" ancho={5} />
                 </div>
               </div>
               <div

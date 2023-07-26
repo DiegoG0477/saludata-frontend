@@ -36,7 +36,6 @@ export default function FichaIdPacienteR() {
     superPaciente.telefono = parseInt(telefono, 10);
     superPaciente.fechaNacimiento = fechaNacim;
     superPaciente.religion = religion;
-    // superPaciente.sexo = sexo;
     superPaciente.sexo = sexo;
 
     console.log("ola mundo");
