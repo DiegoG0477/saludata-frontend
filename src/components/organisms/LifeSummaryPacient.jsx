@@ -9,7 +9,7 @@ const nombre = "Juan Perez";
 const cuartos = "4";
 const habitantes = "5";
 
-export default function LifeSummaryPacient({paciente,pacienteDireccion,pacienteNoPatologico,pacienteOriginario,pacienteAlimentacion,pacienteVivenda,id}) {
+export default function LifeSummaryPacient({paciente,pacienteDireccion,pacienteNoPatologico,pacienteAlimentacion,pacienteVivenda,id}) {
    
   return (
     <>
@@ -21,8 +21,8 @@ export default function LifeSummaryPacient({paciente,pacienteDireccion,pacienteN
         <ReadInput label="Heredo Familiares" readInfo={paciente.heredosFamiliares}/>
 
         <div className="four-inputs-div">
-          <ReadInput label="Orginario de" readInfo={pacienteOriginario[0]?.[2]+", "+pacienteOriginario[0]?.[1]+", "+pacienteOriginario[0]?.[0]}/>
-          <ReadInput label="Residencia Actual" readInfo={pacienteDireccion[0]?.[6] +", "+pacienteDireccion[0]?.[5]+", "+pacienteDireccion[0]?.[4]}/>
+          <ReadInput label="Orginario de" readInfo={pacienteDireccion[0]?.[4]}/>
+          <ReadInput label="Residencia Actual" readInfo={pacienteDireccion[0]?.[5]}/>
           <ReadInput label="Lengua Indigena" readInfo={pacienteNoPatologico[0]?.[0]}/>
           <ReadInput label="Habita en" readInfo={pacienteVivenda[0]?.[0]+" de "+pacienteVivenda[0]?.[3]}/>
         </div>

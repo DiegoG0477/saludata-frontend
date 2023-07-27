@@ -5,10 +5,6 @@ import FemaleSummary from "../organisms/FemaleSummary"
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-
-
-
 export default function PacientSummary(){
 
     const { id } = useParams();
@@ -19,7 +15,6 @@ export default function PacientSummary(){
     const [pacienteDireccion, setPacienteDireccion] = useState([]);
     const [pacienteVivenda, setPacienteVivienda] = useState([]);
     const [pacienteAlimentacion, setPacienteAlimentacion] = useState([]);
-    const [pacienteOriginario, setPacienteOriginario] = useState([]);
     const [pacienteGineco, setPacienteGineco] = useState([]);
     const getPacientePatologico = () => {
         axios
@@ -93,16 +88,7 @@ export default function PacientSummary(){
                 console.log(error);
             });
     };
-    const getPacienteOriginario = () => {
-        axios
-            .get("http://localhost:8080/api/v1/originario/buscar/" + id)
-            .then((response) => {
-                setPacienteOriginario(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+    
     const getPacienteGineco = () => {
         axios
             .get("http://localhost:8080/api/v1/gineco/buscar/" + id)
@@ -121,7 +107,6 @@ export default function PacientSummary(){
         getPacienteAlergias();
         getPacienteVivienda();
         getPacienteAlimentacion();
-        getPacienteOriginario();
         getPacienteGineco();
     }, []);
 
@@ -131,7 +116,7 @@ export default function PacientSummary(){
 
                 {/* <div className="identification-data"> */}
                 <SummaryIdPacient paciente={paciente} pacienteDireccion={pacienteDireccion} pacienteNoPatologico={pacienteNoPatologico} id={id}></SummaryIdPacient>
-                <LifeSummaryPacient paciente={paciente} pacienteDireccion={pacienteDireccion} pacienteNoPatologico={pacienteNoPatologico} id={id} pacienteOriginario={pacienteOriginario} pacienteAlimentacion={pacienteAlimentacion} pacienteVivenda={pacienteVivenda}></LifeSummaryPacient>
+                <LifeSummaryPacient paciente={paciente} pacienteDireccion={pacienteDireccion} pacienteNoPatologico={pacienteNoPatologico} id={id} pacienteAlimentacion={pacienteAlimentacion} pacienteVivenda={pacienteVivenda}></LifeSummaryPacient>
                 <PathologicSummary pacientePatologico={pacientePatologico} pacienteNoPatologico={pacienteNoPatologico} pacienteAlergias={pacienteAlergias}></PathologicSummary>
                 <FemaleSummary pacienteGineco={pacienteGineco} id={id}></FemaleSummary>
 
