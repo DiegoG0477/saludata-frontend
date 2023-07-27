@@ -29,7 +29,25 @@ export default function AntecedentesModalW(props) {
     setSelectedOption(option);
   };
 
-  function guardarDatos(){
+  const handleCheckboxChange = (event) => {
+    const checkboxValue = event.target.value;
+    if (event.target.checked) {
+      // Si el checkbox se selecciona, agrega su valor al arreglo de servicios
+      setServicios((prevServicios) => [...prevServicios, checkboxValue]);
+    } else {
+      // Si el checkbox se deselecciona, remueve su valor del arreglo de servicios
+      setServicios((prevServicios) =>
+        prevServicios.filter((value) => value !== checkboxValue)
+      );
+    }
+  };
+
+  const handleRadioChange = (event) => {
+    const radioValue = event.target.value;
+    setAcepTransfusion(radioValue);
+  };
+
+  function guardarDatos() {
     superPaciente.originario = originario;
     superPaciente.residente = residente;
     superPaciente.lenguaIndigena = lenguaIndig;
@@ -43,7 +61,7 @@ export default function AntecedentesModalW(props) {
     superPaciente.ocupacion = ocupacion;
     superPaciente.comidasDiarias = comidaDia;
     superPaciente.ingestaAgua = ingestaAgua;
-    superPaciente.transfusionSangre = acepTransfusion
+    superPaciente.transfusionSangre = acepTransfusion;
     superPaciente.estadoCivil = estadoCivil;
   }
 
@@ -100,7 +118,7 @@ export default function AntecedentesModalW(props) {
                   text="Residente"
                   holder="Ingrese Donde vive Actualmente"
                   ancho={15}
-                  metodo = {setResidente}
+                  metodo={setResidente}
                 />
                 <InputLabel
                   text="Lengua Indígena"
@@ -112,7 +130,7 @@ export default function AntecedentesModalW(props) {
                   text="Habita en Casa"
                   holder="Ingrese el Habita de Casa"
                   ancho={15}
-                  metodo = {setHabitaCasa}
+                  metodo={setHabitaCasa}
                 />
               </div>
               <div
@@ -124,8 +142,18 @@ export default function AntecedentesModalW(props) {
                   marginLeft: "1vw",
                 }}
               >
-                <InputLabel text="No. Habitants" holder="0" ancho={5} meodo={setNumHabitantes} />
-                <InputLabel text="No. Cuartos" holder="0" ancho={5} metodo={setNumCuartos} />
+                <InputLabel
+                  text="No. Habitants"
+                  holder="0"
+                  ancho={5}
+                  meodo={setNumHabitantes}
+                />
+                <InputLabel
+                  text="No. Cuartos"
+                  holder="0"
+                  ancho={5}
+                  metodo={setNumCuartos}
+                />
                 <InputLabel
                   text="Construida"
                   holder="Ingrese el Tipo de Material"
@@ -138,10 +166,11 @@ export default function AntecedentesModalW(props) {
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value=""
+                      value="Agua Potable"
                       id="flexCheckDefault"
+                      onChange={handleCheckboxChange}
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" htmlFor="flexCheckDefault">
                       Agua Potable
                     </label>
                   </div>
@@ -149,10 +178,11 @@ export default function AntecedentesModalW(props) {
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
+                      value="Luz"
+                      id="flexCheckDefault1"
+                      onChange={handleCheckboxChange}
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault1">
                       Luz
                     </label>
                   </div>
@@ -160,10 +190,11 @@ export default function AntecedentesModalW(props) {
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
+                      value="Drenaje"
+                      id="flexCheckDefault2"
+                      onChange={handleCheckboxChange}
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault2">
                       Drenaje
                     </label>
                   </div>
@@ -171,10 +202,11 @@ export default function AntecedentesModalW(props) {
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
+                      value="Cocina con Leña"
+                      id="flexCheckDefault3"
+                      onChange={handleCheckboxChange}
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault3">
                       Cocina con Leña
                     </label>
                   </div>
@@ -182,10 +214,10 @@ export default function AntecedentesModalW(props) {
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
+                      value="Zoonosis"
+                      id="flexCheckDefault4"
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault4">
                       Zoonosis
                     </label>
                   </div>
@@ -200,7 +232,6 @@ export default function AntecedentesModalW(props) {
                   text="Religion"
                   holder="Ingrese la Religion"
                   ancho={10}
-
                 />
               </div>
               <div
@@ -218,8 +249,18 @@ export default function AntecedentesModalW(props) {
                   ancho={12}
                   metodo={setOcupacion}
                 />
-                <InputLabel text="Comidas Diarias" holder="0" ancho={5} metodo={setComidaDia} />
-                <InputLabel text="Ingesta de agua" holder="0 L" ancho={5} metodo={setIngestaAgua} />
+                <InputLabel
+                  text="Comidas Diarias"
+                  holder="0"
+                  ancho={5}
+                  metodo={setComidaDia}
+                />
+                <InputLabel
+                  text="Ingesta de agua"
+                  holder="0 L"
+                  ancho={5}
+                  metodo={setIngestaAgua}
+                />
 
                 <div>
                   <div className="input-box">
@@ -236,9 +277,12 @@ export default function AntecedentesModalW(props) {
                       class="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
-                      id="flexRadioDefault1"
+                      id="flexRadioDefault4"
+                      value="SI"
+                      onChange={handleRadioChange}
+                      checked={acepTransfusion === "SI"}
                     />
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault4">
                       SI
                     </label>
                   </div>
@@ -247,9 +291,12 @@ export default function AntecedentesModalW(props) {
                       class="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
-                      id="flexRadioDefault1"
+                      id="flexRadioDefault5"
+                      value="NO"
+                      onChange={handleRadioChange}
+                      checked={acepTransfusion === "NO"}
                     />
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault5">
                       NO
                     </label>
                   </div>
@@ -271,47 +318,65 @@ export default function AntecedentesModalW(props) {
                     <li>
                       <button
                         class="dropdown-item"
-                        onClick={() => {handleOptionClick("Casado/a"); setEstadoCivil("Casado/a")}}
+                        onClick={() => {
+                          handleOptionClick("Casado/a");
+                          setEstadoCivil("Casado/a");
+                        }}
                       >
                         Casado/a
                       </button>
                     </li>
                     <li>
-                    <button
+                      <button
                         class="dropdown-item"
-                        onClick={() => {handleOptionClick("Soltero/a"); setEstadoCivil("Soltero/a")}}
+                        onClick={() => {
+                          handleOptionClick("Soltero/a");
+                          setEstadoCivil("Soltero/a");
+                        }}
                       >
                         Soltero/a
                       </button>
                     </li>
                     <li>
-                    <button
+                      <button
                         class="dropdown-item"
-                        onClick={() => {handleOptionClick("Viudo/a"); setEstadoCivil("Viudo/a")}}
+                        onClick={() => {
+                          handleOptionClick("Viudo/a");
+                          setEstadoCivil("Viudo/a");
+                        }}
                       >
                         Viudo/a
                       </button>
                     </li>
                     <li>
-                    <button
+                      <button
                         class="dropdown-item"
-                        onClick={() => {handleOptionClick("Divorciado/a"); setEstadoCivil("Divorciado/a")}}
+                        onClick={() => {
+                          handleOptionClick("Divorciado/a");
+                          setEstadoCivil("Divorciado/a");
+                        }}
                       >
                         Divorciado/a
                       </button>
                     </li>
                     <li>
-                    <button
+                      <button
                         class="dropdown-item"
-                        onClick={() => {handleOptionClick("Separado/a"); setEstadoCivil("Separado/a")}}
+                        onClick={() => {
+                          handleOptionClick("Separado/a");
+                          setEstadoCivil("Separado/a");
+                        }}
                       >
                         Separado/a
                       </button>
                     </li>
                     <li>
-                    <button
+                      <button
                         class="dropdown-item"
-                        onClick={() => {handleOptionClick("Concubinato"); setEstadoCivil("Concubinato")}}
+                        onClick={() => {
+                          handleOptionClick("Concubinato");
+                          setEstadoCivil("Concubinato");
+                        }}
                       >
                         Concubinato
                       </button>
@@ -322,13 +387,13 @@ export default function AntecedentesModalW(props) {
             </div>
             <div class="modal-footer modal-buttons-section">
               <ReturnButton page="#staticBackdrop" />
-              <NextButton page="#staticBackdrop3" accion = {guardarDatos} />
+              <NextButton page="#staticBackdrop3" accion={guardarDatos} />
             </div>
           </div>
         </div>
       </div>
 
-      <PatologicosModalW sexo={props.sexo}/>
+      <PatologicosModalW sexo={props.sexo} />
     </>
   );
 }
