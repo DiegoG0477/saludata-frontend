@@ -2,7 +2,7 @@ import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import ReturnButton from "../atoms/ReturnButton";
 import { useEffect, useState } from "react";
-
+// import { superPaciente } from "../../data";
 
 export default function GinecologicosModalW() {
   const [g, setG] = useState("");

@@ -16,14 +16,46 @@ import RegistrarConsultaFour from "./RegistrarConsultaFour";
 import RegistrarConsultaFive from "./RegistrarConsultaFive";
 import { superPaciente } from "../../data";
 import InputLabel from "../atoms/InputLabel";
+import axios from "axios";
+
+export function insertarPaciente(paciente) {
+  const fechaActual = new Date();
+  const fechaISO = fechaActual.toISOString();
+  console.log(fechaISO);
+  const pacienteDb = {
+    idPaciente: "123",
+    nombre: paciente.nombre,
+    apellidoMat: paciente.apellidoMat,
+    apellidoPat: paciente.apellidoPat,
+    // fechaNacimiento: paciente.fechaNacimiento,
+    fechaNacimiento: fechaISO,
+    telefono: paciente.telefono,
+    genero: paciente.sexo,
+    heredosFamiliares: paciente.heredosFamiliares,
+  };
+
+  insertPacienteTable(pacienteDb);
+}
+
+function insertPacienteTable(paciente) {
+  console.log("julio es ");
+  console.log(paciente);
+  axios
+    .post("http://localhost:8080/api/v1/pacientes", paciente)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 export default function ModalsWindows() {
-
   return (
     <>
       {/* ----------- Modal de Paciente ------------ */}
-      
-      <FichaIdPacienteR/>
+
+      <FichaIdPacienteR />
       <GinecologicosModalW></GinecologicosModalW>
 
       {/* ----------- Modal de Consulta ------------ */}

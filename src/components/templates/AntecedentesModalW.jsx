@@ -3,8 +3,8 @@ import { useState } from "react";
 import "../../styles/atoms.css";
 import NextButton from "../atoms/NextButton";
 import ReturnButton from "../atoms/ReturnButton";
-import { superPaciente } from "../../data";
 import PatologicosModalW from "./PatologicosModalW";
+import { superPaciente } from "../../data";
 
 export default function AntecedentesModalW(props) {
   const [selectedOption, setSelectedOption] = useState("Estado Civil");
@@ -30,10 +30,10 @@ export default function AntecedentesModalW(props) {
   };
 
   function guardarDatos(){
-    superPaciente.heredosFamiliares = heredosFam;
     superPaciente.originario = originario;
     superPaciente.residente = residente;
     superPaciente.lenguaIndigena = lenguaIndig;
+    superPaciente.heredosFamiliares = heredosFam;
     superPaciente.habitaCasa = habitaCasa;
     superPaciente.habitantes = numHabitantes;
     superPaciente.habitaciones = numCuartos;
@@ -45,8 +45,6 @@ export default function AntecedentesModalW(props) {
     superPaciente.ingestaAgua = ingestaAgua;
     superPaciente.transfusionSangre = acepTransfusion
     superPaciente.estadoCivil = estadoCivil;
-
-    console.log(superPaciente)
   }
 
   return (

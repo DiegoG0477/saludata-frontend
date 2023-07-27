@@ -1,7 +1,7 @@
 import { DatePicker } from "@mui/x-date-pickers";
 import styled from "styled-components";
 
-export default function DatePick() {
+export default function DatePick(props) {
   const DatePick = styled(DatePicker)`
   `;
 
@@ -16,6 +16,7 @@ export default function DatePick() {
       label="Ingrese Fecha"
       formatDensity="spacious"
       slotProps={{ textField: { variant: "filled" } }}
+      value={props.fecha} onChange={(newValue) => props.metodo(newValue)}
     />
 
     </div>
