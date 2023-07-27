@@ -53,14 +53,16 @@ export default function AntecedentesModalW(props) {
     superPaciente.lenguaIndigena = lenguaIndig;
     superPaciente.heredosFamiliares = heredosFam;
     superPaciente.habitaCasa = habitaCasa;
-    superPaciente.habitantes = numHabitantes;
-    superPaciente.habitaciones = numCuartos;
+    superPaciente.habitantes = parseInt(numHabitantes, 10);
+    superPaciente.habitaciones = parseInt(numCuartos, 10);
+    console.log(numHabitantes + numCuartos);
+    console.log(servicios);
     superPaciente.construccionMaterial = materialConstr;
     superPaciente.servicios = servicios;
     superPaciente.escolaridad = escolaridad;
     superPaciente.ocupacion = ocupacion;
-    superPaciente.comidasDiarias = comidaDia;
-    superPaciente.ingestaAgua = ingestaAgua;
+    superPaciente.comidasDiarias = parseInt(comidaDia, 10);
+    superPaciente.ingestaAgua = parseFloat(ingestaAgua, 10);
     superPaciente.transfusionSangre = acepTransfusion;
     superPaciente.estadoCivil = estadoCivil;
   }
@@ -146,7 +148,7 @@ export default function AntecedentesModalW(props) {
                   text="No. Habitants"
                   holder="0"
                   ancho={5}
-                  meodo={setNumHabitantes}
+                  metodo={setNumHabitantes}
                 />
                 <InputLabel
                   text="No. Cuartos"

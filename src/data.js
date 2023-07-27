@@ -42,9 +42,8 @@ export const superPaciente = {
     mpf:"q",
     deteccionCancer:"q",
     fum:"2021-05-05",
-    papnicolaou:"q",
+    papanicolau:1,
     antecedentesPerinatales:"q",
-
   }
   
   export const consultaDatos = {
