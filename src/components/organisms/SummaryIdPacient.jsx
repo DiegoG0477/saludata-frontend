@@ -34,7 +34,7 @@ export default function SummaryIdPacient({paciente,pacienteDireccion,pacienteNoP
           <Title text="Datos de Identificación"></Title>
 
           <div className="tree-inputs-div">
-            <ReadInput label={nombrePaciente} readInfo={paciente.nombre} />
+            <ReadInput label={nombrePaciente} readInfo={paciente.nombre+" "+paciente.apellidoPat+" "+apellidoMat} />
             <ReadInput label="Calle" readInfo={pacienteDireccion[0]?.[0]}  />
             <ReadInput label="Colonia" readInfo={pacienteDireccion[0]?.[1]} />
           </div>
