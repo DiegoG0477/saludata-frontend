@@ -38,7 +38,7 @@ export default function FichaIdPacienteR() {
     superPaciente.religion = religion;
     superPaciente.sexo = sexo;
 
-    console.log("ola mundo");
+    console.log(fechaNacim);
     console.log(superPaciente);
   }
 
@@ -147,7 +147,7 @@ export default function FichaIdPacienteR() {
                     className="input-search-container"
                     style={{ height: "8vh" }}
                   >
-                    <DatePick />
+                    <DatePick fecha={fechaNacim} metodo={setFechaNacim}/>
                   </div>
                 </div>
                 <InputLabel

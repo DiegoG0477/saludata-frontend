@@ -4,7 +4,7 @@ import "../../styles/atoms.css";
 import NextButton from "../atoms/NextButton";
 import ReturnButton from "../atoms/ReturnButton";
 import { superPaciente } from "../../data";
-
+import { insertarPaciente } from "./modalsWindows";
 
 export default function PatologicosModalW(props) {
   const [selectedOption, setSelectedOption] = useState("Tipo de Sangre");
@@ -32,8 +32,15 @@ export default function PatologicosModalW(props) {
     superPaciente.tipoSangre = tipoSangre;
   }
 
+  function guardarPaciente(){
+    guardarDatos();
+    console.log(superPaciente);
+    insertarPaciente(superPaciente);
+  }
+
+
   function renderizar(){
-    console.log(superPaciente.sexo);
+    console.log(props.sexo);
     if(sexo === "F"){
       return(
         <NextButton page="#staticBackdrop4" accion={guardarDatos} />
@@ -47,6 +54,7 @@ export default function PatologicosModalW(props) {
         data-bs-target=""
         data-bs-toggle="modal"
         data-bs-dismiss="modal"
+        onClick={guardarPaciente}
       >
         Agregar Paciente
       </button>
@@ -209,10 +217,6 @@ export default function PatologicosModalW(props) {
             </div>
             <div class="modal-footer modal-buttons-section">
               <ReturnButton page="#staticBackdrop2" />
-                       {/* Condición para mostrar el botón de "Siguiente" si el sexo es "Femenino" */}
-          {/* {props.sexo === "F" && (
-            <NextButton page="#staticBackdrop4" accion={guardarDatos} />
-          )} */}
           {renderizar()}
             </div>
           </div>
