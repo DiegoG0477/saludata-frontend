@@ -1,12 +1,81 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import DatePick from "./atoms/DatePick";
 import ColumnButton from "./atoms/ColumnButton";
 import "../styles/uploadFile.css";
 import "../assets/uploadfile.png";
 import InputLabel from "./atoms/InputLabel";
-
+import axios from "axios";
+import { generarId } from "../data/connector";
 function UploadFile(props) {
+
+  const [pacientes, setPacientes] = useState([]);
+  const [nombre, setNombre] = useState("");
+  const [apellidoMat, setApellidoMat] = useState("");
+  const [apellidoPat, setApellidoPat] = useState("");
+  const [fecha, setFecha] = useState("");
+  const id= generarId(nombre,apellidoMat,apellidoPat,fecha);
+
+  const getPacientes = () => {
+      axios
+      .get("http://localhost:8080/api/v1/pacientes")
+      .then((response) => {
+        setPacientes(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getPaciente = () => {
+    axios
+    .get("http://localhost:8080/api/v1/pacientes/buscar/"+ id)
+    .then((response) => {
+      const pacienteArray = [response.data];
+      setPacientes(pacienteArray);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+  useEffect(() => {
+    getPacientes();
+  }, []);
+
+  async function buscar(){
+    getPaciente();
+    Swal.fire({
+      icon: 'success',
+      title: 'Paciente encontrado',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+  function simplificarFecha(fechaCompleta) {
+    const fecha = new Date(fechaCompleta);
+
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
+    const año = fecha.getFullYear();
+
+    // Formatear la fecha como 'dd/mm/yyyy' o 'mm/dd/yyyy' (dependiendo de tu preferencia)
+    const fechaSimplificada = `${dia < 10 ? "0" : ""}${dia}/${
+      mes < 10 ? "0" : ""
+    }${mes}/${año}`;
+
+    return fechaSimplificada;
+  }
+
+  function calcularEdad(fechaNacimiento) {
+    const fechaActual = new Date();
+    const diferencia = fechaActual - fechaNacimiento;
+
+    // Convertir la diferencia a años
+    const edad = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365.25));
+    return edad;
+  }
   return (
     <>
       <div className="system-content">
@@ -27,11 +96,13 @@ function UploadFile(props) {
             text="Nombres del Paciente"
             holder="Ingrese el nombre(s) del paciente"
             ancho={props.labelAncho}
+            metodo={setNombre}
           />
           <InputLabel
             text="Apellido Paterno Paciente"
             holder="Ingrese apellido paterno del paciente"
             ancho={props.labelAncho}
+            metodo={setApellidoPat}
           />
         </div>
 
@@ -47,6 +118,7 @@ function UploadFile(props) {
             text="Apellido Materno del Paciente"
             holder="Ingrese apellido materno del paciente"
             ancho={props.labelAncho}
+            metodo={setApellidoMat}
           />
           <div style={{ marginRight: props.mover + "vw" }}>
             <p
@@ -61,8 +133,8 @@ function UploadFile(props) {
               className="input-search-container"
               style={{ width: props.anchoPicker + "vw", height: "8vh" }}
             >
-              <DatePick className="date" format="dd/MM/yyyy" />
-              <button className="btn btn-primary globalButton">Buscar</button>
+              <DatePick className="date" format="dd/MM/yyyy"  metodo={setFecha}/>
+              <button className="btn btn-primary globalButton" onClick={buscar}>Buscar</button>
             </div>
           </div>
         </div>
@@ -82,75 +154,24 @@ function UploadFile(props) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">Ejemplo Persona</th>
-                <td>9611111111</td>
-                <td>24 Años</td>
-                <td>
-                  {/* <div
-                    type="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modal-subir"
-                  >
-                    <ColumnButton
-                      color={"#248087"}
-                      text={"Subir archivo"}
-                    ></ColumnButton>
-                  </div> */}
-                  <input type="file" id="upload" hidden />
+              {pacientes.map((val) => (
+                  <tr>
+                    <th scope="row">
+                      {val.nombre + " " + val.apellidoPat + " " + val.apellidoMat}
+                    </th>
+                    <td>{val.telefono}</td>
+                    <td>
+                      {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
+                    </td>
+                    <td>
+                    <input type="file" id="upload" hidden />
                   <label for="upload" className="btn btn-secondary btn-sm column-btn" style={{background:"#248087"}}>Subir Archivo</label>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>dssdak</td>
-                <td>Ojfjfo</td>
-                <td>@mui</td>
-              </tr>
+
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
-        </div>
-      </div>
-
-      <div
-        className="modal fade"
-        id="modal-subir"
-        data-bs-backdrop="static"
-        style={{ height: "auto" }}
-      >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content ">
-            <div className="modal-header">
-              <h5 className="modal-title">Elija su archivo a subir</h5>
-              <button className="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div className="modal-body">
-              <div className="square-container">
-                <div className="square">
-                  <img src="/src/assets/uploadfile.png" alt="Imagen" />
-                </div>
-                <div className="button-container">
-                  <div className="message">
-                    Arrastre el archi aquí o busque en su explorador de archivos
-                  </div>
-
-                  <button className="button">Buscar</button>
-                </div>
-              </div>
-            </div>
-
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-danger"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button className="btn btn-primary">Subir</button>
-            </div>
-          </div>
         </div>
       </div>
     </>

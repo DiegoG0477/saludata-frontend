@@ -17,7 +17,24 @@ export default function GinecologicosModalW() {
   const [fum, setFum] = useState("");
   const [papanicolau, setPapanicolau] = useState("");
   const [antecedentes, setAntecedentes] = useState("");
-
+  function alerta(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'El paciente esta siendo guardado'
+    })
+  }
   return (
     <>
       <div
@@ -180,8 +197,10 @@ export default function GinecologicosModalW() {
                 data-bs-target=""
                 data-bs-toggle="modal"
                 data-bs-dismiss="modal"
+                onClick={alerta}
               >
                 Agregar Paciente
+                
               </button>
             </div>
           </div>

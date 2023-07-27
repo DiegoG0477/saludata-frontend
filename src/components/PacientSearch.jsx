@@ -5,9 +5,16 @@ import InputLabel from "./atoms/InputLabel";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { generarId } from "../data/connector";
 
 function PacientSearch(props) {
   const [pacientes, setPacientes] = useState([]);
+  //const [paciente, setPaciente] = useState([]);
+  const [nombre, setNombre] = useState("");
+  const [apellidoMat, setApellidoMat] = useState("");
+  const [apellidoPat, setApellidoPat] = useState("");
+  const [fecha, setFecha] = useState("");
+  const id= generarId(nombre,apellidoMat,apellidoPat,fecha);
 
   const getPacientes = () => {
       axios
@@ -20,10 +27,31 @@ function PacientSearch(props) {
       });
   };
 
+  const getPaciente = () => {
+    axios
+    .get("http://localhost:8080/api/v1/pacientes/buscar/"+ id)
+    .then((response) => {
+      const pacienteArray = [response.data];
+      setPacientes(pacienteArray);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
   useEffect(() => {
     getPacientes();
   }, []);
 
+  async function buscar(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Paciente encontrado',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    getPaciente();
+  }
 
   function simplificarFecha(fechaCompleta) {
     const fecha = new Date(fechaCompleta);
@@ -69,11 +97,13 @@ function PacientSearch(props) {
             text="Nombres del Paciente"
             holder="Ingrese el nombre(s) del paciente"
             ancho={props.labelAncho}
+            metodo={setNombre}
           />
           <InputLabel
             text="Apellido Paterno Paciente"
             holder="Ingrese apellido paterno del paciente"
             ancho={props.labelAncho}
+            metodo={setApellidoPat}
           />
         </div>
 
@@ -89,6 +119,7 @@ function PacientSearch(props) {
             text="Apellido Materno del Paciente"
             holder="Ingrese apellido materno del paciente"
             ancho={props.labelAncho}
+            metodo={setApellidoMat}
           />
           <div style={{ marginRight: props.mover + "vw" }}>
             {props.modal ? (
@@ -120,15 +151,15 @@ function PacientSearch(props) {
               {props.modal ? (
                 <>
                   <div style={{ marginLeft: "5vw", marginRight: "3vw" }}>
-                    <DatePick className="date" format="dd/MM/yyyy" />
+                    <DatePick className="date" format="dd/MM/yyyy" metodo={setFecha}/>
                   </div>
 
-                  <button className="btn globalButton">Buscar</button>
+                  <button className="btn globalButton" onClick={buscar} >Buscar</button>
                 </>
               ) : (
                 <>
-                  <DatePick className="date" format="dd/MM/yyyy" />
-                  <button className="btn globalButton">Buscar</button>
+                  <DatePick className="date" format="dd/MM/yyyy" metodo={setFecha}/>
+                  <button className="btn globalButton" onClick={buscar}>Buscar</button>
                 </>
               )}
             </div>

@@ -53,7 +53,7 @@ function App() {
                 <Render
                   component={
                     <UploadFile
-                      title="Registro de Pacientes"
+                      title="Agregar Archivos"
                       text=" Ingrese los datos de un paciente para su búsqueda o revise el registro
                       general de pacientes"
                       ancho={78}

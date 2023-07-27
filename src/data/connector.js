@@ -53,7 +53,7 @@ export async function insertarPaciente(paciente) {
   }
 }
 
-function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
+export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
   const fecha = new Date(fechaNacimiento);
 
   // Obtener el día, mes y año de la fecha

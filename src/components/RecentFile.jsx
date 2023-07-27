@@ -7,10 +7,16 @@ import "../assets/uploadfile.png";
 import InputLabel from "./atoms/InputLabel";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-
+import { generarId } from "../data/connector";
 function RecentFile(props) {
     const [archivos, setArchivos] = useState([]);
+    const [archivo, setArchivo] = useState([]);
+    const [nombre, setNombre] = useState("");
+    const [apellidoMat, setApellidoMat] = useState("");
+    const [apellidoPat, setApellidoPat] = useState("");
+    const [fecha, setFecha] = useState("");
+    const id= generarId(nombre,apellidoMat,apellidoPat,fecha);
+
     const getArchivos = () => {
         axios
             .get("http://localhost:8080/api/v1/archivos/ver")
@@ -21,12 +27,30 @@ function RecentFile(props) {
                 console.log(error);
             });
     };
-
+    const getArchivosEspe = () => {
+        axios
+        .get("http://localhost:8080/api/v1/archivos/buscar/"+ id)
+        .then((response) => {
+          setArchivos(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    console.log(archivos)
     useEffect(() => {
         getArchivos();
     }, []);
-    console.log(archivos);
 
+    async function buscar(){
+        getArchivosEspe();
+        Swal.fire({
+            icon: 'success',
+            title: 'Paciente encontrado',
+            showConfirmButton: false,
+            timer: 1500
+          })
+      }
     return (
         <>
             <div className="system-content">
@@ -47,11 +71,13 @@ function RecentFile(props) {
                         text="Nombres del Paciente"
                         holder="Ingrese el nombre(s) del paciente"
                         ancho={props.labelAncho}
+                        metodo={setNombre}
                     />
                     <InputLabel
                         text="Apellido Paterno Paciente"
                         holder="Ingrese apellido paterno del paciente"
                         ancho={props.labelAncho}
+                        metodo={setApellidoPat}
                     />
                 </div>
 
@@ -67,6 +93,7 @@ function RecentFile(props) {
                         text="Apellido Materno del Paciente"
                         holder="Ingrese apellido materno del paciente"
                         ancho={props.labelAncho}
+                        metodo={setApellidoMat}
                     />
                     <div style={{ marginRight: props.mover + "vw" }}>
                         <p
@@ -81,8 +108,8 @@ function RecentFile(props) {
                             className="input-search-container"
                             style={{ width: props.anchoPicker + "vw", height: "8vh" }}
                         >
-                            <DatePick className="date" format="dd/MM/yyyy" />
-                            <button className="btn btn-primary globalButton">Buscar</button>
+                            <DatePick className="date" format="dd/MM/yyyy" metodo={setFecha} />
+                            <button className="btn btn-primary globalButton" onClick={buscar}>Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -104,7 +131,7 @@ function RecentFile(props) {
                         </thead>
                         <tbody>
                             {archivos.map((val) => (
-                                <tr key={val[0]}>
+                                <tr>
                                     <th scope="row">
                                         {val[1] + " " + val[3] + " " + val[2]}
                                     </th>
