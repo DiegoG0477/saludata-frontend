@@ -4,7 +4,7 @@ import "../../styles/atoms.css";
 import NextButton from "../atoms/NextButton";
 import ReturnButton from "../atoms/ReturnButton";
 import { superPaciente } from "../../data";
-import { insertarPaciente } from "./modalsWindows";
+import { insertarPaciente } from "../../data/connector";
 
 export default function PatologicosModalW(props) {
   const [selectedOption, setSelectedOption] = useState("Tipo de Sangre");

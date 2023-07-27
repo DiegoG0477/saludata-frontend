@@ -216,6 +216,7 @@ export default function AntecedentesModalW(props) {
                       type="checkbox"
                       value="Zoonosis"
                       id="flexCheckDefault4"
+                      onChange={handleCheckboxChange}
                     />
                     <label class="form-check-label" for="flexCheckDefault4">
                       Zoonosis
@@ -228,11 +229,11 @@ export default function AntecedentesModalW(props) {
                   ancho={14}
                   metodo={setEscolaridad}
                 />
-                <InputLabel
+                {/* <InputLabel
                   text="Religion"
                   holder="Ingrese la Religion"
                   ancho={10}
-                />
+                /> */}
               </div>
               <div
                 style={{
