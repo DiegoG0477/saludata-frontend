@@ -31,7 +31,24 @@ function RecentFile(props) {
         axios
         .get("http://localhost:8080/api/v1/archivos/buscar/"+ id)
         .then((response) => {
-          setArchivos(response.data);
+          
+          if (Array.isArray(response.data) && response.data.length > 0) {
+            setArchivos(response.data);
+            Swal.fire({
+              icon: 'success',
+              title: 'Se encontro el paciente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          } else {
+            getArchivos();
+            Swal.fire({
+              icon: 'warning',
+              title: 'no se encontro el paciente',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -43,14 +60,18 @@ function RecentFile(props) {
     }, []);
 
     async function buscar(){
-        getArchivosEspe();
-        Swal.fire({
-            icon: 'success',
-            title: 'Paciente encontrado',
-            showConfirmButton: false,
-            timer: 1500
-          })
-      }
+        
+        if (!nombre || !apellidoPat || !apellidoMat || !fecha) {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Llene todos los campos para buscar',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            return;
+          }
+          getArchivosEspe();
+    }
     return (
         <>
             <div className="system-content">
@@ -114,7 +135,7 @@ function RecentFile(props) {
                     </div>
                 </div>
 
-                <div>
+                <div className="tabla-container" style={{ maxHeight: "30vh", overflow: "auto", marginTop:"1vw"}}>
                     <table className="tablaS" style={{ width: "78vw" }}>
                         <thead>
                             <tr>

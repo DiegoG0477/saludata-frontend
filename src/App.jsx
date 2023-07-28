@@ -107,7 +107,7 @@ function App() {
                       labelAncho={36}
                       color="#248087"
                       botonText="Ver más"
-                      anchoPicker="36"
+                      anchoPicker="16"
                       mover={0}
                     />
                   }

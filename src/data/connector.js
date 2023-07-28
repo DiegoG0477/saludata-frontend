@@ -129,7 +129,7 @@ export async function insertarPaciente(paciente) {
 }
 
 
-export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento)
+
 function axiosPost(url, params) {
   axios
     .post(url, null, { params: params })
@@ -141,7 +141,7 @@ function axiosPost(url, params) {
     });
 }
 
-function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
+ export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
 
   const fecha = new Date(fechaNacimiento);
 

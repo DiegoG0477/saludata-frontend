@@ -31,8 +31,24 @@ function UploadFile(props) {
     axios
     .get("http://localhost:8080/api/v1/pacientes/buscar/"+ id)
     .then((response) => {
-      const pacienteArray = [response.data];
-      setPacientes(pacienteArray);
+      if (response.data) {
+        console.log(response.data)
+        setPacientes([response.data]);
+        Swal.fire({
+          icon: 'success',
+          title: 'Se encontro el paciente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
+        getPacientes();
+        Swal.fire({
+          icon: 'warning',
+          title: 'no se encontro el paciente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -44,13 +60,17 @@ function UploadFile(props) {
   }, []);
 
   async function buscar(){
+    
+    if (!nombre || !apellidoPat || !apellidoMat || !fecha) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Llene todos los campos para buscar',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      return;
+    }
     getPaciente();
-    Swal.fire({
-      icon: 'success',
-      title: 'Paciente encontrado',
-      showConfirmButton: false,
-      timer: 1500
-    })
   }
 
   function simplificarFecha(fechaCompleta) {
@@ -139,9 +159,9 @@ function UploadFile(props) {
           </div>
         </div>
 
-        <div>
+        <div className="tabla-container" style={{ maxHeight: "30vh", overflow: "auto", marginTop:"1vw"}}>
           <table className="tablaS" style={{ width: "78vw" }}>
-            <thead>
+            <thead >
               <tr>
                 <th scope="col" className="left-th">
                   Nombre Completo
@@ -165,8 +185,8 @@ function UploadFile(props) {
                     </td>
                     <td>
                     <input type="file" id="upload" hidden />
-                  <label for="upload" className="btn btn-secondary btn-sm column-btn" style={{background:"#248087"}}>Subir Archivo</label>
-
+                  <label for="upload" className="btn btn-secondary btn-sm column-btn"  type="button"
+                     class="btn btn-secondary btn-sm"  style={{background:"#248087"}}>Subir Archivo</label>
                     </td>
                   </tr>
                 ))}
