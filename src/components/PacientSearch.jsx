@@ -31,19 +31,49 @@ export default function PacientSearch(props) {
 
   const getPaciente = () => {
     axios
-      .get("http://localhost:8080/api/v1/pacientes/buscar/" + id)
-      .then((response) => {
-        const pacienteArray = [response.data];
-        setPacientes(pacienteArray);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+
+    .get("http://localhost:8080/api/v1/pacientes/buscar/"+ id)
+    .then((response) => {
+      if (response.data) {
+        setPacientes([response.data]);
+        Swal.fire({
+          icon: 'success',
+          title: 'Se encontro el paciente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
+        getPacientes();
+        Swal.fire({
+          icon: 'warning',
+          title: 'no se encontro el paciente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 
   useEffect(() => {
     getPacientes();
   }, []);
+
+
+  async function buscar(){
+    
+    if (!nombre || !apellidoPat || !apellidoMat || !fecha) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Llene todos los campos para buscar',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      return;
+    }
 
   async function buscar() {
     Swal.fire({
@@ -52,8 +82,10 @@ export default function PacientSearch(props) {
       showConfirmButton: false,
       timer: 1500,
     });
+
     getPaciente();
-  }
+    
+}
 
   function simplificarFecha(fechaCompleta) {
     const fecha = new Date(fechaCompleta);
@@ -242,4 +274,4 @@ export default function PacientSearch(props) {
       </div>
     </>
   );
-}
+                    }}

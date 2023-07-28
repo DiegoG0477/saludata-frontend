@@ -28,20 +28,20 @@ export default function SummaryTable(props) {
       getPacienteAntecedentesNo();
     }, []);
     
-    let luz="no";
-    let aguaPotable="no";
-    let drenaje="no";
-    let cocina="no";
+    let luz="NO";
+    let aguaPotable="NO";
+    let drenaje="NO";
+    let cocina="NO";
    
     for (let i = 0; i < pacienteServicios.length; i++) {
-      if(pacienteServicios[i]=="luz"){
-        luz="si"
-      }else if(pacienteServicios[i]=="agua potable"){
-        aguaPotable="si"
-      }else if(pacienteServicios[i]=="drenaje"){
-        drenaje="si"
-      }else if(pacienteServicios[i]=="cocina"){
-        cocina="si"
+      if(pacienteServicios[i]=="Luz"){
+        luz="SI"
+      }else if(pacienteServicios[i]=="Agua Potable"){
+        aguaPotable="SI"
+      }else if(pacienteServicios[i]=="Drenaje"){
+        drenaje="SI"
+      }else if(pacienteServicios[i]=="Cocina con Leña"){
+        cocina="SI"
       }
     }
     

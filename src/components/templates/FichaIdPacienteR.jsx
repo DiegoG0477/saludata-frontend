@@ -24,7 +24,6 @@ export default function FichaIdPacienteR() {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
-
   function guardarDatos() {
     superPaciente.nombre = nombre;
     superPaciente.apellidoPat = apellidoP;
@@ -38,8 +37,6 @@ export default function FichaIdPacienteR() {
     superPaciente.religion = religion;
     superPaciente.sexo = sexo;
 
-    console.log(fechaNacim);
-    console.log(superPaciente);
   }
 
   return (

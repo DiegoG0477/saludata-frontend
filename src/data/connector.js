@@ -152,6 +152,9 @@ function axiosPost(url, params) {
     });
 }
 
+
+
+
 export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
   const fecha = new Date(fechaNacimiento);
 
