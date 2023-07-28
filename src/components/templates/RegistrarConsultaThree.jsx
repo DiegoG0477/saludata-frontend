@@ -1,8 +1,9 @@
 import InputLabel from "../atoms/InputLabel";
 import NextButton from "../atoms/NextButton";
 import ReturnButton from "../atoms/ReturnButton";
+import { consultaDatos } from "../../data";
 
-export default function RegistrarConsultaThree() {
+export default function RegistrarConsultaThree(props) {
   return (
     <div
       class="modal fade"
@@ -93,7 +94,7 @@ export default function RegistrarConsultaThree() {
             </div>
           </div>
           <div class="modal-footer">
-            <ReturnButton page="#modalPaciente"></ReturnButton>
+            <ReturnButton page="#modalRegConsulta"></ReturnButton>
             <NextButton page="#modalPaciente3"></NextButton>
           </div>
         </div>

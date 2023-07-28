@@ -34,7 +34,6 @@ export default function MedDateSearch(props) {
 
   function simplificarFecha(fechaCompleta) {
     const fecha = new Date(fechaCompleta);
-
     const dia = fecha.getDate() +1;
     const mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
     const año = fecha.getFullYear();

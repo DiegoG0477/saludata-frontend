@@ -6,7 +6,6 @@ export default function NextButton(props) {
       <button
         type="button"
         class="btn globalButton"
-        // data-bs-target="{#staticBackdrop4}"
         data-bs-target={props.page}
         data-bs-toggle="modal"
         data-bs-dismiss="modal"

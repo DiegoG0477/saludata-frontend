@@ -3,6 +3,7 @@ import addPacient from "../../assets/pacient.png";
 import SaveIcon from "@mui/icons-material/Save.js";
 import consulta from "../../assets/consulta.png";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd.js";
+import ConsultaFromPatient from "./ConsultaFromPatient";
 
 export default function RegistrarConsulta() {
   return (
@@ -50,7 +51,7 @@ export default function RegistrarConsulta() {
                       style={{ fontSize: "1.4rem", marginTop: "-5px" }}
                     ></BookmarkAddIcon>
                   }
-                  num={4}
+                  num={6}
                 ></Card>
               </div>
             </div>

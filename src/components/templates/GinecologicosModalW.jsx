@@ -1,8 +1,9 @@
 import InputLabel from "../atoms/InputLabel";
 import DatePick from "../atoms/DatePick";
 import ReturnButton from "../atoms/ReturnButton";
-import { useEffect, useState } from "react";
-// import { superPaciente } from "../../data";
+import { useState } from "react";
+import { superPaciente } from "../../data";
+import { insertarPaciente } from "../../data/connector";
 
 export default function GinecologicosModalW() {
   const [g, setG] = useState("");
@@ -17,6 +18,55 @@ export default function GinecologicosModalW() {
   const [fum, setFum] = useState("");
   const [papanicolau, setPapanicolau] = useState("");
   const [antecedentes, setAntecedentes] = useState("");
+
+
+  const handleRadioChange = (event) => {
+    const radioValue = event.target.value;
+    setMpf(radioValue);
+  };
+
+  const handleRadioChangeCancer = (event) => {
+    const radioValue = event.target.value;
+    setDeteccion(radioValue);
+  };
+
+  function guardarDatos(){
+    superPaciente.g = parseInt(g, 10);
+    superPaciente.p = parseInt(p, 10);
+    superPaciente.a = parseInt(a, 10);
+    superPaciente.c = parseInt(c, 10);
+    superPaciente.menarca = parseInt(menarca, 10);
+    superPaciente.ciclosMenstruales = parseInt(ciclos, 10);
+    superPaciente.ivsa = parseInt(ivsa, 10);
+    superPaciente.mpf = mpf;
+    superPaciente.deteccionCancer = deteccion;
+    superPaciente.fum = fum;
+    superPaciente.papanicolau = parseInt(papanicolau, 10);
+    superPaciente.antecedentesPerinatales = antecedentes;
+  }
+
+  function guardarPaciente(){
+    guardarDatos();
+    console.log(superPaciente);
+    insertarPaciente(superPaciente);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'El paciente esta siendo guardado'
+    })
+  }
+
 
   return (
     <>
@@ -45,17 +95,18 @@ export default function GinecologicosModalW() {
                   marginLeft: "1vw",
                 }}
               >
-                <InputLabel text="G" holder="0" ancho={5} />
-                <InputLabel text="P" holder="0" ancho={5} />
-                <InputLabel text="A" holder="0" ancho={5} />
-                <InputLabel text="C" holder="0" ancho={5} />
-                <InputLabel text="Menarca" holder="0 Años" ancho={10} />
+                <InputLabel text="G" holder="0" ancho={5} metodo={setG}/>
+                <InputLabel text="P" holder="0" ancho={5} metodo={setP}/>
+                <InputLabel text="A" holder="0" ancho={5} metodo={setA}/>
+                <InputLabel text="C" holder="0" ancho={5} metodo={setC}/>
+                <InputLabel text="Menarca" holder="0 Años" ancho={10} metodo={setMenarca}/>
                 <InputLabel
                   text="Ciclos Mestruales"
                   holder="0 Dias"
                   ancho={10}
+                  metodo={setCiclos}
                 />
-                <InputLabel text="IVSA" holder="0 Años" ancho={8} />
+                <InputLabel text="IVSA" holder="0 Años" ancho={8} metodo={setIvsa}/>
               </div>
               <div
                 style={{
@@ -83,6 +134,9 @@ export default function GinecologicosModalW() {
                         type="radio"
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
+                        value="SI"
+                      onChange={handleRadioChange}
+                      checked={mpf === "SI"}
                       />
                       <label class="form-check-label" for="flexRadioDefault1">
                         SI
@@ -93,9 +147,12 @@ export default function GinecologicosModalW() {
                         class="form-check-input"
                         type="radio"
                         name="flexRadioDefault"
-                        id="flexRadioDefault1"
+                        id="flexRadioDefault2"
+                        value="NO"
+                        onChange={handleRadioChange}
+                        checked={mpf === "NO"}
                       />
-                      <label class="form-check-label" for="flexRadioDefault1">
+                      <label class="form-check-label" for="flexRadioDefault2">
                         NO
                       </label>
                     </div>
@@ -117,9 +174,12 @@ export default function GinecologicosModalW() {
                       class="form-check-input"
                       type="radio"
                       name="flexRadioDefault2"
-                      id="flexRadioDefault12"
+                      id="flexRadioDefault3"
+                      value="SI"
+                      onChange={handleRadioChangeCancer}
+                      checked={deteccion === "SI"}
                     />
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault3">
                       SI
                     </label>
                   </div>
@@ -128,9 +188,12 @@ export default function GinecologicosModalW() {
                       class="form-check-input"
                       type="radio"
                       name="flexRadioDefault2"
-                      id="flexRadioDefault1"
+                      id="flexRadioDefault4"
+                      value="NO"
+                      onChange={handleRadioChangeCancer}
+                      checked={deteccion === "NO"}
                     />
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault4">
                       NO
                     </label>
                   </div>
@@ -147,11 +210,11 @@ export default function GinecologicosModalW() {
                     className="input-search-container"
                     style={{ height: "8vh" }}
                   >
-                    <DatePick />
+                    <DatePick metodo={setFum}/>
                   </div>
                 </div>
                 <div>
-                  <InputLabel text="Papanicolau" holder="0" ancho={5} />
+                  <InputLabel text="Papanicolau" holder="0" ancho={5} metodo={setPapanicolau}/>
                 </div>
               </div>
               <div
@@ -167,12 +230,12 @@ export default function GinecologicosModalW() {
                   text="Antecedentes Perinatales"
                   holder="Ingrese los Antecedentes Perinatales del Paciente"
                   ancho={65}
+                  metodo={setAntecedentes}
                 />
               </div>
             </div>
             <div class="modal-footer modal-buttons-section">
               <ReturnButton page="#staticBackdrop3" />
-
               <button
                 type="button"
                 class="btn"
@@ -180,8 +243,13 @@ export default function GinecologicosModalW() {
                 data-bs-target=""
                 data-bs-toggle="modal"
                 data-bs-dismiss="modal"
+
+
+                onClick={guardarPaciente}
+
               >
                 Agregar Paciente
+                
               </button>
             </div>
           </div>
