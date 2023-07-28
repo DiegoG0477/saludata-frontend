@@ -12,7 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { DatePicker } from "@mui/x-date-pickers";
 import InputLabel from "./atoms/InputLabel";
 import PacientSearch from "./PacientSearch";
-import ModalsWindows from "./templates/modalsWindows";
+import ModalsWindows from "./templates/ModalsWindows";
 
 function Home() {
   return (
@@ -66,8 +66,8 @@ function Home() {
             num={5}
           ></Card>
         </div>
-        
-            <ModalsWindows></ModalsWindows>
+
+        <ModalsWindows></ModalsWindows>
       </div>
     </>
   );
