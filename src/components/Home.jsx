@@ -53,19 +53,6 @@ function Home() {
             num={3}
           ></Card>
         </div>
-        <div className="home-top" style={{ paddingTop: "12px" }}>
-          <Card
-            title="Modificar un Paciente"
-            img={edit}
-            buttonText={"Modificar"}
-            icon={
-              <EditIcon
-                style={{ fontSize: "1.4rem", marginTop: "-5px" }}
-              ></EditIcon>
-            }
-            num={5}
-          ></Card>
-        </div>
 
         <ModalsWindows></ModalsWindows>
       </div>
