@@ -1,7 +1,29 @@
 import InputLabel from "../atoms/InputLabel";
 import ReturnButton from "../atoms/ReturnButton";
+import { useState } from "react";
+import { consultaDatos } from "../../data";
+import { insertarConsulta } from "../../data/connector";
+
 
 export default function RegistrarConsultaFive() {
+  const [extremidadesPelvicas, setExtremidadesPelvicas] = useState("");
+  const [extremidadesToraxicas, setExtremidadesToraxicas] = useState("");
+  const [diagnostico, setDiagnostico] = useState("");
+  const [plan, setPlan] = useState("");
+
+  function guardarDatos () {
+    consultaDatos.extPelvicas = extremidadesPelvicas;
+    consultaDatos.extToraxicas = extremidadesToraxicas;
+    consultaDatos.diagnostico = diagnostico;
+    consultaDatos.plan = plan;
+  }
+
+  function guardarConsulta() {
+    guardarDatos();
+    console.log("en la vista 5 el objeto consulta es con el id: " + consultaDatos.idPaciente);
+    insertarConsulta(consultaDatos);
+  }
+
   return (
     <div
       class="modal fade"
@@ -31,18 +53,20 @@ export default function RegistrarConsultaFive() {
                 text="Extremidades Pelvicas"
                 holder="Ingrese"
                 ancho={30}
+                metodo={setExtremidadesPelvicas}
               />
               <InputLabel
                 text="Extremidades Toraxicas"
                 holder="Ingrese"
                 ancho={30}
+                metodo={setExtremidadesToraxicas}
               />
             </div>
             <div>
-              <InputLabel text="Diagnostico" holder="Ingrese" ancho={65} />
+              <InputLabel text="Diagnostico" holder="Ingrese" ancho={65} metodo={setDiagnostico} />
             </div>
             <div>
-              <InputLabel text="Plan" holder="Ingrese" ancho={65} />
+              <InputLabel text="Plan" holder="Ingrese" ancho={65} metodo={setPlan} />
             </div>
           </div>
           <div class="modal-footer">
@@ -54,6 +78,7 @@ export default function RegistrarConsultaFive() {
                 data-bs-target=""
                 data-bs-toggle="modal"
                 data-bs-dismiss="modal"
+                onClick={guardarConsulta}
               >
                 Registrar Consulta
               </button>

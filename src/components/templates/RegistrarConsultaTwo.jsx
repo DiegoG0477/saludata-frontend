@@ -7,60 +7,50 @@ import RegistrarConsultaThree from "./RegistrarConsultaThree";
 import { consultaDatos } from "../../data";
 
 export default function RegistrarConsultaTwo(props) {
-  const [ids, setIds] = useState([]);
-  const [idPaciente, setIdPaciente] = useState("");
 
-  const getTemporales = () => {
-    axios
-      .get("http://localhost:8080/api/v1/temporales")
-      .then((response) => {
-        console.log(response.data);
-        if (response.data.length > 0){
-          console.log("entro al if")
-          setIds(response.data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const vaciarTemporales = () => {
-    axios
-      .delete("http://localhost:8080/api/v1/temporales")
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const [altura, setAltura] = useState("");
+  const [peso, setPeso] = useState("");
+  const [pesoPrenatal, setPesoPrenatal] = useState("");
+  const [talla, setTalla] = useState("");
+  const [temperatura, setTemperatura] = useState("");
+  const [FC, setFC] = useState("");
+  const [FR, setFR] = useState("");
+  const [PA, setPA] = useState("");
+  const [otro, setOtro] = useState("");
 
   function guardarDatos() {
-    console.log(idPaciente);
-    consultaDatos.idPaciente = idPaciente;
+    consultaDatos.altura =  parseInt(altura, 10);
+    consultaDatos.peso = parseInt(peso, 10);
+    consultaDatos.pesoPrenatal = parseInt(pesoPrenatal, 10);
+    consultaDatos.talla = parseInt(talla, 10);
+    consultaDatos.temperatura = parseFloat(temperatura, 10);
+    consultaDatos.freqCardiaca = parseInt(FC, 10);
+    consultaDatos.freqRespiratoria = parseInt(FR, 10);
+    consultaDatos.presionArterial = PA;
+    consultaDatos.otro = otro;
   }
 
   const imprimir = () => {
+    console.log("EL ID HEREDADO ES: " + consultaDatos.idPaciente);
     // Llamar a getTemporales para obtener los datos actualizados
-    getTemporales();
+    // getTemporales();
 
     guardarDatos();
   };
 
   // useEffect para actualizar idPaciente cuando ids se actualice
-  useEffect(() => {
-    // Verificar si ids tiene algún valor
-    if (ids.length > 0) {
-      setIdPaciente(ids[0]);
-      console.log("corriendo use effect en registrar consulta two");
-      console.log(ids);
-      console.log("el ID ES ESTE " + idPaciente + ids);
+  // useEffect(() => {
+  //   // Verificar si ids tiene algún valor
+  //   if (ids.length > 0) {
+  //     setIdPaciente(ids[0]);
+  //     console.log("corriendo use effect en registrar consulta two");
+  //     console.log(ids);
+  //     console.log("el ID ES ESTE " + idPaciente + ids);
 
-      // Vaciar la tabla después de haber establecido los datos correctamente
-      vaciarTemporales();
-    }
-  }, [ids]);
+  //     // Vaciar la tabla después de haber establecido los datos correctamente
+  //     vaciarTemporales();
+  //   }
+  // }, [ids]);
 
   return (
     <>
@@ -93,19 +83,22 @@ export default function RegistrarConsultaTwo(props) {
                   text="Altura"
                   holder="Ingrese la Altura en CM"
                   ancho={13}
+                  metodo={setAltura}
                 />
                 <InputLabel
                   text="Peso"
                   holder="Ingrese el Peso en KG"
                   ancho={13}
+                  metodo={setPeso}
                 />
                 <InputLabel
                   text="Peso Prenatal"
                   holder="Ingrese el Peso en KG"
                   ancho={13}
+                  metodo={setPesoPrenatal}
                 />
-                <InputLabel text="Talla" holder="Ingrese la Talla" ancho={10} />
-                <InputLabel text="Temperatura" holder="Celsius" ancho={10} />
+                <InputLabel text="Talla" holder="Ingrese la Talla" ancho={10} metodo={setTalla} />
+                <InputLabel text="Temperatura" holder="Celsius" ancho={10} metodo={setTemperatura} />
               </div>
               <div
                 style={{
@@ -119,21 +112,25 @@ export default function RegistrarConsultaTwo(props) {
                   text="FC(Fracuencia Cardiaca)"
                   holder="0/0"
                   ancho={7}
+                  metodo={setFC}
                 />
                 <InputLabel
                   text="FR(Frecuencia Respiratoria)"
                   holder="0/0"
                   ancho={7}
+                  metodo={setFR}
                 />
                 <InputLabel
                   text="PA(Presion Arterial)"
                   holder="0/0"
                   ancho={7}
+                  metodo={setPA}
                 />
                 <InputLabel
                   text="Otro(Opcional)"
                   holder="Opcional"
                   ancho={16}
+                  metodo={setOtro}
                 />
               </div>
               <div
@@ -201,7 +198,7 @@ export default function RegistrarConsultaTwo(props) {
           </div>
         </div>
       </div>
-      <RegistrarConsultaThree idPaciente={idPaciente}/>
+      <RegistrarConsultaThree />
     </>
   );
 }
