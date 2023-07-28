@@ -10,8 +10,6 @@ import { Link } from "react-router-dom";
 import { generarId } from "../data/connector";
 function RecentFile(props) {
     const [archivos, setArchivos] = useState([]);
-    const [pacientes, setPacientes] = useState([]);
-    const [archivo, setArchivo] = useState([]);
     const [nombre, setNombre] = useState("");
     const [apellidoMat, setApellidoMat] = useState("");
     const [apellidoPat, setApellidoPat] = useState("");
@@ -41,21 +39,6 @@ function RecentFile(props) {
     console.log(archivos)
     useEffect(() => {
         getArchivos();
-    }, []);
-
-    const getPacientes = () => {
-        axios
-            .get("http://localhost:8080/api/v1/pacientes")
-            .then((response) => {
-                setPacientes(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    useEffect(() => {
-        getPacientes();
     }, []);
 
 
@@ -159,9 +142,7 @@ function RecentFile(props) {
                     <table className="tablaS" style={{ width: "78vw" }}>
                         <thead>
                         <tr>
-                            <th scope="col" className="left-th">
-                                Nombre Completo
-                            </th>
+                            <th scope="col" className="left-th">Nombre Completo</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Edad</th>
                             <th scope="col" className="right-th">
@@ -170,14 +151,14 @@ function RecentFile(props) {
                         </tr>
                         </thead>
                         <tbody>
-                        {pacientes.map((val) => (
-                            <tr>
+                        {archivos.map((val) => (
+                            <tr key={val}>
                                 <th scope="row">
-                                    {val.nombre + " " + val.apellidoPat + " " + val.apellidoMat}
+                                    {val[1] + " " + val[2] + " " + val[3]}
                                 </th>
-                                <td>{val.telefono}</td>
+                                <td>{val[4]}</td>
                                 <td>
-                                    {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
+                                    {calcularEdad(new Date(val[5])) + " años"}
                                 </td>
                                 <td>
                                     <div type="button">
