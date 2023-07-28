@@ -34,7 +34,6 @@ export default function ServicesTable({ id }) {
     return fechaSimplificada;
   }
 
-  
   function simplificarFechaRoot(fechaCompleta) {
     const fecha = new Date(fechaCompleta);
 
@@ -47,7 +46,6 @@ export default function ServicesTable({ id }) {
 
     return fechaSimplificada;
   }
-
 
   return (
     <div
@@ -80,7 +78,11 @@ export default function ServicesTable({ id }) {
                   ></ColumnButton>
                 </Link>
               </div> */}
-                <Link to={`/file-summary/${id}/${simplificarFechaRoot(val.id.fecha)}`}>
+                <Link
+                  to={`/file-summary/${id}/${simplificarFechaRoot(
+                    val.id.fecha
+                  )}`}
+                >
                   <ColumnButton text="Ver Más" color="#248087" />
                 </Link>
               </td>
