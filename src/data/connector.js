@@ -118,7 +118,7 @@ export async function insertarPaciente(paciente) {
       insertAlergiaTable(alergiasDb);
 
       if (paciente.servicios.length === 0) {
-        paciente.servicios = ["Ninguno"];
+        servicios = ["Ninguno"];
       }
 
       insertServiciosTable(paciente.servicios, id);
@@ -257,7 +257,7 @@ function insertGinecoObTable(datos) {
   const dia = fecha.getDate();
   const mes = fecha.getMonth();
   const anio = fecha.getFullYear();
-  
+
   console.log("Día: " + dia);
   console.log("Mes: " + mes);
   console.log("Año: " + anio);
@@ -311,15 +311,68 @@ function insertAlergiaTable(datos) {
 }
 
 function insertServiciosTable(servicios, id) {
-  for (let i = 0; i < servicios.length; i++) {
-    if (servicios[i] != "Zoonosis") {
-      console.log(servicios[i]);
-      const url = `http://localhost:8080/api/v1/servicios/${id}`;
-      const params = {
-        servicio: servicios[i],
-      };
-      axiosPost(url, params);
-    }
-  }
+  const serviciosData = servicios.filter(servicio => servicio !== "Zoonosis"); // Filtrar el servicio "Zoonosis" si existe
+
+  const data = {
+    pacienteId: id,
+    servicios: serviciosData
+  };
+
+  axios.post(`http://localhost:8080/api/v1/servicios/${id}`, data)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+    console.log(data);
 }
 
+
+// function insertServiciosTable(servicios, id) {
+//   console.log(servicios);
+//   for (let i = 0; i < servicios.length; i++) {
+//     if (servicios[i] != "Zoonosis") {
+//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
+//       const params = {
+//         servicio: servicios[i],
+//       };
+//       axiosPost(url, params);
+//     }
+//   }
+// }
+
+// function insertServiciosTable(servicios, id) {
+//   console.log(servicios);
+//   for (let i = 0; i < servicios.length; i++) {
+//     if (servicios[i] === "Agua Potable") {
+//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
+//       const params = {
+//         servicio: "Agua Potable",
+//       };
+//       axiosPost(url, params);
+//     }
+//     if (servicios[i] === "Cocina con Leña") {
+//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
+//       const params = {
+//         servicio: "Cocina con Leña",
+//       };
+//       axiosPost(url, params);
+//     }
+//     if (servicios[i] === "Drenaje") {
+//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
+//       const params = {
+//         servicio: "Drenaje",
+//       };
+//       axiosPost(url, params);
+//     }
+//     if (servicios[i] === "Luz") {
+//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
+//       const params = {
+//         servicio: "Luz",
+//       };
+//       axiosPost(url, params);
+//     }
+//   }
+// }
