@@ -118,7 +118,7 @@ export async function insertarPaciente(paciente) {
       insertAlergiaTable(alergiasDb);
 
       if (paciente.servicios.length === 0) {
-        paciente.servicios = ["Ninguno"];
+        servicios = ["Ninguno"];
       }
 
       insertServiciosTable(paciente.servicios, id);
@@ -141,7 +141,11 @@ function axiosPost(url, params) {
     });
 }
 
- export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
+
+
+
+export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
+
 
   const fecha = new Date(fechaNacimiento);
 
@@ -149,11 +153,6 @@ function axiosPost(url, params) {
   const dia = fecha.getDate();
   const mes = fecha.getMonth() + 1; // Los meses en Date van de 0 a 11, por eso sumamos 1
   const anio = fecha.getFullYear();
-
-  // Imprimir los resultados
-  console.log("Día: " + dia);
-  console.log("Mes: " + mes);
-  console.log("Año: " + anio);
 
   let diaId, mesId, anioId;
   if (dia < 10) {
@@ -178,7 +177,6 @@ function axiosPost(url, params) {
     mesId +
     diaId;
 
-  console.log("ID Paciente: " + idPaciente);
   return idPaciente;
 }
 
@@ -257,7 +255,7 @@ function insertGinecoObTable(datos) {
   const dia = fecha.getDate();
   const mes = fecha.getMonth();
   const anio = fecha.getFullYear();
-  
+
   console.log("Día: " + dia);
   console.log("Mes: " + mes);
   console.log("Año: " + anio);
@@ -311,15 +309,20 @@ function insertAlergiaTable(datos) {
 }
 
 function insertServiciosTable(servicios, id) {
-  for (let i = 0; i < servicios.length; i++) {
-    if (servicios[i] != "Zoonosis") {
-      console.log(servicios[i]);
-      const url = `http://localhost:8080/api/v1/servicios/${id}`;
-      const params = {
-        servicio: servicios[i],
-      };
-      axiosPost(url, params);
-    }
-  }
-}
+  const serviciosData = servicios.filter(servicio => servicio !== "Zoonosis"); // Filtrar el servicio "Zoonosis" si existe
 
+  const data = {
+    pacienteId: id,
+    servicios: serviciosData
+  };
+
+  axios.post(`http://localhost:8080/api/v1/servicios/${id}`, data)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+    console.log(data);
+}

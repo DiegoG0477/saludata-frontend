@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 
 function Card(props) {
-  let modal;
+  var modal;
   if(props.num==1){
     modal="#staticBackdrop";
   }else if(props.num==2){
@@ -13,6 +13,8 @@ function Card(props) {
     modal="#modalPaciente"
   }else if(props.num==5){
     modal="#modalModificar"
+  } else if(props.num==6){
+    modal = "#modalRegistrarConsById"
   }
   return (
     <>
