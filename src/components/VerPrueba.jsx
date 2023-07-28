@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Title from "./atoms/Title.jsx";
 import ReadInput from "./atoms/ReadInput.jsx";
-import SummaryTable from "./molecules/SummaryTable.jsx";
 
 
 function VerPrueba() {
@@ -28,12 +27,12 @@ function VerPrueba() {
     useEffect(() => {
         getArchivos();
     }, []);
-    console.log(archivos)
+
     let imagenes=[];
     for (let i = 0; i < archivos.length; i++) {
         imagenes[i]=archivos[i]?.[5];
     }
-    console.log((imagenes))
+    console.log(archivos)
 
     return (
         <>

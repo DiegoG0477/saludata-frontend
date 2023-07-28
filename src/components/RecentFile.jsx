@@ -162,7 +162,7 @@ function RecentFile(props) {
                                 </td>
                                 <td>
                                     <div type="button">
-                                        <Link to={`/verPrueba/${val.idPaciente}`}>
+                                        <Link to={`/verPrueba/${val[0]}`}>
                                             <ColumnButton
                                                 color={props.color}
                                                 text={props.botonText}

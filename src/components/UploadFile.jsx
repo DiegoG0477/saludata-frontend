@@ -15,6 +15,30 @@ function UploadFile(props) {
   const [apellidoPat, setApellidoPat] = useState("");
   const [fecha, setFecha] = useState("");
   const id= generarId(nombre,apellidoMat,apellidoPat,fecha);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleFileUpload = () => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      axios
+          .post(`http://localhost:8080/api/v1/s3/upload`, formData) // Corregir las comillas aquí
+          .then((response) => {
+            console.log(response.data);
+
+            // Aquí puedes mostrar un mensaje de éxito o realizar alguna acción adicional después de subir el archivo.
+          })
+          .catch((error) => {
+            console.error(error);
+            // Aquí puedes mostrar un mensaje de error o realizar alguna acción adicional si ocurre algún problema durante la subida del archivo.
+          });
+    }
+  };
+
 
   const getPacientes = () => {
       axios
@@ -155,7 +179,7 @@ function UploadFile(props) {
             </thead>
             <tbody>
               {pacientes.map((val) => (
-                  <tr>
+                  <tr key={val.id}>
                     <th scope="row">
                       {val.nombre + " " + val.apellidoPat + " " + val.apellidoMat}
                     </th>
@@ -164,9 +188,17 @@ function UploadFile(props) {
                       {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
                     </td>
                     <td>
-                    <input type="file" id="upload" hidden />
-                  <label for="upload" className="btn btn-secondary btn-sm column-btn" style={{background:"#248087"}}>Subir Archivo</label>
+                      <input type="file" id="upload" hidden onChange={handleFileChange} />
+                      <label
+                          htmlFor="upload"
+                          className="btn btn-secondary btn-sm column-btn"
+                          style={{ background: "#248087" }}
+                          onClick={handleFileUpload}
 
+                          // Llamar a la función al hacer clic en el botón
+                      >
+                        Subir Archivo
+                      </label>
                     </td>
                   </tr>
                 ))}
