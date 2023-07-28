@@ -57,18 +57,6 @@ export default function PacientSearch(props) {
 };
 
 
-  const insertarTemporalesTable = async (idPaciente) => {
-    axios
-      .post(`http://localhost:8080/api/v1/temporales?id=${idPaciente}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log(idPaciente);
-  };
-
 
   useEffect(() => {
     getPacientes();
@@ -86,15 +74,6 @@ export default function PacientSearch(props) {
       });
       return;
     }
-
-  async function buscar() {
-    Swal.fire({
-      icon: "success",
-      title: "Paciente encontrado",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-
     getPaciente();
     
 }
@@ -287,4 +266,4 @@ export default function PacientSearch(props) {
       </div>
     </>
   );
-                    }}
+                    }
