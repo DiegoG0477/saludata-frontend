@@ -1,19 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import "../styles/organisms.css";
 import { RViewerTrigger, RViewer } from 'react-viewerjs';
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Title from "./atoms/Title.jsx";
+import ReadInput from "./atoms/ReadInput.jsx";
+import SummaryTable from "./molecules/SummaryTable.jsx";
 
 
 function VerPrueba() {
-
     const { id } = useParams();
     const [archivos, setArchivos] = useState([]);
 
+
     const getArchivos = () => {
         axios
-            .get("http://localhost:8080/api/v1/archivos/ver")
+            .get("http://localhost:8080/api/v1/archivos/buscar/" + id)
             .then((response) => {
                 setArchivos(response.data);
+
             })
             .catch((error) => {
                 console.log(error);
@@ -23,31 +28,43 @@ function VerPrueba() {
     useEffect(() => {
         getArchivos();
     }, []);
-    console.log(archivos);
-
-
-    // Reemplaza estos enlaces con las URL de tus imágenes
-    let imagenes = [
-        "https://www.freecodecamp.org/espanol/news/content/images/2022/02/5f9c9a4c740569d1a4ca24c2.jpg",
-        "https://blog.udlap.mx/wp-content/uploads/2015/06/imagen-organizacional.jpg",
-        "https://cnnespanol.cnn.com/wp-content/uploads/2023/06/230607151757-greg-girard-kowloon-walled-city-full-169.jpg?quality=100&strip=info&w=414&h=311&crop=1",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjde9mkeS4Hgb9EDlQ0Ek-hAWqqCo3xjAK8A&usqp=CAU",
-    ];
+    console.log(archivos)
+    let imagenes=[];
+    for (let i = 0; i < archivos.length; i++) {
+        imagenes[i]=archivos[i]?.[5];
+    }
+    console.log((imagenes))
 
     return (
-        <div>
-            <RViewer imageUrls={imagenes}>
-                <div style={{ display: "flex", margin: '40px'}}>
-                    {imagenes.map((imagen, index) => {
-                        return (
-                            <RViewerTrigger index={index} key={index}>
-                                <img src={imagen} style={{ width: '150px', height: '150px', marginLeft: '20px', border: '2px solid black' }} />
-                            </RViewerTrigger>
-                        )
-                    })}
+        <>
+            <div className="system-content" style={{ width: "89vw"}}>
+                    <Title text="Historial de archivos"></Title>
+
+                <div className="tree-inputs-div">
+                    <ReadInput label="Nombre" readInfo={archivos[0]?.[1]}  />
+                    <ReadInput label="Apellido paterno" readInfo={archivos[0]?.[2]}  />
+                    <ReadInput label="Apellido materno" readInfo={archivos[0]?.[3]}  />
+
                 </div>
-            </RViewer>
-        </div>
+                <div>
+                    <RViewer imageUrls={imagenes}>
+                        <div style={{ display: "flex", flexWrap: 'wrap', margin: '40px' }}>
+                            {imagenes.map((imagen, index) => {
+                                return (
+                                    <div key={index} className="col-md-3" style={{ marginBottom: '40px' }}>
+                                        <RViewerTrigger index={index}>
+                                            <div className="green-border">
+                                            <img src={imagen} className="img-zoom" style={{ width: '200px', height: '200px', marginLeft: '20px' }} cl/>
+                                            </div>
+                                        </RViewerTrigger>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </RViewer>
+                </div>
+            </div>
+        </>
     );
 }
 

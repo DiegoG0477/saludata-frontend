@@ -25,7 +25,16 @@ function App() {
             <Route path="/" element={<Render component={<Home />} />} />
             
             <Route path={"login"} element={<Login />}></Route>
-              <Route path={"/verPrueba/:id"} element={<VerPrueba />}></Route>
+              <Route path={"/verPrueba/:id"} element={
+                  <Render
+                      component={
+                      <VerPrueba/>
+                      }
+                  />
+              }
+            />
+
+
 
               <Route
               path="medical-search"
