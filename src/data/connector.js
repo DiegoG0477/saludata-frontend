@@ -1,5 +1,18 @@
 import axios from "axios";
 
+function calcularIMC(pesoKg, alturaCm) {
+  // Convertir altura a metros
+  const alturaMetros = alturaCm / 100;
+
+  // Calcular el IMC
+  const imc = pesoKg / (alturaMetros * alturaMetros);
+
+  // Redondear el IMC a dos decimales
+  const imcRedondeado = imc.toFixed(2);
+
+  return imcRedondeado;
+}
+
 export async function insertarPaciente(paciente) {
   const id = generarId(
     paciente.nombre,
@@ -128,8 +141,6 @@ export async function insertarPaciente(paciente) {
   }
 }
 
-
-
 function axiosPost(url, params) {
   axios
     .post(url, null, { params: params })
@@ -142,7 +153,6 @@ function axiosPost(url, params) {
 }
 
 export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
-
   const fecha = new Date(fechaNacimiento);
 
   // Obtener el día, mes y año de la fecha
@@ -305,20 +315,203 @@ function insertAlergiaTable(datos) {
 }
 
 function insertServiciosTable(servicios, id) {
-  const serviciosData = servicios.filter(servicio => servicio !== "Zoonosis"); // Filtrar el servicio "Zoonosis" si existe
+  const serviciosData = servicios.filter((servicio) => servicio !== "Zoonosis"); // Filtrar el servicio "Zoonosis" si existe
 
   const data = {
     pacienteId: id,
-    servicios: serviciosData
+    servicios: serviciosData,
   };
 
-  axios.post(`http://localhost:8080/api/v1/servicios/${id}`, data)
-    .then(response => {
+  axios
+    .post(`http://localhost:8080/api/v1/servicios/${id}`, data)
+    .then((response) => {
       console.log(response);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 
-    console.log(data);
+  console.log(data);
+}
+
+export async function insertarConsulta(consulta) {
+  try {
+    const consultaDb = {
+      idPaciente: consulta.idPaciente, // Aquí debes proporcionar la fecha en el formato adecuado
+      sintomasIniciacion: consulta.sintomasIniciales,
+      motivoConsulta: consulta.motivoConsulta,
+      laboratoriosPrevios: consulta.laboratorios,
+      estudiosPrevios: consulta.estudiosPrevios,
+      terapiaEmpleada: consulta.terapeuticaAnterior,
+    };
+
+    // Insertar la consulta y esperar a que se complete
+    const consultaResponse = await insertConsultaTable(consultaDb);
+
+    if (consultaResponse && consultaResponse.status == 200) {
+      // console.log("Consulta insertada correctamente");
+
+      const consulta2Db = {
+        idPaciente: consulta.idPaciente,
+        peso: consulta.peso,
+        pregestional: consulta.pesoPrenatal,
+        imc: calcularIMC(consulta.peso, consulta.altura),
+        talla: consulta.talla,
+        temperatura: consulta.temperatura,
+        frecuenciaCar: consulta.freqCardiaca,
+        frecuenciaRes: consulta.freqRespiratoria,
+        presion: consulta.presionArterial,
+        otro: consulta.otro,
+        altura: consulta.altura,
+      };
+
+      insertConsulta2Table(consulta2Db);
+
+      const exploracionFisicaDb = {
+        idPaciente: consulta.idPaciente,
+        inspeccion: consulta.inspeccionGeneral,
+        cabeza: consulta.cabeza,
+        torax: consulta.torax,
+        abdomen: consulta.abdomen,
+        genitales: consulta.genitales,
+        pelvicas: consulta.extPelvicas,
+        toraxicas: consulta.extToraxicas,
+        diagnostico: consulta.diagnostico,
+        plan: consulta.plan,
+      };
+
+      insertExploracionFisicaTable(exploracionFisicaDb);
+
+      const sistemasDb = {
+        idPaciente: consulta.idPaciente,
+        digestivo: consulta.digestivo,
+        respiratorio: consulta.respiratorio,
+        urinario: consulta.urinario,
+        genitales: consulta.sistGenitales,
+        cardio: consulta.cardioVasc,
+        nervioso: consulta.nervioso,
+        endocrino: consulta.endocrino,
+        locomotor: consulta.locomotor,
+        generales: consulta.sintomasGenerales,
+      };
+
+      insertInterrogatorioTable(sistemasDb);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// async function insertConsultaTable(consulta) {
+//   const url = `http://localhost:8080/api/v1/consultas`;
+//   const params = {
+//     idPaciente: consulta.idPaciente, // Aquí debes proporcionar la fecha en el formato adecuado
+//     sintomasIniciacion: consulta.sintomasIniciacion,
+//     motivoConsulta: consulta.motivoConsulta,
+//     laboratoriosPrevios: consulta.laboratoriosPrevios,
+//     estudiosPrevios: consulta.estudiosPrevios,
+//     terapiaEmpleada: consulta.terapiaEmpleada,
+//   };
+
+//   const response = await (axios
+//     .post(url, null, { params: params }))
+//     .then((response) => {
+//       console.log(response);
+//       return response;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// }
+
+// async function insertConsultaTable(consulta) {
+//   const url = `http://localhost:8080/api/v1/consultas`;
+//   const data = {
+//     idPaciente: consulta.idPaciente,
+//     sintomasIniciacion: consulta.sintomasIniciacion,
+//     motivoConsulta: consulta.motivoConsulta,
+//     laboratoriosPrevios: consulta.laboratoriosPrevios,
+//     estudiosPrevios: consulta.estudiosPrevios,
+//     terapiaEmpleada: consulta.terapiaEmpleada,
+//   };
+
+//   try {
+//     const response = await axios.post(url, data);
+//     console.log(response);
+//     return response;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+async function insertConsultaTable(consulta) {
+  const url = `http://localhost:8080/api/v1/consultas`;
+  const params = {
+    idPaciente: consulta.idPaciente,
+    sintomasIniciacion: consulta.sintomasIniciacion,
+    motivoConsulta: consulta.motivoConsulta,
+    laboratoriosPrevios: consulta.laboratoriosPrevios,
+    estudiosPrevios: consulta.estudiosPrevios,
+    terapiaEmpleada: consulta.terapiaEmpleada,
+  };
+
+  try {
+    const response = await axios.post(url, null, { params: params });
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+function insertConsulta2Table(datos) {
+  const url = `http://localhost:8080/api/v1/consulta2/${datos.idPaciente}`; // Corregir pacienteId a idPaciente
+  const params = {
+    peso: datos.peso,
+    pregestional: datos.pregestional,
+    imc: datos.imc,
+    talla: datos.talla,
+    temperatura: datos.temperatura,
+    frecuenciaCar: datos.frecuenciaCar,
+    frecuenciaRes: datos.frecuenciaRes,
+    presion: datos.presion,
+    otro: datos.otro,
+    altura: datos.altura,
+  };
+  console.log(params);
+  axiosPost(url, params);
+}
+
+function insertExploracionFisicaTable(datos) {
+  const url = `http://localhost:8080/api/v1/exploracion/${datos.idPaciente}`; // Corregir pacienteId a idPaciente
+  const params = {
+    inspeccion: datos.inspeccion,
+    cabeza: datos.cabeza,
+    torax: datos.torax,
+    abdomen: datos.abdomen,
+    genitales: datos.genitales,
+    pelvicas: datos.pelvicas,
+    toraxicas: datos.toraxicas,
+    diagnostico: datos.diagnostico,
+    plan: datos.plan,
+  };
+  axiosPost(url, params);
+}
+
+function insertInterrogatorioTable(datos) {
+  const url = `http://localhost:8080/api/v1/interrogatorio/${datos.idPaciente}`; // Corregir pacienteId a idPaciente
+  const params = {
+    digestivo: datos.digestivo,
+    respiratorio: datos.respiratorio,
+    urinario: datos.urinario,
+    genitales: datos.genitales,
+    cardio: datos.cardio,
+    nervioso: datos.nervioso,
+    endocrino: datos.endocrino,
+    locomotor: datos.locomotor,
+    generales: datos.generales,
+  };
+  axiosPost(url, params);
 }

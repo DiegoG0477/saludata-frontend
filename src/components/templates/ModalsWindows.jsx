@@ -32,8 +32,8 @@ export default function ModalsWindows() {
       <RegistrarConsultaTwo></RegistrarConsultaTwo>
       <ConsultaFromPatient></ConsultaFromPatient>
       {/* <RegistrarConsultaThree></RegistrarConsultaThree> */}
-      <RegistrarConsultaFour></RegistrarConsultaFour>
-      <RegistrarConsultaFive></RegistrarConsultaFive>
+      {/* <RegistrarConsultaFour></RegistrarConsultaFour> */}
+      {/* <RegistrarConsultaFive></RegistrarConsultaFive> */}
 
       {/* ----------- Modal de Eliminar Paciente ------------ */}
 

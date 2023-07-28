@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { generarId } from "../data/connector";
+import { consultaDatos } from "../data";
 
 export default function PacientSearch(props) {
   const [pacientes, setPacientes] = useState([]);
@@ -38,18 +39,6 @@ export default function PacientSearch(props) {
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const insertarTemporalesTable = async (idPaciente) => {
-    axios
-      .post(`http://localhost:8080/api/v1/temporales?id=${idPaciente}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log(idPaciente);
   };
 
   useEffect(() => {
@@ -93,7 +82,7 @@ export default function PacientSearch(props) {
 
 
   const exportarId = async (id) => {
-    await insertarTemporalesTable(id);
+    consultaDatos.idPaciente = id;
   };
 
   return (
@@ -231,7 +220,6 @@ export default function PacientSearch(props) {
                           color={props.color}
                           text={props.botonText}
                           page="#modalRegConsulta"
-                          // metodo={exportarId(val.idPaciente)}
                           metodo={() => exportarId(val.idPaciente)}
                         ></ColumnButton>
                       </div>
