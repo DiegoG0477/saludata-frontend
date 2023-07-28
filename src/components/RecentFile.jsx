@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 
 function RecentFile(props) {
     const [archivos, setArchivos] = useState([]);
+    const [pacientes, setPacientes] = useState([]);
+
     const getArchivos = () => {
         axios
             .get("http://localhost:8080/api/v1/archivos/ver")
@@ -26,6 +28,46 @@ function RecentFile(props) {
         getArchivos();
     }, []);
     console.log(archivos);
+
+    const getPacientes = () => {
+        axios
+            .get("http://localhost:8080/api/v1/pacientes")
+            .then((response) => {
+                setPacientes(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    useEffect(() => {
+        getPacientes();
+    }, []);
+
+
+    function simplificarFecha(fechaCompleta) {
+        const fecha = new Date(fechaCompleta);
+
+        const dia = fecha.getDate();
+        const mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
+        const año = fecha.getFullYear();
+
+        // Formatear la fecha como 'dd/mm/yyyy' o 'mm/dd/yyyy' (dependiendo de tu preferencia)
+        const fechaSimplificada = `${dia < 10 ? "0" : ""}${dia}/${
+            mes < 10 ? "0" : ""
+        }${mes}/${año}`;
+
+        return fechaSimplificada;
+    }
+
+    function calcularEdad(fechaNacimiento) {
+        const fechaActual = new Date();
+        const diferencia = fechaActual - fechaNacimiento;
+
+        // Convertir la diferencia a años
+        const edad = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365.25));
+        return edad;
+    }
 
     return (
         <>
@@ -90,6 +132,42 @@ function RecentFile(props) {
                 <div>
                     <table className="tablaS" style={{ width: "78vw" }}>
                         <thead>
+                        <tr>
+                            <th scope="col" className="left-th">
+                                Nombre Completo
+                            </th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col" className="right-th">
+                                Acción
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {pacientes.map((val) => (
+                            <tr>
+                                <th scope="row">
+                                    {val.nombre + " " + val.apellidoPat + " " + val.apellidoMat}
+                                </th>
+                                <td>{val.telefono}</td>
+                                <td>
+                                    {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
+                                </td>
+                                <td>
+                                    <div type="button">
+                                        <Link to={`/verPrueba/${val.idPaciente}`}>
+                                            <ColumnButton
+                                                color={props.color}
+                                                text={props.botonText}
+                                            ></ColumnButton>
+                                        </Link>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                        {/*<thead>
                             <tr>
                                 <th scope="col" className="left-th">
                                     Nombre Completo
@@ -103,7 +181,7 @@ function RecentFile(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {archivos.map((val) => (
+                            {pacientes.map((val) => (
                                 <tr key={val[0]}>
                                     <th scope="row">
                                         {val[1] + " " + val[3] + " " + val[2]}
@@ -118,7 +196,7 @@ function RecentFile(props) {
                                     </td>
                                 </tr>
                             ))}
-                        </tbody>
+                        </tbody>*/}
                     </table>
                 </div>
             </div>

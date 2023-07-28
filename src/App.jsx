@@ -13,6 +13,7 @@ import UploadFile from "./components/UploadFile.jsx";
 import FileSummary from "./components/pages/FileSummary.jsx";
 import MedDateSearch from "./components/pages/MedDateSearch";
 import RecentFile from "./components/RecentFile.jsx";
+import VerPrueba from "./components/VerPrueba.jsx";
 
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
             <Route path="/" element={<Render component={<Home />} />} />
             
             <Route path={"login"} element={<Login />}></Route>
-            <Route
+              <Route path={"/verPrueba/:id"} element={<VerPrueba />}></Route>
+
+              <Route
               path="medical-search"
               element={<Render component={<MedicalFileSearch />} />}
             />
