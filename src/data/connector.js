@@ -129,7 +129,7 @@ export async function insertarPaciente(paciente) {
 }
 
 
-export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento)
+
 function axiosPost(url, params) {
   axios
     .post(url, null, { params: params })
@@ -141,7 +141,7 @@ function axiosPost(url, params) {
     });
 }
 
-function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
+export function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
 
   const fecha = new Date(fechaNacimiento);
 
@@ -149,11 +149,6 @@ function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
   const dia = fecha.getDate();
   const mes = fecha.getMonth() + 1; // Los meses en Date van de 0 a 11, por eso sumamos 1
   const anio = fecha.getFullYear();
-
-  // Imprimir los resultados
-  console.log("Día: " + dia);
-  console.log("Mes: " + mes);
-  console.log("Año: " + anio);
 
   let diaId, mesId, anioId;
   if (dia < 10) {
@@ -178,7 +173,6 @@ function generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento) {
     mesId +
     diaId;
 
-  console.log("ID Paciente: " + idPaciente);
   return idPaciente;
 }
 
@@ -328,51 +322,3 @@ function insertServiciosTable(servicios, id) {
 
     console.log(data);
 }
-
-
-// function insertServiciosTable(servicios, id) {
-//   console.log(servicios);
-//   for (let i = 0; i < servicios.length; i++) {
-//     if (servicios[i] != "Zoonosis") {
-//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
-//       const params = {
-//         servicio: servicios[i],
-//       };
-//       axiosPost(url, params);
-//     }
-//   }
-// }
-
-// function insertServiciosTable(servicios, id) {
-//   console.log(servicios);
-//   for (let i = 0; i < servicios.length; i++) {
-//     if (servicios[i] === "Agua Potable") {
-//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
-//       const params = {
-//         servicio: "Agua Potable",
-//       };
-//       axiosPost(url, params);
-//     }
-//     if (servicios[i] === "Cocina con Leña") {
-//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
-//       const params = {
-//         servicio: "Cocina con Leña",
-//       };
-//       axiosPost(url, params);
-//     }
-//     if (servicios[i] === "Drenaje") {
-//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
-//       const params = {
-//         servicio: "Drenaje",
-//       };
-//       axiosPost(url, params);
-//     }
-//     if (servicios[i] === "Luz") {
-//       const url = `http://localhost:8080/api/v1/servicios/${id}`;
-//       const params = {
-//         servicio: "Luz",
-//       };
-//       axiosPost(url, params);
-//     }
-//   }
-// }

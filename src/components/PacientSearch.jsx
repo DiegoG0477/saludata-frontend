@@ -7,17 +7,18 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { generarId } from "../data/connector";
 
-function PacientSearch(props) {
+export default function PacientSearch(props) {
   const [pacientes, setPacientes] = useState([]);
-  //const [paciente, setPaciente] = useState([]);
+  const [paciente, setPaciente] = useState([]);
   const [nombre, setNombre] = useState("");
   const [apellidoMat, setApellidoMat] = useState("");
   const [apellidoPat, setApellidoPat] = useState("");
   const [fecha, setFecha] = useState("");
-  const id= generarId(nombre,apellidoMat,apellidoPat,fecha);
+  // const [idPaciente, setIdPaciente] = useState("");
+  const id = generarId(nombre, apellidoMat, apellidoPat, fecha);
 
   const getPacientes = () => {
-      axios
+    axios
       .get("http://localhost:8080/api/v1/pacientes")
       .then((response) => {
         setPacientes(response.data);
@@ -29,27 +30,39 @@ function PacientSearch(props) {
 
   const getPaciente = () => {
     axios
-    .get("http://localhost:8080/api/v1/pacientes/buscar/"+ id)
-    .then((response) => {
-      const pacienteArray = [response.data];
-      setPacientes(pacienteArray);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+      .get("http://localhost:8080/api/v1/pacientes/buscar/" + id)
+      .then((response) => {
+        const pacienteArray = [response.data];
+        setPacientes(pacienteArray);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const insertarTemporalesTable = async (idPaciente) => {
+    axios
+      .post(`http://localhost:8080/api/v1/temporales?id=${idPaciente}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(idPaciente);
+  };
 
   useEffect(() => {
     getPacientes();
   }, []);
 
-  async function buscar(){
+  async function buscar() {
     Swal.fire({
-      icon: 'success',
-      title: 'Paciente encontrado',
+      icon: "success",
+      title: "Paciente encontrado",
       showConfirmButton: false,
-      timer: 1500
-    })
+      timer: 1500,
+    });
     getPaciente();
   }
 
@@ -76,6 +89,12 @@ function PacientSearch(props) {
     const edad = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365.25));
     return edad;
   }
+
+
+
+  const exportarId = async (id) => {
+    await insertarTemporalesTable(id);
+  };
 
   return (
     <>
@@ -151,23 +170,38 @@ function PacientSearch(props) {
               {props.modal ? (
                 <>
                   <div style={{ marginLeft: "5vw", marginRight: "3vw" }}>
-                    <DatePick className="date" format="dd/MM/yyyy" metodo={setFecha}/>
+                    <DatePick
+                      className="date"
+                      format="dd/MM/yyyy"
+                      metodo={setFecha}
+                    />
                   </div>
 
-                  <button className="btn globalButton" onClick={buscar} >Buscar</button>
+                  <button className="btn globalButton" onClick={buscar}>
+                    Buscar
+                  </button>
                 </>
               ) : (
                 <>
-                  <DatePick className="date" format="dd/MM/yyyy" metodo={setFecha}/>
-                  <button className="btn globalButton" onClick={buscar}>Buscar</button>
+                  <DatePick
+                    className="date"
+                    format="dd/MM/yyyy"
+                    metodo={setFecha}
+                  />
+                  <button className="btn globalButton" onClick={buscar}>
+                    Buscar
+                  </button>
                 </>
               )}
             </div>
           </div>
         </div>
 
-        <div className="tabla-container"  style={{maxHeight:"30vh", overflow:"auto"}}>
-          <table class="tablaS" style={{ width: props.ancho + "vw",}}>
+        <div
+          className="tabla-container"
+          style={{ maxHeight: "30vh", overflow: "auto" }}
+        >
+          <table class="tablaS" style={{ width: props.ancho + "vw" }}>
             <thead>
               <tr>
                 <th scope="col" className="left-th">
@@ -191,15 +225,26 @@ function PacientSearch(props) {
                     {calcularEdad(new Date(val.fechaNacimiento)) + " años"}
                   </td>
                   <td>
+                    {props.registroConsulta ? (
                       <div type="button">
-                      <Link to={`/pacient-summary/${val.idPaciente}`}>
                         <ColumnButton
                           color={props.color}
                           text={props.botonText}
+                          page="#modalRegConsulta"
+                          // metodo={exportarId(val.idPaciente)}
+                          metodo={() => exportarId(val.idPaciente)}
                         ></ColumnButton>
-                      </Link>
-                    </div>
-
+                      </div>
+                    ) : (
+                      <div type="button">
+                        <Link to={`/pacient-summary/${val.idPaciente}`}>
+                          <ColumnButton
+                            color={props.color}
+                            text={props.botonText}
+                          ></ColumnButton>
+                        </Link>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -210,5 +255,3 @@ function PacientSearch(props) {
     </>
   );
 }
-
-export default PacientSearch;

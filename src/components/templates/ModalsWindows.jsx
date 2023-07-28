@@ -14,9 +14,9 @@ import RegistrarConsultaTwo from "./RegistrarConsultaTwo";
 import RegistrarConsultaThree from "./RegistrarConsultaThree";
 import RegistrarConsultaFour from "./RegistrarConsultaFour";
 import RegistrarConsultaFive from "./RegistrarConsultaFive";
+import ConsultaFromPatient from "./ConsultaFromPatient";
 import { superPaciente } from "../../data";
 import InputLabel from "../atoms/InputLabel";
-
 
 export default function ModalsWindows() {
   return (
@@ -25,13 +25,16 @@ export default function ModalsWindows() {
 
       <FichaIdPacienteR />
       <GinecologicosModalW></GinecologicosModalW>
+      
 
       {/* ----------- Modal de Consulta ------------ */}
       <RegistrarConsulta></RegistrarConsulta>
       <RegistrarConsultaTwo></RegistrarConsultaTwo>
-      <RegistrarConsultaThree></RegistrarConsultaThree>
+      <ConsultaFromPatient></ConsultaFromPatient>
+      {/* <RegistrarConsultaThree></RegistrarConsultaThree> */}
       <RegistrarConsultaFour></RegistrarConsultaFour>
       <RegistrarConsultaFive></RegistrarConsultaFive>
+
       {/* ----------- Modal de Eliminar Paciente ------------ */}
 
       <div
@@ -74,6 +77,7 @@ export default function ModalsWindows() {
         </div>
       </div>
 
+      {/* ----------- Modal de Modificar Paciente ------------ */}
       <div
         className="modal fade"
         id="modalModificar"
