@@ -59,6 +59,7 @@ export default function ModalsWindows() {
                 anchoPicker={35}
                 modal={true}
                 mover={3}
+                eliminar={true}
               />
             </div>
             <div class="modal-footer">

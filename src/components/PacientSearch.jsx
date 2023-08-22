@@ -29,54 +29,84 @@ export default function PacientSearch(props) {
       });
   };
 
+  const deletePaciente = (id2) => {
+    axios
+      .delete("http://localhost:8080/api/v1/pacientes/eliminar/" + id2)
+      .then((response) => {
+        getPacientes();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  console.log(id);
+
   const getPaciente = () => {
     axios
 
-    .get("http://localhost:8080/api/v1/pacientes/buscar/"+ id)
-    .then((response) => {
-      if (response.data) {
-        setPacientes([response.data]);
-        Swal.fire({
-          icon: 'success',
-          title: 'Se encontro el paciente',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      } else {
-        getPacientes();
-        Swal.fire({
-          icon: 'warning',
-          title: 'no se encontro el paciente',
-          showConfirmButton: false,
-          timer: 1500
-        });
+      .get("http://localhost:8080/api/v1/pacientes/buscar/" + id)
+      .then((response) => {
+        if (response.data) {
+          setPacientes([response.data]);
+          Swal.fire({
+            icon: "success",
+            title: "Se encontro el paciente",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          getPacientes();
+          Swal.fire({
+            icon: "warning",
+            title: "no se encontro el paciente",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  function eliminar(nombre, apellidoPat, apellidoMat, fechaNacimiento) {
+    setNombre(nombre);
+    setApellidoPat(apellidoPat);
+    setApellidoMat(apellidoMat);
+    setFecha(fechaNacimiento);
+    const id2 = generarId(nombre, apellidoMat, apellidoPat, fechaNacimiento);
+
+    Swal.fire({
+      title: "Quieres eliminar?",
+      text: "No podras revertir los cambio",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Eliminar!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Eliminado!", "El Paciente fue eliminado", "success");
+        deletePaciente(id2);
       }
-    })
-    .catch((error) => {
-      console.log(error);
     });
-};
-
-
+  }
   useEffect(() => {
     getPacientes();
   }, []);
 
-
-  async function buscar(){
-    
+  async function buscar() {
     if (!nombre || !apellidoPat || !apellidoMat || !fecha) {
       Swal.fire({
-        icon: 'warning',
-        title: 'Llene todos los campos para buscar',
+        icon: "warning",
+        title: "Llene todos los campos para buscar",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
       return;
     }
     getPaciente();
-    
-}
+  }
 
   function simplificarFecha(fechaCompleta) {
     const fecha = new Date(fechaCompleta);
@@ -101,8 +131,6 @@ export default function PacientSearch(props) {
     const edad = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365.25));
     return edad;
   }
-
-
 
   const exportarId = async (id) => {
     consultaDatos.idPaciente = id;
@@ -246,6 +274,23 @@ export default function PacientSearch(props) {
                           metodo={() => exportarId(val.idPaciente)}
                         ></ColumnButton>
                       </div>
+                    ) : props.eliminar ? (
+                      <div
+                        type="button"
+                        onClick={() =>
+                          eliminar(
+                            val.nombre,
+                            val.apellidoPat,
+                            val.apellidoMat,
+                            val.fechaNacimiento
+                          )
+                        }
+                      >
+                        <ColumnButton
+                          color={props.color}
+                          text={props.botonText}
+                        ></ColumnButton>
+                      </div>
                     ) : (
                       <div type="button">
                         <Link to={`/pacient-summary/${val.idPaciente}`}>
@@ -265,4 +310,4 @@ export default function PacientSearch(props) {
       </div>
     </>
   );
-                    }
+}

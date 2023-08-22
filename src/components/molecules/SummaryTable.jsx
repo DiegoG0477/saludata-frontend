@@ -1,8 +1,8 @@
 import ColumnButton from "../atoms/ColumnButton";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 export default function ServicesTable({ id }) {
   const [consultas, setConsultas] = useState([]);
   const getConsultas = () => {
@@ -34,19 +34,6 @@ export default function ServicesTable({ id }) {
     return fechaSimplificada;
   }
 
-  function simplificarFechaRoot(fechaCompleta) {
-    const fecha = new Date(fechaCompleta);
-
-    const dia = fecha.getDate();
-    const mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
-    const año = fecha.getFullYear();
-
-    // Formatear la fecha como 'dd/mm/yyyy' o 'mm/dd/yyyy' (dependiendo de tu preferencia)
-    const fechaSimplificada = `${año}-${mes}-${dia < 10 ? "0" : ""}${dia}`;
-
-    return fechaSimplificada;
-  }
-
   return (
     <div
       className="tabla-container"
@@ -66,22 +53,13 @@ export default function ServicesTable({ id }) {
         </thead>
         <tbody>
           {consultas.map((val) => (
-            <tr key={val.id}>
+            // <tr key={val.id}>
+            <tr>
               <td>{simplificarFecha(val.id.fecha)}</td>
               <td>{val.motivoConsulta}</td>
               <td>
-                {/* <div type="button">
-                <Link to={`/pacient-summary/${val.idPaciente}`}>
-                  <ColumnButton
-                    color={props.color}
-                    text={props.botonText}
-                  ></ColumnButton>
-                </Link>
-              </div> */}
                 <Link
-                  to={`/file-summary/${id}/${simplificarFechaRoot(
-                    val.id.fecha
-                  )}`}
+                  to={`/file-summary/${id}/${simplificarFecha(val.id.fecha)}`}
                 >
                   <ColumnButton text="Ver Más" color="#248087" />
                 </Link>
