@@ -2,6 +2,7 @@ import SummaryIdPacient from "../organisms/SummaryIdPacient"
 import LifeSummaryPacient from "../organisms/LifeSummaryPacient"
 import PathologicSummary from "../organisms/PathologicSummary"
 import FemaleSummary from "../organisms/FemaleSummary"
+import "../../styles/pages.css";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -112,7 +113,7 @@ export default function PacientSummary(){
 
     return (
         <>
-            <div className="system-content">
+            <div className="system-content summary-content">
 
                 {/* <div className="identification-data"> */}
                 <SummaryIdPacient paciente={paciente} pacienteDireccion={pacienteDireccion} pacienteNoPatologico={pacienteNoPatologico} id={id}></SummaryIdPacient>

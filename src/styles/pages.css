@@ -1,0 +1,4 @@
+.summary-content{
+    max-height: 85.5vh;
+    overflow-y: auto;
+}
