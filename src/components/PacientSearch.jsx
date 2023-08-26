@@ -19,14 +19,25 @@ export default function PacientSearch(props) {
   const id = generarId(nombre, apellidoMat, apellidoPat, fecha);
 
   const getPacientes = () => {
-    axios
-      .get("http://localhost:8080/api/v1/pacientes")
-      .then((response) => {
-        setPacientes(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .get("http://localhost:8080/api/v1/pacientes")
+    //   .then((response) => {
+    //     setPacientes(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    const datos = [
+      {
+        idPaciente: 1,
+        nombre: "Juan",
+        apellidoPat: "Perez",
+        apellidoMat: "Gonzalez",
+        fechaNacimiento: "1999-06-01T00:00:00.000+00:00",
+        telefono: "1234567890",
+      }]
+
+    setPacientes(datos);
   };
 
   const deletePaciente = (id2) => {

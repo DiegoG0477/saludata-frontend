@@ -6,14 +6,22 @@ import { Link } from "react-router-dom";
 export default function ServicesTable({ id }) {
   const [consultas, setConsultas] = useState([]);
   const getConsultas = () => {
-    axios
-      .get("http://localhost:8080/api/v1/consultas/paciente/" + id)
-      .then((response) => {
-        setConsultas(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .get("http://localhost:8080/api/v1/consultas/paciente/" + id)
+    //   .then((response) => {
+    //     setConsultas(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    const datos = [{
+      "id": {
+        "fecha": "2021-06-01T00:00:00.000+00:00",
+        "id": 1
+      },
+      "motivoConsulta": "Dolor de cabeza",
+    }]
+    setConsultas(datos);
   };
   useEffect(() => {
     getConsultas();
