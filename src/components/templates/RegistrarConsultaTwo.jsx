@@ -8,7 +8,6 @@ import { consultaDatos } from "../../data";
 
 export default function RegistrarConsultaTwo(props) {
 
-  const [altura, setAltura] = useState("");
   const [peso, setPeso] = useState("");
   const [pesoPrenatal, setPesoPrenatal] = useState("");
   const [talla, setTalla] = useState("");
@@ -19,7 +18,6 @@ export default function RegistrarConsultaTwo(props) {
   const [otro, setOtro] = useState("");
 
   function guardarDatos() {
-    consultaDatos.altura =  parseInt(altura, 10);
     consultaDatos.peso = parseInt(peso, 10);
     consultaDatos.pesoPrenatal = parseInt(pesoPrenatal, 10);
     consultaDatos.talla = parseInt(talla, 10);
@@ -37,20 +35,6 @@ export default function RegistrarConsultaTwo(props) {
 
     guardarDatos();
   };
-
-  // useEffect para actualizar idPaciente cuando ids se actualice
-  // useEffect(() => {
-  //   // Verificar si ids tiene algún valor
-  //   if (ids.length > 0) {
-  //     setIdPaciente(ids[0]);
-  //     console.log("corriendo use effect en registrar consulta two");
-  //     console.log(ids);
-  //     console.log("el ID ES ESTE " + idPaciente + ids);
-
-  //     // Vaciar la tabla después de haber establecido los datos correctamente
-  //     vaciarTemporales();
-  //   }
-  // }, [ids]);
 
   return (
     <>
@@ -79,12 +63,7 @@ export default function RegistrarConsultaTwo(props) {
                   width: "65vw",
                 }}
               >
-                <InputLabel
-                  text="Altura"
-                  holder="Ingrese la Altura en CM"
-                  ancho={13}
-                  metodo={setAltura}
-                />
+
                 <InputLabel
                   text="Peso"
                   holder="Ingrese el Peso en KG"
@@ -97,7 +76,7 @@ export default function RegistrarConsultaTwo(props) {
                   ancho={13}
                   metodo={setPesoPrenatal}
                 />
-                <InputLabel text="Talla" holder="Ingrese la Talla" ancho={10} metodo={setTalla} />
+                <InputLabel text="Talla" holder="Ingrese la talla en CM" ancho={10} metodo={setTalla} />
                 <InputLabel text="Temperatura" holder="Celsius" ancho={10} metodo={setTemperatura} />
               </div>
               <div
